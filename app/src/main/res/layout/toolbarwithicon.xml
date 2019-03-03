@@ -19,13 +19,14 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:background="#A4C2DA"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:id="@+id/imageButton3"
-            android:paddingTop="5dp"
+            android:layout_width="30dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/logouticon"/>
+            android:background="#A4C2DA"
+            android:paddingTop="5dp"
+            app:srcCompat="@drawable/logouticon" />
 
 
 
@@ -45,14 +46,15 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"/>
 
-        <ImageButton android:background="#A4C2DA"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+        <ImageButton
             android:id="@+id/imageButton"
-            android:paddingTop="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/homeicon"
-            />
+            android:background="#A4C2DA"
+            android:paddingTop="5dp"
+            app:srcCompat="@drawable/homeicon" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
