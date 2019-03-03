@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Paramedic_app</string>
+    <string-array name="arr_tybed">
+        <item>أطفال</item>
+        <item>كبار</item>
+        <item>عناية مركزة</item>
+    </string-array>
+    <string name="title_activity_drugs">drugs</string>
+</resources>
