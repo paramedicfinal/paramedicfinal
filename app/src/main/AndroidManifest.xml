@@ -25,7 +25,13 @@
         <activity android:name=".add_paramedic_page" />
         <activity android:name=".forgot_password_page" />
         <activity android:name=".by_voice" />
-        <activity android:name=".new_case" />
+        <activity android:name=".new_case" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".home_page" />
         <activity android:name=".sendVs" />
         <activity android:name=".vitalByManuall" />
@@ -34,7 +40,9 @@
         <activity android:name=".hospital_login_page" />
         <activity android:name=".paramedic_home_page" />
         <activity android:name=".conect_page" />
-        <activity android:name=".conect_newcase"></activity>
+        <activity android:name=".conect_newcase">
+
+        </activity>
     </application>
 
 </manifest>

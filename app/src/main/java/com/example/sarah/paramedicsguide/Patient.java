@@ -13,12 +13,12 @@ public class Patient {
 
     }
 
-    public Patient(String nationalId, String name, String sex, String medicalState, String bedType) {
+    public Patient(String nationalId, String name, String sex, String medicalState) {
         this.nationalId = nationalId;
         Name = name;
         this.sex = sex;
         this.medicalState = medicalState;
-        this.bedType=bedType;
+
     }
 
 

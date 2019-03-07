@@ -22,11 +22,13 @@ public class new_case extends AppCompatActivity implements AdapterView.OnItemSel
     DatabaseReference myRef = database.getReference("Patient");
     String sex="";
     String medicalState="";
-    String bedType ="f";
+    String bedType ="";
     EditText name ;
     String name2="";
     EditText NID;
     Button button;
+    String NID2;
+    Patient Patient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,26 +36,13 @@ public class new_case extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-// An item was selected. You can retrieve the selected item using
-        bedType=  parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
     public void addnewcase(View view) {
         name= (EditText) findViewById(R.id.pg2_2_name);
         name2 = name.getText().toString();
-        Log.v("mbmbmb", name2);
         NID= (EditText) findViewById(R.id.pg2_2_id);
         button = (Button) findViewById(R.id.pg2_2button);
-        String NID2=NID.getText().toString();
-        Log.v("mbmbmb", NID2);
+         NID2=NID.getText().toString();
+
         RadioButton male =(RadioButton)findViewById(R.id.pg2_2_male);
         if(male.isChecked()){sex="male";}
         else{sex="female";}
@@ -61,6 +50,7 @@ public class new_case extends AppCompatActivity implements AdapterView.OnItemSel
         RadioButton danger= (RadioButton) findViewById(R.id.pg2_2_danger);
         if(danger.isChecked()){medicalState="danger";}
         else{medicalState="notdanger";}
+         Patient = new Patient(NID2, name2, sex,  medicalState);
         Spinner spinner = (Spinner) findViewById(R.id.pg2_2_bed_spinner);
 //Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -70,13 +60,25 @@ public class new_case extends AppCompatActivity implements AdapterView.OnItemSel
 //Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        spinner.setOnItemSelectedListener(this);
-        Patient Patient = new Patient(NID2, name2, sex,  medicalState,bedType);
-        Toast.makeText(getApplicationContext(),"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
-        myRef.push().setValue(Patient);
 
-        Intent in = new Intent(this,conect_newcase.class);
+
+
+        Toast.makeText(getApplicationContext(),"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
+        Intent in =new Intent(this,vitalAndDrugs.class);
         startActivity(in);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+// An item was selected. You can retrieve the selected item using
+        bedType=  parent.getItemAtPosition(position).toString();
+        Patient.setBedType(bedType);
+        myRef.push().setValue(Patient);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

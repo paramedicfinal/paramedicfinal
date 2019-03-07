@@ -20,6 +20,7 @@ import java.util.Locale;
 public class by_voice extends AppCompatActivity {
 
     private TextView txvResult;
+    String text="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,9 @@ public class by_voice extends AppCompatActivity {
             case 10:
                 if (resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    txvResult.setText(result.get(0));
+                    text+=" "+result.get(0);
+
+                    txvResult.setText(text);
                 }
                 break;
         }
