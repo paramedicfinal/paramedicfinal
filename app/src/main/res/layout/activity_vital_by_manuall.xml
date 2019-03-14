@@ -44,8 +44,11 @@
             android:paddingBottom="5dp"
 
             android:text="العلامات الحيوية"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textSize="25sp"
+
+            android:fontFamily="sans-serif"
+            android:textColor="#000000"
+             />
         <RelativeLayout
             android:id="@+id/pg4_r_layout22"
             android:layout_width="match_parent"
@@ -85,7 +88,7 @@
                 android:layout_marginRight="5dp"
                 android:text="معدل النبض"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idpluseRate"
@@ -123,7 +126,7 @@
                 android:layout_marginTop="0dp"
                 android:text="ضغط الدم"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idbloodPressure"
@@ -166,7 +169,7 @@
                 android:layout_marginRight="5dp"
                 android:text="معدل التنفس"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idrespRate"
@@ -207,7 +210,7 @@
                 android:layout_marginTop="0dp"
                 android:text="مقياس جلاسكو للغيبوبه"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idGCS"
@@ -248,7 +251,7 @@
                 android:layout_marginTop="0dp"
                 android:text="سكر الدم"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idbloodGlucose"
@@ -291,7 +294,7 @@
                 android:layout_marginRight="5dp"
                 android:text="اشباع الأكسجين بالدم"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idBloodOxygen"
@@ -332,7 +335,7 @@
                 android:layout_marginTop="-3dp"
                 android:text="درجة الحرارة"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/idtempreture"
@@ -353,41 +356,41 @@
         </RelativeLayout>
 
 
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/pg4_4_r_lay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/pg4_1_button"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/pg4_r_layout8"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/button_shape_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="-4dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
-            android:fontFamily="sans-serif"
-            android:text="ارسال"
-            android:textColor="#ffffffff"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
 
-            android:onClick="buttonSend"
-            />
+            <Button
+                android:id="@+id/pg4_1_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/button_shape_color"
 
-    </RelativeLayout>
+                android:fontFamily="sans-serif"
+                android:onClick="buttonSend"
+                android:text="ارسال"
+                android:textColor="#ffffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintVertical_bias="1.0" />
+        </RelativeLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

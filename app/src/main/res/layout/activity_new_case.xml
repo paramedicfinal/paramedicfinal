@@ -34,23 +34,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
-            android:fontFamily="sans-serif"
+
             android:gravity="center"
             android:padding="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="حالة جديدة"
             android:textColor="#000000"
-            android:textSize="36dp"
-            android:textStyle="bold"
+            android:textSize="25sp"
+            android:fontFamily="sans-serif"
             app:layout_constraintTop_toBottomOf="@+id/mCustomToolbar"
             app:layout_constraintVertical_bias="0.06" />
+
         <RelativeLayout
             android:id="@+id/pg2_2_r_layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:paddingTop="10dp"
@@ -68,7 +69,7 @@
                 android:layout_marginRight="5dp"
                 android:text="إسم المستخدم :"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/pg2_2_name"
@@ -95,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:paddingTop="10dp"
@@ -111,7 +112,7 @@
                 android:layout_marginTop="0dp"
                 android:text="رقم الهوية :"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/pg2_2_id"
@@ -139,8 +140,8 @@
             android:id="@+id/pg2_2_r_layout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp">
 
             <RadioGroup
@@ -162,7 +163,7 @@
                     android:layout_weight="1"
                     android:text="الجنس:"
                     android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/pg2_2_female"
@@ -171,7 +172,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="أنثى"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/pg2_2_male"
@@ -180,7 +181,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="ذكر"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </RadioGroup>
         </RelativeLayout>
@@ -189,8 +190,8 @@
             android:id="@+id/pg2_2_r_layout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp">
 
             <RadioGroup
@@ -212,7 +213,7 @@
                     android:layout_weight="1"
                     android:text="تقيم الحالة :"
                     android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <RadioButton
                     android:id="@+id/pg2_2_danger"
@@ -221,7 +222,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text=" حرجة"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/pg2_2_notdanger"
@@ -230,7 +231,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="غير حرجة"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </RadioGroup>
 
@@ -240,7 +241,8 @@
             android:id="@+id/pg2_2_r_layout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="384dp">
 
@@ -256,7 +258,7 @@
                 android:layout_marginRight="5dp"
                 android:text="نوع السرير:"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/pg2_2_bed_spinner"
@@ -277,21 +279,35 @@
                 android:theme="@style/Animation.AppCompat.DropDownUp"
                 android:visibility="visible" />
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/pg2_2_r_layout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="384dp">
+
+            <Button
+                android:id="@+id/pg2_2button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_shape_color"
+                android:clickable="true"
+                android:cursorVisible="true"
+                android:focusable="auto"
+
+                android:onClick="addnewcase"
+                android:text="إضافة"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.068"
+                app:layout_constraintStart_toStartOf="parent" />
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/pg2_2button"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_shape_color"
-        android:clickable="true"
-        android:cursorVisible="true"
-        android:focusable="auto"
-        android:onClick="addnewcase"
-        android:text="إضافة"
-        app:layout_constraintBottom_toBottomOf="@+id/pg2_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

@@ -45,8 +45,10 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="إرسال العلامات الحيوية"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textSize="25sp"
+
+            android:fontFamily="sans-serif"
+            android:textColor="#000000" />
 
         <RadioGroup
             android:id="@+id/pg4_2_register_rg"
@@ -65,7 +67,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:text="تسجيل صوتي"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/manule"
@@ -75,7 +77,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:text="تسجيل يدوي"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </RadioGroup>
 
     </LinearLayout>

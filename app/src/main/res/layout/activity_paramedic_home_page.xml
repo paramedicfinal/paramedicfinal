@@ -28,7 +28,7 @@
             android:layout_below="@+id/mCustomToolbar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="23dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/guth"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

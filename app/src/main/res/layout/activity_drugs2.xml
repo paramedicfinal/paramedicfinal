@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
+
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:padding="10dp"
@@ -49,8 +50,7 @@
             android:paddingBottom="20dp"
             android:text="الأدوية المستخدمة"
             android:textColor="#000000"
-            android:textSize="36dp"
-            android:textStyle="bold"
+            android:textSize="25sp"
             app:layout_constraintTop_toBottomOf="@+id/mCustomToolbar"
             app:layout_constraintVertical_bias="0.06" />
 
@@ -59,14 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginStart="192dp"
+            android:layout_marginLeft="192dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="19dp"
+            android:layout_marginRight="19dp"
             android:layout_marginBottom="12dp"
             android:checked="false"
             android:paddingRight="15dp"
             android:text="الأتروبين"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/checkBox2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +90,7 @@
             android:paddingRight="15dp"
             android:text="الأسبرين"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/checkBox7"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +111,7 @@
             android:paddingRight="15dp"
             android:text="جيلاتين سكر تحت اللسان"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +132,7 @@
             android:paddingRight="15dp"
             android:text="الدكستروز 50%"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -151,7 +153,7 @@
             android:paddingRight="15dp"
             android:text="النتروغليسيرين   "
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/checkBox4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +175,7 @@
             android:paddingRight="15dp"
             android:text="الأدرينالين "
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/checkBox5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -194,13 +196,14 @@
             android:paddingRight="15dp"
             android:text="سالبوتامول"
             android:textColor="#000000"
-            android:textSize="21dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/checkBox6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+
 
     </LinearLayout>
 
@@ -213,16 +216,17 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/pg4_1_button"
+            android:id="@+id/pg4_1_buttonsend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="230dp"
             android:layout_marginBottom="28dp"
             android:background="@drawable/button_shape_color"
 
             android:fontFamily="sans-serif"
+            android:onClick="sendDrugs"
             android:text="ارسال"
             android:textColor="#ffffffff"
             android:textSize="20dp"
@@ -232,10 +236,8 @@
             app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
 
-            android:onClick="sendDrugs"
-            />
+            app:layout_constraintVertical_bias="1.0" />
 
     </RelativeLayout>
 
