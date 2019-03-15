@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     Bundle b;
     List <LatLng> position;
+    String medicalState;
 
 
     @Override
@@ -37,7 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        b = getIntent().getExtras();
+       // b = getIntent().getExtras();
     }
 
     /**
@@ -52,31 +54,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        position= new ArrayList<LatLng>();
+         medicalState=new_case.newCase.getPatient().medicalState;
+        if(medicalState.equals(" حرجة")){}
+       else {
+            position = new ArrayList<LatLng>();
 
-        Integer size=Ways_find_hospital.hospitalList.size();
-        String sb = size.toString();
-        Log.v("ixvi12",sb);
+            Integer size = Ways_find_hospital.hospitalList.size();
+            String sb = size.toString();
+            Log.v("ixvi12", sb);
 
-        for(int i=0;i<size;i++) {
+            for (int i = 0; i < size; i++) {
 
-            Hospital hospital= Ways_find_hospital.hospitalList.get(i);
-            Log.v("dududu",hospital.name);
-            double locationX , locationY;
-            locationX=hospital.locationX;
-            locationY=hospital.locationY;
-            LatLng location = new LatLng(locationX, locationY);
-            // Add a marker in Sydney and move the camera
-            position.add(location) ;
+                Hospital hospital = Ways_find_hospital.hospitalList.get(i);
+                Log.v("dududu", hospital.name);
+                double locationX, locationY;
+                locationX = hospital.locationX;
+                locationY = hospital.locationY;
+                LatLng location = new LatLng(locationX, locationY);
+                // Add a marker in Sydney and move the camera
+                position.add(location);
+            }
+
+            for (int i = 0; i < size; i++) {
+                Hospital hospital = Ways_find_hospital.hospitalList.get(i);
+                Log.v("dududu2", hospital.name);
+                mMap.addMarker(new MarkerOptions().position(position.get(i)).title(hospital.name));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position.get(0), 10F));
+            mMap.setOnMarkerClickListener(MapsActivity.this);
         }
-
-        for(int i=0;i<size;i++) {
-            Hospital hospital= Ways_find_hospital.hospitalList.get(i);
-            Log.v("dududu2",hospital.name);
-            mMap.addMarker(new MarkerOptions().position(position.get(i)).title(hospital.name));
-        }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position.get(0) ,10F));
-        mMap.setOnMarkerClickListener( MapsActivity.this);
     }
 
     //*******
@@ -88,7 +94,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         TextView t = (TextView) view.findViewById(R.id.info_text2);
         TextView t2 = (TextView) view.findViewById(R.id.info_text4);
         ImageButton close = (ImageButton) view.findViewById(R.id.imageButton_close);
-        Button but_close = (Button) view.findViewById(R.id.close_button);
         Button but = (Button) view.findViewById(R.id.send_case);
 
         Hospital hospital = getHospital(marker);
@@ -112,17 +117,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MapsActivity.this,Ways_find_hospital.class);
+                Intent i = new Intent(MapsActivity.this,vitalAndDrugs.class);
                 startActivity(i);
             }
         });
 
-        but_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                d.dismiss();
-            }
-        });
+
 
         return true;
     }
@@ -151,8 +151,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i= new Intent(MapsActivity.this,Ways_find_hospital.class);
-        startActivity(i);
+
+        if(medicalState.equals(" حرجة")){
+            Toast.makeText(getApplicationContext(),"لا يمكن العوده ، يجب انهاء الحالة",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Intent i= new Intent(MapsActivity.this,Ways_find_hospital.class);
+            startActivity(i);
+        }
+
     }
 }
