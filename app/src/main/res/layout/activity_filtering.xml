@@ -9,6 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <include
+            android:id="@+id/mCustomToolbar"
+            layout="@layout/toolbarwithicon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -18,7 +26,10 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="القسم"
-            android:textSize="30sp" />
+            android:textSize="25sp"
+            android:fontFamily="sans-serif"
+            android:textColor="#000000"
+            />
 
         <RadioGroup
             android:id="@+id/r_g"
@@ -77,10 +88,18 @@
 
             <Button
                 android:id="@+id/next"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/button_shape_color"
                 android:text="التالي"
-                tools:layout_editor_absoluteX="296dp" />
+                tools:layout_editor_absoluteX="296dp"
+                android:fontFamily="sans-serif"
+
+                android:textColor="#ffffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                />
         </RadioGroup>
 
 
