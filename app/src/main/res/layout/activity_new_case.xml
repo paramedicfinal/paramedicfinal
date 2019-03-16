@@ -32,17 +32,15 @@
             android:id="@+id/pg2_2_newCase_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="15dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/body_style"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="حالة جديدة"
             android:textColor="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
             app:layout_constraintTop_toBottomOf="@+id/mCustomToolbar"
             app:layout_constraintVertical_bias="0.06" />
 
@@ -56,7 +54,7 @@
             <RelativeLayout
                 android:id="@+id/pg2_2_r_layout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -81,7 +79,7 @@
                 <EditText
                     android:id="@+id/pg2_2_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg2_2_name_text"
@@ -101,7 +99,7 @@
             <RelativeLayout
                 android:id="@+id/pg2_2_r_layout2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -124,7 +122,7 @@
                 <EditText
                     android:id="@+id/pg2_2_id"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="0dp"
                     android:layout_marginEnd="0dp"
                     android:layout_marginRight="0dp"

@@ -41,6 +41,7 @@ public class paramedic_login_page extends AppCompatActivity implements View.OnCl
 
         editTextEmail = (EditText)findViewById(R.id.editTextEmail);
         editTextPassword = (EditText)findViewById(R.id.editTextPassword);
+
     }
 ///////////////////////
     public void userLogin(){
