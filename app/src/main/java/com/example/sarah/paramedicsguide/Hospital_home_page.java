@@ -15,10 +15,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hospital_home_page extends AppCompatActivity {
-static List<NewCase> list_newCase;
+static List<NewCase> list_newCase = new ArrayList<NewCase>();;
     DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ static List<NewCase> list_newCase;
                     NewCase module = snapshot.getValue(NewCase.class);
                     if(module.recive==false){
                     list_newCase.add(module) ;
-                    Log.v("lll",module.getPatient().name);
+                    Log.v("lll",module.getName_paramedic());
                     module.recive=true;
                     reference.child(snapshot.getKey()).setValue(module);
                     String mas = module.getName_paramedic()+"تم ارسال طلب من المسعف ";
