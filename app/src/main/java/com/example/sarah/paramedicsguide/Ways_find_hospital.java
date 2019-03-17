@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,5 +76,10 @@ public class Ways_find_hospital extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    //***********
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"لا يمكن العوده ، يجب انهاء الحالة",Toast.LENGTH_SHORT).show();
     }
 }

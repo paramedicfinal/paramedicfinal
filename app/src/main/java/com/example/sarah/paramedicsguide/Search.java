@@ -1,6 +1,7 @@
 package com.example.sarah.paramedicsguide;
 
 
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +47,7 @@ public class Search extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Hospital module = snapshot.getValue(Hospital.class);
                     Ways_find_hospital.hospitalList.add(module) ;
-                    Log.v("BBBBBB",module.getCategory());
+//                    Log.v("BBBBBB",module.getCategory());
                 }
             }
 

@@ -10,75 +10,103 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class new_case extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class new_case extends AppCompatActivity {
+    static NewCase newCase;
+    FirebaseDatabase database = FirebaseDatabase.getInstance() ;
+    DatabaseReference myRef = database.getReference("Patient");;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Patient");
-    String sex="";
-    String medicalState="";
-    String bedType ="";
-    EditText name ;
-    String name2="";
-    EditText NID;
-    Button button;
-    String NID2;
-    Patient Patient;
+    EditText editText_name;
+
+    EditText editText_id;
+
+    RadioGroup rg_gender;
+    RadioButton rb_gender;
+
+
+    RadioGroup rg_danger_or_not;
+    RadioButton rb_danger_or_not;
+
+    Spinner spinner;
+    String bed_type;
+
+    Patient patient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_case);
+
+
+        spinner = (Spinner) findViewById(R.id.pg2_2_bed_spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bed_type= adapterView.getItemAtPosition(i).toString();
+                Log.v("newcase",bed_type );
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        addnewcase();
     }
 
 
-    public void addnewcase(View view) {
-        name= (EditText) findViewById(R.id.pg2_2_name);
-        name2 = name.getText().toString();
-        NID= (EditText) findViewById(R.id.pg2_2_id);
-        button = (Button) findViewById(R.id.pg2_2button);
-         NID2=NID.getText().toString();
-
-        RadioButton male =(RadioButton)findViewById(R.id.pg2_2_male);
-        if(male.isChecked()){sex="male";}
-        else{sex="female";}
-
-        RadioButton danger= (RadioButton) findViewById(R.id.pg2_2_danger);
-        if(danger.isChecked()){medicalState="danger";}
-        else{medicalState="notdanger";}
-         Patient = new Patient(NID2, name2, sex,  medicalState);
-        Spinner spinner = (Spinner) findViewById(R.id.pg2_2_bed_spinner);
-//Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.arr_tybed, android.R.layout.simple_spinner_item);
-        //Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+    public void addnewcase( ) {
+         editText_name= (EditText) findViewById(R.id.pg2_2_name);
+        Log.v("newcase", editText_name.getText().toString());
 
 
+         editText_id= (EditText) findViewById(R.id.pg2_2_id);
 
-        Toast.makeText(getApplicationContext(),"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
-        Intent in =new Intent(this,vitalAndDrugs.class);
-        startActivity(in);
+
+        Button button = (Button) findViewById(R.id.pg2_2button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = editText_name.getText().toString();
+                Log.v("newcase", name);
+
+                String id= editText_id.getText().toString();
+                Log.v("newcase", id);
+
+                rg_gender = (RadioGroup) findViewById(R.id.pg2_2_gender_rg);
+                rb_gender = (RadioButton) findViewById (rg_gender.getCheckedRadioButtonId());
+                String sex=rb_gender.getText().toString();
+                Log.v("newcase", sex);
+
+                rg_danger_or_not = (RadioGroup) findViewById(R.id.pg2_2_case_rg);
+                rb_danger_or_not = (RadioButton) findViewById (rg_danger_or_not.getCheckedRadioButtonId());
+                String medicalState = rb_danger_or_not.getText().toString();
+                Log.v("newcase", medicalState);
+
+
+                patient = new Patient(id, name, bed_type,  sex,  medicalState);
+                myRef.push().setValue(patient);
+                //add patient to NewCase class
+                newCase=new NewCase();
+                newCase.setPatient(patient);
+
+                Toast.makeText(new_case.this,"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
+                Intent i;
+                if(medicalState.equals(" حرجة")){ i =new Intent(new_case.this,MapsActivity.class);}
+                else{ i =new Intent(new_case.this,Ways_find_hospital.class);}
+                startActivity(i);
+
+            }
+        });
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-// An item was selected. You can retrieve the selected item using
-        bedType=  parent.getItemAtPosition(position).toString();
-        Patient.setBedType(bedType);
-        myRef.push().setValue(Patient);
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
 
-    }
+
 }

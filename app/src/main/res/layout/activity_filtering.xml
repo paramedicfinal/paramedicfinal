@@ -35,10 +35,12 @@
             android:id="@+id/r_g"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:background="@drawable/body_style">
 
             <RadioButton
                 android:id="@+id/radioButton1"
@@ -86,21 +88,21 @@
                 android:layout_marginRight="5dp"
                 android:text="غير ذلك" />
 
-            <Button
-                android:id="@+id/next"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:background="@drawable/button_shape_color"
-                android:text="التالي"
-                tools:layout_editor_absoluteX="296dp"
-                android:fontFamily="sans-serif"
-
-                android:textColor="#ffffffff"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_shape_color"
+            android:fontFamily="sans-serif"
+
+            android:text="التالي"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="296dp" />
 
 
     </LinearLayout>

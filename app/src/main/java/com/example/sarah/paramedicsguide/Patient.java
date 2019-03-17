@@ -4,35 +4,26 @@ public class Patient {
 
 
     String nationalId;
-    String Name;
+    String name;
     String bedType;
     String sex;
     String medicalState;
 
-    public Patient() {
 
-    }
-
-    public Patient(String nationalId, String name, String sex, String medicalState) {
+    public Patient(String nationalId, String name, String bedType, String sex, String medicalState) {
         this.nationalId = nationalId;
-        Name = name;
+        this.name = name;
+        this.bedType = bedType;
         this.sex = sex;
         this.medicalState = medicalState;
-
     }
-
-
-
-
-
-
 
     public String getNationalId() {
         return nationalId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
 
@@ -50,8 +41,8 @@ public class Patient {
         this.nationalId = nationalId;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
 

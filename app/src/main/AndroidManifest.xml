@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".vitalAndDrugs"/>
+        <activity android:name=".vitalAndDrugs" />
         <activity android:name=".admin_login_page" />
         <activity android:name=".admin_signup_page" />
         <activity android:name=".selection_paramedic_hospital_page" />
@@ -26,18 +26,17 @@
         <activity android:name=".add_paramedic_page" />
         <activity android:name=".forgot_password_page" />
         <activity android:name=".by_voice" />
-        <activity android:name=".new_case"/>
-        <activity android:name=".home_page" />
+        <activity android:name=".new_case" />
+        <activity android:name=".home_page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".sendVs" />
         <activity android:name=".vitalByManuall" />
-        <activity android:name=".drugs" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+        <activity android:name=".drugs" />
         <activity android:name=".paramedic_login_page" />
         <activity android:name=".hospital_login_page" />
         <activity android:name=".paramedic_home_page" />
@@ -46,7 +45,6 @@
         <activity android:name=".Filtering" />
         <activity android:name=".Search" />
         <activity android:name=".Ways_find_hospital" />
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -61,7 +59,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".Hospital_home_page"></activity>
     </application>
 
 </manifest>
