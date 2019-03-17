@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <android.support.constraint.ConstraintLayout
-    android:background="#A4C2DA"
+    android:background="#37335F"
     android:layout_gravity="top|center"
-    android:layout_height="60dp"
+    android:layout_height="65dp"
     android:layout_width="match_parent"
     android:id="@+id/toolbar2"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,50 +11,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="60dp"
-        android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="30dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="#A4C2DA"
-            android:paddingTop="5dp"
-            app:srcCompat="@drawable/logouticon" />
-
-
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="200dp"
-            android:id="@+id/titleTxt"
-            android:paddingTop="7dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:textColor="#FFFFFF"
-            android:textAlignment="center"
-            android:text=" دليل المسعف"
-            android:fontFamily="sans-serif"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"/>
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="#A4C2DA"
-            android:paddingTop="5dp"
-            app:srcCompat="@drawable/homeicon" />
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

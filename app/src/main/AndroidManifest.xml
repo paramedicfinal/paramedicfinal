@@ -30,7 +30,14 @@
         <activity android:name=".home_page" />
         <activity android:name=".sendVs" />
         <activity android:name=".vitalByManuall" />
-        <activity android:name=".drugs" />
+        <activity android:name=".drugs" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
         <activity android:name=".paramedic_login_page" />
         <activity android:name=".hospital_login_page" />
         <activity android:name=".paramedic_home_page" />
@@ -38,13 +45,8 @@
         <activity android:name=".conect_newcase" />
         <activity android:name=".Filtering" />
         <activity android:name=".Search" />
-        <activity android:name=".Ways_find_hospital" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Ways_find_hospital" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
