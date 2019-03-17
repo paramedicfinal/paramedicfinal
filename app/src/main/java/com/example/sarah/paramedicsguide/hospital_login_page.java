@@ -108,9 +108,7 @@ public class hospital_login_page extends AppCompatActivity implements View.OnCli
                 .orderByChild("email").equalTo(email);
         Log.v("lll22",email);
         query.addListenerForSingleValueEvent(valueEventListener);
-        Toast.makeText(getApplicationContext(),"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(hospital_login_page.this,Hospital_home_page.class);
-        startActivity(intent);
+
     }
     //////////////////////////
     ValueEventListener valueEventListener = new ValueEventListener() {
@@ -120,6 +118,9 @@ public class hospital_login_page extends AppCompatActivity implements View.OnCli
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     user = snapshot.getValue(Hospital.class);
                     Log.v("lll22",user.name);
+                    Toast.makeText(getApplicationContext(),"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(hospital_login_page.this,Hospital_home_page.class);
+                    startActivity(intent);
                 }
             }
         }

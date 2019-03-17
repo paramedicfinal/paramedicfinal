@@ -4,7 +4,7 @@ public class Hospital {
     String name;
     double locationX;
     double locationY;
-    long phone;
+    String phone;
     String password;
     String category;
     String email;
@@ -17,7 +17,7 @@ public class Hospital {
         this.id = id;
     }
 
-    public Hospital(String id, String name, double locationX, double locationY, long phone, String password , String category) {
+    public Hospital(String id, String name, double locationX, double locationY, String phone, String password , String category) {
         this.id = id;
         this.name = name;
         this.locationX = locationX;
@@ -54,7 +54,7 @@ public class Hospital {
     }
 
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -83,7 +83,7 @@ public class Hospital {
         this.locationY = locationY;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
