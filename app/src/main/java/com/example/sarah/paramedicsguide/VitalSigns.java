@@ -14,7 +14,7 @@ public class VitalSigns {
 
 
 
-    public VitalSigns(){ }
+    public VitalSigns(String text){ }
 
     public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture
                     ){

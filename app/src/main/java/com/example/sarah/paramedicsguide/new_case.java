@@ -73,10 +73,28 @@ public class new_case extends AppCompatActivity {
             public void onClick(View view) {
 
                 String name = editText_name.getText().toString();
-                Log.v("newcase", name);
+                if(!name.isEmpty()){
+                    if (!name.matches("[ا-ي]+")) {
+                        editText_name.setError("يجب أن يكون الإسم باللغة العربية بلا رموز او أرقام ");
+                        editText_name.requestFocus();
+                        return;
+                    }
+                }
 
                 String id= editText_id.getText().toString();
-                Log.v("newcase", id);
+                if(!id.isEmpty()){
+                    if (!id.matches("[0-9]+")) {
+                        editText_id.setError("يجب أن يكون رقم الهوية مكون من أرقام فقط");
+                        editText_id.requestFocus();
+                        return;
+                    }
+
+                    if (id.length() != 10) {
+                        editText_id.setError("يجب أن يكون رقم الهوية مكون من 10 أرقام");
+                        editText_id.requestFocus();
+                        return;
+                    }
+                }
 
                 rg_gender = (RadioGroup) findViewById(R.id.pg2_2_gender_rg);
                 rb_gender = (RadioButton) findViewById (rg_gender.getCheckedRadioButtonId());

@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Filtering">
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <include
             android:id="@+id/mCustomToolbar"
             layout="@layout/toolbarwithicon"
@@ -24,12 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="القسم"
-            android:textSize="25sp"
-            android:fontFamily="sans-serif"
             android:textColor="#000000"
-            />
+            android:textSize="25sp" />
 
         <RadioGroup
             android:id="@+id/r_g"
@@ -90,20 +92,34 @@
 
         </RadioGroup>
 
-        <Button
-            android:id="@+id/next"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_shape_color"
-            android:fontFamily="sans-serif"
+            android:gravity="left">
 
-            android:text="التالي"
-            android:textColor="#ffffffff"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="296dp" />
+            <Button
+                android:id="@+id/next"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/button_shape_color"
+                android:fontFamily="sans-serif"
+                android:text="التالي"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.935"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.536" />
+        </RelativeLayout>
 
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

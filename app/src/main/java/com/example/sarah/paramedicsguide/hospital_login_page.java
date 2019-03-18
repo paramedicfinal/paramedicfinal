@@ -117,7 +117,6 @@ public class hospital_login_page extends AppCompatActivity implements View.OnCli
             if(dataSnapshot.exists()){
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     user = snapshot.getValue(Hospital.class);
-                    Log.v("lll22",user.name);
                     Toast.makeText(getApplicationContext(),"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(hospital_login_page.this,Hospital_home_page.class);
                     startActivity(intent);

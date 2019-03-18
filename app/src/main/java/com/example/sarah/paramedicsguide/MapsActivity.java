@@ -101,12 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         hospital = getHospital(marker);
 
-        //String phoneNum;
-       // if(hospital.phone>100000000){phoneNum="0"+hospital.phone;}
-     //   else{phoneNum="012"+hospital.phone;}
-
         t.setText(hospital.name);
-       // t2.setText(phoneNum+" ");
         t2.setText(hospital.phone);
         w.setView(view);
         d= w.create();

@@ -9,7 +9,18 @@ public class NewCase {
 //////////////////////////////////////////////////////
     public NewCase() {
     }
-//////////////////////////////////////////////////////
+
+    public NewCase(Patient patient, String name_paramedic, String id_paramedic, String name_hospital, boolean send, boolean recive, boolean done) {
+        this.patient = patient;
+        this.name_paramedic = name_paramedic;
+        this.id_paramedic = id_paramedic;
+        this.name_hospital = name_hospital;
+        this.send = send;
+        this.recive = recive;
+        this.done = done;
+    }
+
+    //////////////////////////////////////////////////////
     public Patient getPatient() {
         return patient;
     }

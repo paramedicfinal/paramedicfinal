@@ -47,17 +47,12 @@ static List<NewCase> list_newCase = new ArrayList<NewCase>();;
                     NewCase module = snapshot.getValue(NewCase.class);
                     if(module.recive==false){
                     list_newCase.add(module) ;
-                    Log.v("lll",module.getName_paramedic());
                     module.recive=true;
                     reference.child(snapshot.getKey()).setValue(module);
+
                     String mas = module.getName_paramedic()+"تم ارسال طلب من المسعف ";
                     AlertDialog.Builder builder = new AlertDialog.Builder(Hospital_home_page.this);
-                    builder.setTitle("مريض جديد").setMessage(mas).setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    });
+                    builder.setTitle("مريض جديد").setMessage(mas);
 
 
 
@@ -66,16 +61,12 @@ static List<NewCase> list_newCase = new ArrayList<NewCase>();;
                 }
 
 
-                //address for the next page will move to
-              //  Intent i = new Intent(Filtering.this, MapsActivity.class);
-              //  i.putExtra("category" , rb.getText());
 
-               // startActivity(i);
-                //   }
             }
             @Override
             public  void onCancelled(DatabaseError databaseError) {
             }
         });
     }
+
 }

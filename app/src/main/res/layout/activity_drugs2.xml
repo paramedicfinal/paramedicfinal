@@ -12,12 +12,10 @@
         android:layout_height="match_parent"
         android:gravity="right"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:id="@+id/pg2_r_layout"
@@ -40,14 +38,14 @@
             android:id="@+id/pg4_4_used_drugs_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
 
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:padding="10dp"
-            android:paddingTop="20dp"
             android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="الأدوية المستخدمة"
             android:textColor="#000000"
             android:textSize="25sp"
@@ -59,19 +57,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/body_style"
+            android:gravity="left"
             android:orientation="vertical">
 
 
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="الأتروبين"
@@ -86,14 +80,9 @@
 
             <CheckBox
                 android:id="@+id/checkBox2"
-                android:layout_width="173dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="الأسبرين"
@@ -107,14 +96,9 @@
 
             <CheckBox
                 android:id="@+id/checkBox3"
-                android:layout_width="173dp"
-                android:layout_height="58dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="جيلاتين سكر تحت اللسان"
@@ -130,12 +114,7 @@
                 android:id="@+id/checkBox4"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="-1dp"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="الدكستروز 50%"
@@ -149,14 +128,9 @@
 
             <CheckBox
                 android:id="@+id/checkBox5"
-                android:layout_width="173dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="195dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="195dp"
-                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="النتروغليسيرين   "
@@ -171,14 +145,9 @@
 
             <CheckBox
                 android:id="@+id/checkBox6"
-                android:layout_width="173dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="الأدرينالين "
@@ -192,14 +161,9 @@
 
             <CheckBox
                 android:id="@+id/checkBox7"
-                android:layout_width="173dp"
-                android:layout_height="32dp"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginLeft="192dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:checked="false"
                 android:paddingRight="15dp"
                 android:text="سالبوتامول"
@@ -212,43 +176,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
-
-        </LinearLayout>
         </LinearLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/pg4_4_r_lay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/pg4_1_buttonsend"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="230dp"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/button_shape_color"
+            android:gravity="left">
 
-            android:fontFamily="sans-serif"
-            android:onClick="sendDrugs"
-            android:text="ارسال"
-            android:textColor="#ffffffff"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            <Button
+                android:id="@+id/pg4_1_buttonsend"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/button_shape_color"
+                android:fontFamily="sans-serif"
+                android:onClick="sendDrugs"
+                android:text="ارسال"
+                android:textColor="#ffffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.961"
 
-            app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.575" />
+        </RelativeLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>
