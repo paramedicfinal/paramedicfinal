@@ -1,115 +1,118 @@
 package com.example.sarah.paramedicsguide;
 public class Hospital {
-    String id;
-    String name;
-    double locationX;
-    double locationY;
-    String phone;
-    String password;
-    String category;
-    String email;
+    String hospitalName;
+    String hospitalID;
+    String hospitalEmail;
+    String hospitalPassword;
+    boolean brainAndNerves;
+    boolean accidents;
+    boolean bones;
+    boolean birth;
+    boolean other;
+    String locationX;
+    String locationY;
+    String idChild;
 
 
     public Hospital() {
     }
 
-    public Hospital(String id) {
-        this.id = id;
-    }
 
-    public Hospital(String id, String name, double locationX, double locationY, String phone, String password , String category) {
-        this.id = id;
-        this.name = name;
+    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,String locationX, String locationY) {
+        this.idChild = idChild;
+        this.hospitalName = hospitalName;
+        this.hospitalID = hospitalID;
+        this.hospitalEmail = hospitalEmail;
+        this.hospitalPassword = hospitalPassword;
+        this.brainAndNerves = brainAndNerves;
+        this.accidents = accidents;
+        this.bones = bones;
+        this.birth = birth;
+        this.other = other;
         this.locationX = locationX;
         this.locationY = locationY;
-        this.phone = phone;
-        this.password = password;
-        this.category = category;
-    }
-
-    public Hospital(String name,String id,  String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.email = email;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getLocationX() {
-        return locationX;
-    }
-    public double getLocationY() {
-        return locationY;
-    }
-
-
-    public String getPhone() {
-        return phone;
     }
 
 
 
-
-
-    public String getPassword() {
-        return password;
+    public String getHospitalName() {
+        return hospitalName;
     }
 
-
-
-    public void setId(String id) {
-        this.id = id;
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getHospitalID() {
+        return hospitalID;
     }
 
-    public void setLocationX(double locationX) {
-        this.locationX = locationX;
-    }
-    public void setLocationY(double locationY) {
-        this.locationY = locationY;
+    public void setHospitalID(String hospitalID) {
+        this.hospitalID = hospitalID;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getHospitalEmail() {
+        return hospitalEmail;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setHospitalEmail(String hospitalEmail) {
+        this.hospitalEmail = hospitalEmail;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getHospitalPassword() {
+        return hospitalPassword;
     }
 
-
-    public void logIn(int id, String password) {
-
+    public void setHospitalPassword(String hospitalPassword) {
+        this.hospitalPassword = hospitalPassword;
+    }
+    public String getIdChild() {
+        return idChild;
     }
 
-    public void logOut(int id) {
-
+    public void setIdChild(String idChild) {
+        this.idChild = idChild;
     }
 
-    public void modifyHospitalEmail( String email) {
-
+    public boolean isBrainAndNerves() {
+        return brainAndNerves;
     }
 
-    public void modifyHospitalPassword( String password) {
-
+    public void setBrainAndNerves(boolean brainAndNerves) {
+        this.brainAndNerves = brainAndNerves;
     }
+
+    public boolean isAccidents() {
+        return accidents;
+    }
+
+    public void setAccidents(boolean accidents) {
+        this.accidents = accidents;
+    }
+
+    public boolean isBones() {
+        return bones;
+    }
+
+    public void setBones(boolean bones) {
+        this.bones = bones;
+    }
+
+    public boolean isBirth() {
+        return birth;
+    }
+
+    public void setBirth(boolean birth) {
+        this.birth = birth;
+    }
+
+    public boolean isOther() {
+        return other;
+    }
+
+    public void setOther(boolean other) {
+        this.other = other;
+    }
+
 }
 

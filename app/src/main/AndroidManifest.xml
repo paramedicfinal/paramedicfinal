@@ -60,7 +60,9 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Hospital_home_page"></activity>
+        <activity android:name=".Hospital_home_page" />
+        <activity android:name=".dispaly_modify_delete_paramedic" />
+        <activity android:name=".display_modify_delete_hospital"></activity>
     </application>
 
 </manifest>

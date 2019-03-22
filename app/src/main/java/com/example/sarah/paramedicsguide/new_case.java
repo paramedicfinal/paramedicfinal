@@ -115,7 +115,8 @@ public class new_case extends AppCompatActivity {
 
                 Toast.makeText(new_case.this,"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
                 Intent i;
-                if(medicalState.equals(" حرجة")){ i =new Intent(new_case.this,MapsActivity.class);}
+                if(medicalState.equals(" حرجة")){
+                    i =new Intent(new_case.this,MapsActivity.class);}
                 else{ i =new Intent(new_case.this,Ways_find_hospital.class);}
                 startActivity(i);
 

@@ -47,16 +47,15 @@
             android:layout_marginTop="100dp"
             android:layout_marginEnd="129dp"
             android:layout_marginRight="129dp"
+            android:onClick="toAddHospital"
             app:cardBackgroundColor="#FFFFFF">
 
             <LinearLayout
                 android:id="@+id/select_hospitals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_below="@+id/cv1"
                 android:layout_alignTop="@+id/cv1"
-
                 android:orientation="vertical">
 
                 <ImageView
@@ -73,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:gravity="center"
-                    android:text="مستشفيات"
+                    android:text="إضافة مستشفى"
                     android:textSize="15sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -94,16 +93,14 @@
             android:layout_marginEnd="137dp"
             android:layout_marginRight="137dp"
             android:layout_marginBottom="176dp"
+            android:onClick="toDisplayHospitals"
             app:cardBackgroundColor="#FFFFFF">
 
             <LinearLayout
                 android:id="@+id/select_paramedics"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@+id/cv_report"
-
                 android:orientation="vertical">
 
                 <ImageView
@@ -120,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:gravity="center"
-                    android:text="مسعفين"
+                    android:text="عرض المستشفيات"
                     android:textSize="15sp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>

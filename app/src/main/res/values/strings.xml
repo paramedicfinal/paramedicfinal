@@ -5,6 +5,17 @@
         <item>كبار</item>
         <item>عناية مركزة</item>
     </string-array>
+    <array name="jobLevel">
+        <item>مسعف</item>
+        <item>طبيب</item>
+    </array>
+    <array name="center">
+        <item>شمال</item>
+        <item>جنوب</item>
+        <item>شرق</item>
+        <item>غرب</item>
+        <item>وسط</item>
+    </array>
     <string name="title_activity_drugs">drugs</string>
     <string name="title_activity_maps">Map</string>
 </resources>

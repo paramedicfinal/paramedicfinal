@@ -8,11 +8,14 @@ public class Paramedic {
     String paramedicPassword;
     String paramedicJobLevel;
     String paramedicCenter;
+    String idChild;
 
     public Paramedic() {
     }
 
-    public Paramedic(String paramedicName, String paramedicNationalID, String paramedicEmail, String paramedicID, String paramedicPassword, String paramedicJobLevel, String paramedicCenter) {
+
+    public Paramedic(String idChild, String paramedicName, String paramedicNationalID, String paramedicEmail, String paramedicID, String paramedicPassword, String paramedicJobLevel, String paramedicCenter) {
+        this.idChild = idChild;
         this.paramedicName = paramedicName;
         this.paramedicNationalID = paramedicNationalID;
         this.paramedicEmail = paramedicEmail;
@@ -20,6 +23,14 @@ public class Paramedic {
         this.paramedicPassword = paramedicPassword;
         this.paramedicJobLevel = paramedicJobLevel;
         this.paramedicCenter = paramedicCenter;
+    }
+
+    public String getidChild() {
+        return idChild;
+    }
+
+    public void setidChild(String idChild) {
+        this.idChild = idChild;
     }
 
     public String getParamedicName() {
@@ -77,6 +88,7 @@ public class Paramedic {
     public void setParamedicCenter(String paramedicCenter) {
         this.paramedicCenter = paramedicCenter;
     }
+
 }
 
 

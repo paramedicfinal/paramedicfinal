@@ -1,12 +1,15 @@
 package com.example.sarah.paramedicsguide;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,99 +20,105 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class add_paramedic_page extends AppCompatActivity implements View.OnClickListener {
-    private FirebaseAuth mAuth;
-    DatabaseReference databaseparamedic;
-
+public class add_paramedic_page extends AppCompatActivity {
     EditText editTextName;
     EditText editTextNationalID;
     EditText editTextID;
     EditText editTextEmail;
     EditText editTextPassword;
     EditText editTextRepeatedPassword;
-    EditText editTextJobLevel;
-    EditText editTextCenter;
+
+    Spinner spinnerJobLevel;
+    Spinner spinnerCenter;
     ProgressBar progressbar;
 
+    Button buttonAdd;
+
+    private FirebaseAuth mAuth;
+    DatabaseReference databaseparamedic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_paramedic_page);
+        databaseparamedic = FirebaseDatabase.getInstance().getReference("Paramedic");
+
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextNationalID = (EditText) findViewById(R.id.editTextNationalID);
         editTextID = (EditText) findViewById(R.id.editTextID);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextRepeatedPassword = (EditText) findViewById(R.id.editTextRepeatedPassword);
-        editTextJobLevel = (EditText) findViewById(R.id.editTextJobLevel);
-        editTextCenter = (EditText) findViewById(R.id.editTextCenter);
-        progressbar = (ProgressBar)findViewById(R.id.progressbar);
+
+        spinnerJobLevel = (Spinner) findViewById(R.id.spinnerJobLevel);
+        spinnerCenter = (Spinner) findViewById(R.id.spinnerCenter);
+        progressbar = (ProgressBar) findViewById(R.id.progressbar);
 
         databaseparamedic = FirebaseDatabase.getInstance().getReference("Paramedic");
         mAuth = FirebaseAuth.getInstance();
 
-        findViewById(R.id.buttonSignUp).setOnClickListener(this);
+        buttonAdd = (Button) findViewById(R.id.buttonAdd);
+
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            addParamedic();
+            }
+        });
     }
 
-    private void registerParamedic() {
-        String name = editTextName.getText().toString().trim();
-        String nationalID = editTextNationalID.getText().toString().trim();
-        String id = editTextID.getText().toString().trim();
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-        String repeatedPassword = editTextRepeatedPassword.getText().toString().trim();
-        String jobLevel = editTextJobLevel.getText().toString().trim();
-        String center = editTextCenter.getText().toString().trim();
+
+    public void addParamedic(){
+        final String name = editTextName.getText().toString().trim();
+        final String nationalID = editTextNationalID.getText().toString().trim();
+        final String id = editTextID.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
+        final String repeatedPassword = editTextRepeatedPassword.getText().toString().trim();
+
+
+        final String jobLevel = spinnerJobLevel.getSelectedItem().toString();
+        final String center = spinnerCenter.getSelectedItem().toString();
+
 
         if (name.isEmpty()) {
-            editTextName.setError("إملأ خانة الاسم");
+            editTextName.setError("إملأ حقل الاسم");
             editTextName.requestFocus();
             return;
         }
 
         if (nationalID.isEmpty()) {
-            editTextNationalID.setError("إملأ خانة رقم الهوية");
+            editTextNationalID.setError("إملأ حقل رقم الهوية");
             editTextNationalID.requestFocus();
             return;
         }
 
         if (id.isEmpty()) {
-            editTextID.setError("إملأ خانة الرقم التعريفي");
+            editTextID.setError("إملأ حقل الرقم التعريفي");
             editTextID.requestFocus();
             return;
         }
 
         if (email.isEmpty()) {
-            editTextEmail.setError("إملأ خانة البريد الإلكتروني");
+            editTextEmail.setError("إملأ حقل البريد الإلكتروني");
             editTextEmail.requestFocus();
             return;
         }
 
         if (password.isEmpty()) {
-            editTextPassword.setError("إملأ خانة البريد الإلكتروني");
+            editTextPassword.setError("إملأ حقل البريد الإلكتروني");
             editTextPassword.requestFocus();
             return;
         }
 
         if (repeatedPassword.isEmpty()) {
-            editTextRepeatedPassword.setError("إملأ خانة البريد الإلكتروني");
+            editTextRepeatedPassword.setError("إملأ حقل البريد الإلكتروني");
             editTextRepeatedPassword.requestFocus();
             return;
         }
 
-        if (jobLevel.isEmpty()) {
-            editTextJobLevel.setError("إملأ خانة الرتبة الوظيفية");
-            editTextJobLevel.requestFocus();
-            return;
-        }
 
-        if (center.isEmpty()) {
-            editTextCenter.setError("إملأ خانة المركز");
-            editTextCenter.requestFocus();
-            return;
-        }
-
-        if (!name.matches("[ا-ي]+")) {
+        if (!name.matches("[ا-ي]+")&& name.matches(" ")) {
             editTextName.setError("يجب أن يكون الإسم باللغة العربية بلا رموز او أرقام ");
             editTextName.requestFocus();
             return;
@@ -144,17 +153,7 @@ public class add_paramedic_page extends AppCompatActivity implements View.OnClic
             editTextPassword.requestFocus();
             return;
         }
-        if (!jobLevel.matches("[ا-ي]+")) {
-            editTextJobLevel.setError("يجب أن تكون الرتبة الوظيفية باللغة العربية بلا رموز او أرقام ");
-            editTextJobLevel.requestFocus();
-            return;
-        }
 
-        if (!center.matches("[ا-ي]+")) {
-            editTextCenter.setError("يجب أن يكون المركز باللغة العربية بلا رموز او أرقام ");
-            editTextCenter.requestFocus();
-            return;
-        }
 //------------------------------------------------------------------------------
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -173,11 +172,15 @@ public class add_paramedic_page extends AppCompatActivity implements View.OnClic
         progressbar.setVisibility(View.VISIBLE);
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            public String idChild;
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressbar.setVisibility(View.GONE);
 
                 if (task.isSuccessful()) {
+                    idChild = databaseparamedic.push().getKey();
+                    Paramedic paramedic = new Paramedic(idChild,name, nationalID, email, id, password, jobLevel, center);
+                    databaseparamedic.child(idChild).setValue(paramedic);
                     Toast.makeText(getApplicationContext(), "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -188,16 +191,8 @@ public class add_paramedic_page extends AppCompatActivity implements View.OnClic
             }
         });
 
-        Paramedic paramedic = new Paramedic(name, nationalID, email, id, password, jobLevel, center);
-        databaseparamedic.push().setValue(paramedic);
-    }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.buttonSignUp:
-                registerParamedic();
-                break;
-        }
     }
 }
+
+

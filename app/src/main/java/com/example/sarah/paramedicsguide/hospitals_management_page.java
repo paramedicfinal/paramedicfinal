@@ -18,6 +18,8 @@ public class hospitals_management_page extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toViewHospitals(View view) {
+    public void toDisplayHospitals(View view) {
+        Intent intent = new Intent(hospitals_management_page.this,display_modify_delete_hospital.class);
+        startActivity(intent);
     }
 }
