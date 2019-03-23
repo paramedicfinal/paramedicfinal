@@ -18,4 +18,5 @@
     </array>
     <string name="title_activity_drugs">drugs</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

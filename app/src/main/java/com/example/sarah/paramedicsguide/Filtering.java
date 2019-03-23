@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.google.firebase.database.DataSnapshot;
@@ -24,61 +25,45 @@ import java.util.List;
 
 public class Filtering extends AppCompatActivity {
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance() ;
+    DatabaseReference myRef = database.getReference("Medications");
+
+    List<Hospital> hospitals ;
+    Hospital hospital;
+    private CheckBox ch1,ch2,ch3,ch4,ch5,ch6,ch7;
+    private Button bt;
     RadioGroup rg;
     RadioButton rb;
     String rbValue;
 
     //fierbase***
-    DatabaseReference database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtering);
-        Ways_find_hospital.hospitalList.clear();
+
+        hospitals= new ArrayList<Hospital>();
         //getMultyData();
         Button but = (Button) findViewById(R.id.next);
-
+        ch1=(CheckBox)findViewById(R.id.brain_check_box);
+        ch2=(CheckBox)findViewById(R.id.accidents_check_box);
+        ch3=(CheckBox)findViewById(R.id.bones_check_box);
+        ch4=(CheckBox)findViewById(R.id.birth_check_box);
+        ch5=(CheckBox)findViewById(R.id.other_check_box);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //array for hospital to categories it
-                //  get id of redio group
-                rg = (RadioGroup) findViewById(R.id.r_g);
-                //take vale from redio group and put it in radio button
-                rb = (RadioButton) findViewById (rg.getCheckedRadioButtonId());
-                //take value of readio button
-                rbValue=rb.getText().toString();
-                //call query to categories
-                getCategotyByQuery();
 
+              //  getCategotyByQuery();
 
             }
         });
 
     }
 
-
-
-    //*******
-    public  void getMultyData(){
-        FirebaseDatabase.getInstance().getReference().child("Hospital").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Hospital module = snapshot.getValue(Hospital.class);
-                    Log.v("mmm",module.getCategory());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     //******
-    public  void getCategotyByQuery(){
+  /*  public  void getCategotyByQuery(){
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Hospital");
         if(rbValue.equals("غير ذلك")){rbValue="عام";}
@@ -88,6 +73,7 @@ public class Filtering extends AppCompatActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Ways_find_hospital.hospitalList.clear();
 
                 //  if(dataSnapshot.exists()){
                 //forloop for add
@@ -95,11 +81,10 @@ public class Filtering extends AppCompatActivity {
 
                     Hospital module = snapshot.getValue(Hospital.class);
                     Ways_find_hospital.hospitalList.add(module) ;
-                    Log.v("lll",module.getCategory());
                 }
                 //forloop for get data
                 for(int i=0;i<Ways_find_hospital.hospitalList.size();i++){
-                    String name=Ways_find_hospital.hospitalList.get(i).name;
+                    String name=Ways_find_hospital.hospitalList.get(i).hospitalName;
                     Log.v("mariaxxx", name);
                 }
                 Integer size=Ways_find_hospital.hospitalList.size();
@@ -117,7 +102,41 @@ public class Filtering extends AppCompatActivity {
             public  void onCancelled(DatabaseError databaseError) {
             }
         });
-    }
+    }*/
+/*
+    public  void get_database(){
+        FirebaseDatabase.getInstance().getReference().child("Hospital").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Hospital module = snapshot.getValue(Hospital.class);
+                    hospitals.add(module) ;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }*/
+  /*  public String filter(){
+        if(ch1.isChecked()){ hospital.brainAndNerves=true;}
+        if(ch2.isChecked()){hospital.accidents=true;}
+        if(ch3.isChecked()){hospital.bones=true;}
+        if(ch4.isChecked()){hospital.birth=true;}
+        if(ch5.isChecked()){hospital.other=true;}
 
 
+
+        String s= "";
+        int size = hospitals.size();
+        for(int i=0;i<size;i++){
+            if()
+        }
+
+        return s;
+
+    }*/
 }

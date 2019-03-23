@@ -76,7 +76,7 @@ public class vitalByManuall extends AppCompatActivity {
         tempreture2=tempreture.getText().toString();
         numtempreture=Integer.parseInt(tempreture2);
 
-        VitalSigns signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture);
+        VitalSigns signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture,new_case.patient.key);
         myRef.push().setValue(signs);
         Intent in = new Intent(this, vitalAndDrugs.class);
         startActivity(in);

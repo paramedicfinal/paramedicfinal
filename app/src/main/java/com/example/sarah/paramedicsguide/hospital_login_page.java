@@ -105,8 +105,7 @@ public class hospital_login_page extends AppCompatActivity implements View.OnCli
     /////////////////////////////////
     public  void getHospitalByQuery(String email){
         Query query = FirebaseDatabase.getInstance().getReference("Hospital")
-                .orderByChild("email").equalTo(email);
-        Log.v("lll22",email);
+                .orderByChild("hospitalEmail").equalTo(email);
         query.addListenerForSingleValueEvent(valueEventListener);
 
     }
@@ -117,7 +116,7 @@ public class hospital_login_page extends AppCompatActivity implements View.OnCli
             if(dataSnapshot.exists()){
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     user = snapshot.getValue(Hospital.class);
-                    Toast.makeText(getApplicationContext(),"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(hospital_login_page.this,Hospital_home_page.class);
                     startActivity(intent);
                 }

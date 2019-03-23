@@ -47,7 +47,7 @@ public class add_hospitals_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hospitals_page);
-
+/*
         databasehospital = FirebaseDatabase.getInstance().getReference("Hospital");
 
         editTextName = (EditText) findViewById(R.id.editTextName);
@@ -86,15 +86,16 @@ public class add_hospitals_page extends AppCompatActivity {
                 Intent intent = new Intent(add_hospitals_page.this,display_modify_delete_hospital.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
+
     public boolean brainAndNerves;
     public boolean accidents;
     public boolean bones;
     public boolean birth;
     public boolean other;
 
-
+/*
     public void addHospital() {
 
         final String name = editTextName.getText().toString().trim();
@@ -200,7 +201,9 @@ public class add_hospitals_page extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     idChild = databasehospital.push().getKey();
-                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,locationX,locationY);
+                    Double d_locationX=new Double(locationX);
+                    Double d_locationY=new Double(locationY);
+                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,d_locationX,d_locationY);
                     databasehospital.child(idChild).setValue(hospital);
                     Toast.makeText(getApplicationContext(), "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
 
@@ -213,7 +216,7 @@ public class add_hospitals_page extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 }
 
 

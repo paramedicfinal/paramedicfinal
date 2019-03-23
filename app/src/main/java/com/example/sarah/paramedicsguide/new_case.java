@@ -20,23 +20,18 @@ import com.google.firebase.database.FirebaseDatabase;
 public class new_case extends AppCompatActivity {
     static NewCase newCase;
     FirebaseDatabase database = FirebaseDatabase.getInstance() ;
-    DatabaseReference myRef = database.getReference("Patient");;
+    DatabaseReference myRef = database.getReference("Patient");
 
     EditText editText_name;
-
     EditText editText_id;
-
     RadioGroup rg_gender;
     RadioButton rb_gender;
-
-
     RadioGroup rg_danger_or_not;
     RadioButton rb_danger_or_not;
-
     Spinner spinner;
     String bed_type;
+    static Patient patient;
 
-    Patient patient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,12 +101,13 @@ public class new_case extends AppCompatActivity {
                 String medicalState = rb_danger_or_not.getText().toString();
                 Log.v("newcase", medicalState);
 
-
-                patient = new Patient(id, name, bed_type,  sex,  medicalState);
+                String key =myRef.push().getKey();
+                patient = new Patient(id, name, bed_type,  sex,  medicalState,key);
                 myRef.push().setValue(patient);
                 //add patient to NewCase class
                 newCase=new NewCase();
-                newCase.setPatient(patient);
+                newCase.setKey_patient(key);
+
 
                 Toast.makeText(new_case.this,"تم اضافةالمريض بنجاح",Toast.LENGTH_SHORT).show();
                 Intent i;

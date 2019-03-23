@@ -201,7 +201,11 @@ public class display_modify_delete_hospital extends AppCompatActivity {
                     other = true;
                 }
 
-                updateHospital( idChild, name, id, email, password,brainAndNerves,accidents,bones,birth,other,locationX,locationY);
+                Double d_locationX=new Double(locationX);
+                Double d_locationY=new Double(locationY);
+
+
+                updateHospital( idChild, name, id, email, password,brainAndNerves,accidents,bones,birth,other,d_locationX,d_locationY);
                 alertDialog.dismiss();
             }
         });
@@ -224,7 +228,7 @@ public class display_modify_delete_hospital extends AppCompatActivity {
     }
 
 
-    private boolean updateHospital(String idChild,String name,String id,String email,String password,boolean brainAndNerves,boolean accidents,boolean bones,boolean birth,boolean other,String locationX,String locationY) {
+    private boolean updateHospital(String idChild,String name,String id,String email,String password,boolean brainAndNerves,boolean accidents,boolean bones,boolean birth,boolean other,double locationX,double locationY) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Hospital").child(idChild);
 
         Hospital hospital = new Hospital(idChild, name, id, email, password, brainAndNerves, accidents, bones, birth, other, locationX,locationY);

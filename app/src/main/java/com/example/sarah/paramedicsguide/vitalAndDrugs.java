@@ -27,7 +27,7 @@ public class vitalAndDrugs extends AppCompatActivity {
 
 
     public void todrugPage(View view) {
-        Intent in=new Intent(this,drugs.class);
+        Intent in=new Intent(this,drugs_selection.class);
         startActivity(in);
 
     }

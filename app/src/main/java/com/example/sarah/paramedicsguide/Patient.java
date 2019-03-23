@@ -8,10 +8,14 @@ public class Patient {
     String bedType;
     String sex;
     String medicalState;
+    String key ;
     VitalSigns vitalSigns;
 
 
-    public Patient(String nationalId, String name,  String sex, String medicalState,String bedType,VitalSigns vitalSigns ) {
+    public Patient( ) {
+    }
+
+    public Patient(String nationalId, String name, String sex, String medicalState, String bedType, VitalSigns vitalSigns ) {
         this.nationalId = nationalId;
         this.name = name;
         this.bedType = bedType;
@@ -20,12 +24,17 @@ public class Patient {
         this.vitalSigns=vitalSigns;
     }
 
-    public Patient(String nationalId, String name, String bedType, String sex, String medicalState) {
+    public Patient(String nationalId, String name, String bedType, String sex, String medicalState,String key) {
         this.nationalId = nationalId;
         this.name = name;
         this.bedType = bedType;
         this.sex = sex;
         this.medicalState = medicalState;
+        this.key=key;
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public String getNationalId() {
@@ -75,5 +84,9 @@ public class Patient {
 
     public void setBedType(String bedType) {
         this.bedType = bedType;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

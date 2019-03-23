@@ -9,16 +9,17 @@ public class Hospital {
     boolean bones;
     boolean birth;
     boolean other;
-    String locationX;
-    String locationY;
+
     String idChild;
+    double locationX;
+    double  locationY;
 
 
     public Hospital() {
     }
 
 
-    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,String locationX, String locationY) {
+    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,double locationX, double locationY) {
         this.idChild = idChild;
         this.hospitalName = hospitalName;
         this.hospitalID = hospitalID;

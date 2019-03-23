@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.List;
 
 public class Adapor_hospital extends RecyclerView.Adapter<Adapor_hospital.ViewHolder> {
@@ -24,7 +23,7 @@ public class Adapor_hospital extends RecyclerView.Adapter<Adapor_hospital.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final Adapor_hospital.ViewHolder viewHolder, int i) {
         Hospital h = hospitals.get(i);
-        viewHolder.text.setText(h.name);
+        viewHolder.text.setText(h.hospitalName);
 
         viewHolder.text.setOnClickListener(new View.OnClickListener() {
             @Override

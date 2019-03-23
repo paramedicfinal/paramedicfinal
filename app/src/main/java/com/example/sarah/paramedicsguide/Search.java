@@ -13,13 +13,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +33,6 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        //TextView textView_name_search = (TextView)findViewById(R.id.textView_name_search);
         search_bar = (EditText) findViewById(R.id.editText_search);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_id);
 
@@ -47,7 +44,6 @@ public class Search extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Hospital module = snapshot.getValue(Hospital.class);
                     Ways_find_hospital.hospitalList.add(module) ;
-//                    Log.v("BBBBBB",module.getCategory());
                 }
             }
 
@@ -76,7 +72,7 @@ public class Search extends AppCompatActivity {
                     int count=0;
 
                     for(int i =0;i<size;i++){
-                        if(search_bar.getText().toString().equals(Ways_find_hospital.hospitalList.get(i).name)){
+                        if(search_bar.getText().toString().equals(Ways_find_hospital.hospitalList.get(i).hospitalName)){
                             hospital=new Hospital();
                             hospital=Ways_find_hospital.hospitalList.get(i);
                             Ways_find_hospital.hospitalList.clear();

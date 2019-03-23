@@ -16,6 +16,7 @@ import java.util.List;
 
 public class Ways_find_hospital extends AppCompatActivity {
     static List<Hospital> hospitalList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class Ways_find_hospital extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+/*
         ImageView m1 = (ImageView) findViewById(R.id.imageView_dsplay_ic);
         m1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,7 @@ public class Ways_find_hospital extends AppCompatActivity {
                 Intent i = new Intent(Ways_find_hospital.this,Filtering.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 //CARD 2 SEARCH
         LinearLayout l2 = (LinearLayout)findViewById(R.id.layout_search);
@@ -59,7 +60,7 @@ public class Ways_find_hospital extends AppCompatActivity {
             }
         });
 
-        ImageView m2 = (ImageView) findViewById(R.id.imageView_search_ic);
+  /*      ImageView m2 = (ImageView) findViewById(R.id.imageView_search_ic);
         m2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +76,7 @@ public class Ways_find_hospital extends AppCompatActivity {
                 Intent i = new Intent(Ways_find_hospital.this,Search.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
     //***********
     @Override

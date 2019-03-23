@@ -33,7 +33,7 @@
             android:textColor="#000000"
             android:textSize="25sp" />
 
-        <RadioGroup
+        <LinearLayout
             android:id="@+id/r_g"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,10 +42,11 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/body_style">
+            android:background="@drawable/body_style"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/radioButton1"
+            <CheckBox
+                android:id="@+id/brain_check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -54,8 +55,8 @@
                 android:checked="true"
                 android:text="مخ و أعصاب" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <CheckBox
+                android:id="@+id/accidents_check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -63,8 +64,8 @@
                 android:layout_marginRight="5dp"
                 android:text="حوادث" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
+            <CheckBox
+                android:id="@+id/bones_check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -72,8 +73,8 @@
                 android:layout_marginRight="5dp"
                 android:text="عظام" />
 
-            <RadioButton
-                android:id="@+id/radioButton4"
+            <CheckBox
+                android:id="@+id/birth_check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -81,8 +82,8 @@
                 android:layout_marginRight="5dp"
                 android:text="ولادة" />
 
-            <RadioButton
-                android:id="@+id/radioButton5"
+            <CheckBox
+                android:id="@+id/other_check_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -90,7 +91,7 @@
                 android:layout_marginRight="5dp"
                 android:text="غير ذلك" />
 
-        </RadioGroup>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

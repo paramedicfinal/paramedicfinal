@@ -3,6 +3,7 @@ package com.example.sarah.paramedicsguide;
 import java.util.Date;
 
 public class VitalSigns {
+    String patient_key;
     int pluseRate;
     int bloodPressure;
     int respRate;
@@ -16,8 +17,10 @@ public class VitalSigns {
 
     public VitalSigns(String text){ }
 
-    public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture
-                    ){
+    public VitalSigns() {
+    }
+
+    public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture, String patient_key){
         this.pluseRate=pluseRate;
         this.bloodPressure=bloodPressure;
         this.respRate=respRate;
@@ -25,6 +28,7 @@ public class VitalSigns {
         this.bloodGlucose=bloodGlucose;
         this.BloodOxygen=BloodOxygen;
         this.tempreture=tempreture;
+        this.patient_key=patient_key;
 
 
 

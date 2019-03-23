@@ -57,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-         medicalState=new_case.newCase.getPatient().medicalState;
+         medicalState=new_case.patient.getMedicalState();
         if(medicalState.equals(" حرجة")){}
        else {
             position = new ArrayList<LatLng>();
@@ -69,7 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             for (int i = 0; i < size; i++) {
 
                 Hospital hospital = Ways_find_hospital.hospitalList.get(i);
-                Log.v("dududu", hospital.name);
                 double locationX, locationY;
                 locationX = hospital.locationX;
                 locationY = hospital.locationY;
@@ -80,8 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             for (int i = 0; i < size; i++) {
                 Hospital hospital = Ways_find_hospital.hospitalList.get(i);
-                Log.v("dududu2", hospital.name);
-                mMap.addMarker(new MarkerOptions().position(position.get(i)).title(hospital.name));
+                mMap.addMarker(new MarkerOptions().position(position.get(i)).title(hospital.hospitalName));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position.get(0), 10F));
             mMap.setOnMarkerClickListener(MapsActivity.this);
@@ -101,8 +99,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         hospital = getHospital(marker);
 
-        t.setText(hospital.name);
-        t2.setText(hospital.phone);
+        t.setText(hospital.hospitalName);
+        t2.setText(hospital.hospitalEmail);
         w.setView(view);
         d= w.create();
         d.show();
@@ -119,8 +117,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //name and id of paramedic
                 new_case.newCase.setName_paramedic(paramedic_login_page.user.paramedicName);
                 new_case.newCase.setId_paramedic(paramedic_login_page.user.paramedicID);
+                new_case.newCase.setParamedic_center(paramedic_login_page.user.paramedicCenter);
                 //name of hospital
-                new_case.newCase.setName_hospital(hospital.name);
+                new_case.newCase.setName_hospital(hospital.hospitalName);
                 FirebaseDatabase fb=FirebaseDatabase.getInstance();
                 DatabaseReference myRef = fb.getReference("NewCase");
                 myRef.push().setValue(new_case.newCase);
