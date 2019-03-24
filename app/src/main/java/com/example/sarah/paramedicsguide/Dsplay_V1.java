@@ -15,8 +15,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dsplay_V1 extends AppCompatActivity {
     static VitalSigns vitalSigns;
+    static List<VitalSigns> list_vitalSigns = new ArrayList<VitalSigns>();
+
     TextView r1_1,r1_2,r1_3;
     TextView r2_1,r2_2,r2_3;
     TextView r3_1,r3_2,r3_3;
@@ -26,6 +31,8 @@ public class Dsplay_V1 extends AppCompatActivity {
     TextView r7_1,r7_2,r7_3;
     TextView r8_1,r8_2,r8_3;
     Button button ;
+    int count_v;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +46,12 @@ public class Dsplay_V1 extends AppCompatActivity {
 
 //Pulse rate
          r2_1=(TextView)findViewById(R.id.textViewn_pulse_rate_1);
-         r2_2=(TextView)findViewById(R.id.textViewn_pulse_rate_1);
-         r2_3=(TextView)findViewById(R.id.textViewn_pulse_rate_1);
+         r2_2=(TextView)findViewById(R.id.textViewn_pulse_rate_2);
+         r2_3=(TextView)findViewById(R.id.textViewn_pulse_rate_3);
 //blood pressure
          r3_1=(TextView)findViewById(R.id.textView_blood_pressure_1);
-         r3_2=(TextView)findViewById(R.id.textView_blood_pressure_1);
-         r3_3=(TextView)findViewById(R.id.textView_blood_pressure_1);
+         r3_2=(TextView)findViewById(R.id.textView_blood_pressure_2);
+         r3_3=(TextView)findViewById(R.id.textView_blood_pressure_3);
 //Respiratory rate
          r4_1=(TextView)findViewById(R.id.textView_respiratory_rate_1);
          r4_2=(TextView)findViewById(R.id.textView_respiratory_rate_2);
@@ -74,18 +81,17 @@ public class Dsplay_V1 extends AppCompatActivity {
         query2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.v("mmmmm","onDataChange");
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    count_v+=1;
                     vitalSigns=new VitalSigns();
                     vitalSigns=snapshot.getValue(VitalSigns.class);
-                    Log.v("mmmmm",vitalSigns.patient_key);
+                    list_vitalSigns.add(vitalSigns);
                 }
                 if(vitalSigns==null)
                     Toast.makeText(Dsplay_V1.this,"لم يتم ارسال العلامات الحيوية حتى الآن ", Toast.LENGTH_SHORT).show();
 
-                else
-                    column_1(vitalSigns);
+                file_table();
             }
 
             @Override
@@ -94,6 +100,7 @@ public class Dsplay_V1 extends AppCompatActivity {
             }
 
         });
+
 
         button=(Button)findViewById(R.id.button_next_dsplay_v1);
         button.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +118,17 @@ public class Dsplay_V1 extends AppCompatActivity {
         vitalSigns=null;
         Intent i= new Intent(Dsplay_V1.this,MapsActivity2.class);
         startActivity(i);
-
+    }
+    public void file_table(){
+        for(int i =0;i<count_v;i++){
+            if(i==0)
+                column_1(list_vitalSigns.get(i));
+            else if (i==1)
+                column_2(list_vitalSigns.get(i));
+            else if(i==2)
+                column_3(list_vitalSigns.get(i));
+            else{}
+        }
 
     }
     public void column_1 (VitalSigns vitalSigns){
@@ -142,23 +159,55 @@ public class Dsplay_V1 extends AppCompatActivity {
 
     }
     public void column_2 (VitalSigns vitalSigns){
-        String info_v=vitalSigns.bloodGlucose+"\n "
-                +vitalSigns.BloodOxygen+" \n "
-                +vitalSigns.bloodPressure+" \n " +
-                +vitalSigns.GCS+"\n "
-                +vitalSigns.pluseRate+"\n "
-                +vitalSigns.respRate+"\n "
-                +vitalSigns.tempreture;
+        String convertto_string;
+        //r1_2.setText(vitalSigns.);
+
+        convertto_string=vitalSigns.pluseRate+"";
+        r2_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.bloodPressure+"";
+        r3_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.respRate+"";
+        r4_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.GCS+"";
+        r5_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.bloodGlucose+"";
+        r6_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.BloodOxygen+"";
+        r7_2.setText(convertto_string);
+
+        convertto_string=vitalSigns.tempreture+"";
+        r8_2.setText(convertto_string);
 
     }
     public void column_3 (VitalSigns vitalSigns){
-        String info_v=vitalSigns.bloodGlucose+"\n "
-                +vitalSigns.BloodOxygen+" \n "
-                +vitalSigns.bloodPressure+" \n " +
-                +vitalSigns.GCS+"\n "
-                +vitalSigns.pluseRate+"\n "
-                +vitalSigns.respRate+"\n "
-                +vitalSigns.tempreture;
+        String convertto_string;
+        //r1_3.setText(vitalSigns.);
+
+        convertto_string=vitalSigns.pluseRate+"";
+        r2_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.bloodPressure+"";
+        r3_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.respRate+"";
+        r4_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.GCS+"";
+        r5_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.bloodGlucose+"";
+        r6_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.BloodOxygen+"";
+        r7_3.setText(convertto_string);
+
+        convertto_string=vitalSigns.tempreture+"";
+        r8_3.setText(convertto_string);
 
     }
 }

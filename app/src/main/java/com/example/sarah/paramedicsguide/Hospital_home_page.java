@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hospital_home_page extends AppCompatActivity {
-static List<NewCase> list_newCase = new ArrayList<NewCase>();
-static List<Patient> list_patient = new ArrayList<Patient>();
-DatabaseReference reference1;
+    static List<NewCase> list_newCase = new ArrayList<NewCase>();
+    static List<Patient> list_patient = new ArrayList<Patient>();
+    DatabaseReference reference1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +46,7 @@ DatabaseReference reference1;
 
         reference1 = FirebaseDatabase.getInstance().getReference().child("NewCase");
         Query query1 = reference1.orderByChild("name_hospital").equalTo(hospital_login_page.user.hospitalName);
+        Log.v("lll22",hospital_login_page.user.hospitalName);
         query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -79,5 +80,6 @@ DatabaseReference reference1;
         builder.setTitle("مريض جديد").setMessage(mas).setPositiveButton("قبول",null);
         builder.show();
     }
+
 
 }

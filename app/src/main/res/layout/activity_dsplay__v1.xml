@@ -67,14 +67,16 @@
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_time_2"
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_time_1"
@@ -100,18 +102,20 @@
                             android:gravity="center">
 
                             <TextView
-                                android:id="@+id/textViewn_pulse_rate_4"
+                                android:id="@+id/textViewn_pulse_rate_3"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textViewn_pulse_rate_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textViewn_pulse_rate_1"
@@ -142,14 +146,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_blood_pressure_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_blood_pressure_1"
@@ -179,14 +185,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_respiratory_rate_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_respiratory_rate_1"
@@ -216,14 +224,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_glasgow_comic_scale_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_glasgow_comic_scale_1"
@@ -253,14 +263,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_blood_sugar_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_blood_sugar_1"
@@ -290,14 +302,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/oxygen_in_blood_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/oxygen_in_blood_1"
@@ -327,14 +341,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_temperature_2"
                                 android:layout_width="20dp"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
-                                android:background="@android:color/white" />
+                                android:background="@android:color/white"
+                                android:gravity="center" />
 
                             <TextView
                                 android:id="@+id/textView_temperature_1"
@@ -363,6 +379,7 @@
             android:id="@+id/button_next_dsplay_v1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="التالي" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

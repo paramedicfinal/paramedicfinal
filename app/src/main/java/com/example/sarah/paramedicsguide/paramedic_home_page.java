@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class paramedic_home_page extends AppCompatActivity {
 
@@ -17,5 +18,10 @@ public class paramedic_home_page extends AppCompatActivity {
 
         Intent intent2 = new Intent(paramedic_home_page.this,new_case.class);
         startActivity(intent2);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(paramedic_home_page.this,paramedic_login_page.class);
+        startActivity(i);
     }
 }

@@ -45,10 +45,11 @@ public class Hospital_the_cases extends AppCompatActivity {
             Query query2 = FirebaseDatabase.getInstance().getReference().child("Patient")
                     .orderByChild("key")
                     .equalTo(newCase.getKey_patient());
+            Hospital_home_page.list_patient.clear();
             query2.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Hospital_home_page.list_patient.clear();
+
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Patient p = new Patient();

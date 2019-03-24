@@ -1,8 +1,11 @@
 package com.example.sarah.paramedicsguide;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,12 +18,19 @@ import com.google.firebase.database.ValueEventListener;
 public class Dsplay_V2 extends AppCompatActivity {
     Medications medications ;
     TextView t;
+    Button button_montor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dsplay__v2);
 
-
+        button_montor = (Button) findViewById(R.id.button_montor);
+        button_montor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                go_montor();
+            }
+        });
 
         Query query2 = FirebaseDatabase.getInstance().getReference().child("Medications")
                 .orderByChild("patient_key")
@@ -31,7 +41,6 @@ public class Dsplay_V2 extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     medications = new Medications();
                     medications=snapshot.getValue(Medications.class);
-                    Log.v("mmmmm",medications.patient_key);
                 }
                 if(medications==null)
                     Toast.makeText(Dsplay_V2.this,"لم يتم ارسال الأدوية المستخدمة حتى الآن ", Toast.LENGTH_SHORT).show();
@@ -63,5 +72,10 @@ public class Dsplay_V2 extends AppCompatActivity {
         if(medications.Gelatin==true){s+="\n\n"+"جيلاتين سكر تحت اللسان";}
         return s;
 
+    }
+
+    public void go_montor(){
+        Intent i = new Intent(Dsplay_V2.this,MapsActivity2.class);
+        startActivity(i);
     }
 }
