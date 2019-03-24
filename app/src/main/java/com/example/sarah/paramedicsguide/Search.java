@@ -65,7 +65,8 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int size=Ways_find_hospital.hospitalList.size();
-                if(search_bar.getText().toString().isEmpty()){Toast.makeText(Search.this,"لم تدخل اسم المستشفى بعد !", Toast.LENGTH_SHORT).show();}
+                if(search_bar.getText().toString().isEmpty()){
+                    Toast.makeText(Search.this,"لم تدخل اسم المستشفى بعد !", Toast.LENGTH_SHORT).show();}
 
                 else {
 

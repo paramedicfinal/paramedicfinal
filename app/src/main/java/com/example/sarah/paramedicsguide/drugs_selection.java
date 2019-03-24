@@ -33,6 +33,8 @@ public class drugs_selection extends AppCompatActivity {
 
     public void sendDrugs(View view) {
 
+        vitalAndDrugs.count_m+=1;
+
         ch1=(CheckBox)findViewById(R.id.checkBox1);
         ch2=(CheckBox)findViewById(R.id.checkBox2);
         ch3=(CheckBox)findViewById(R.id.checkBox3);
@@ -49,37 +51,24 @@ public class drugs_selection extends AppCompatActivity {
 
         if(ch1.isChecked()){
             medications.Atropine =true;
-            Log.v("mmm","c1");
         }
         if(ch2.isChecked()){
             medications.Aspirin=true;
-            Log.v("mmm","c2");
-
         }
         if(ch3.isChecked()){
             medications.Gelatin=true;
-            Log.v("mmm","c3");
-
         }
         if(ch4.isChecked()){
             medications.Dextrose=true;
-            Log.v("mmm","c4");
-
         }
         if(ch5.isChecked()){
             medications.Nitroglycerin=true;
-            Log.v("mmm","c5");
-
         }
         if(ch6.isChecked()){
             medications.Adrenaline=true;
-            Log.v("mmm","c6");
-
         }
         if(ch7.isChecked()){
             medications.Salbutamol=true;
-            Log.v("mmm","c7");
-
         }
 
 

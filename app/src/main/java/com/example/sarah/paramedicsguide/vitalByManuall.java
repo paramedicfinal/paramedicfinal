@@ -47,6 +47,7 @@ public class vitalByManuall extends AppCompatActivity {
     }
 
     public void buttonSend(View view) {
+        vitalAndDrugs.count_v+=1;
 
         pluseRate=(EditText)findViewById(R.id.idpluseRate);
         pluseRate2=pluseRate.getText().toString();

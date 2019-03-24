@@ -70,6 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Hospital hospital = Ways_find_hospital.hospitalList.get(i);
                 double locationX, locationY;
+
                 locationX = hospital.locationX;
                 locationY = hospital.locationY;
                 LatLng location = new LatLng(locationX, locationY);

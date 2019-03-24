@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,7 @@ public class Filtering extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rb;
     String rbValue;
+    boolean can_go_to_map;
 
     //fierbase***
     @Override
@@ -53,7 +56,7 @@ public class Filtering extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                filter();
               //  getCategotyByQuery();
 
             }
@@ -63,7 +66,7 @@ public class Filtering extends AppCompatActivity {
 
 
     //******
-  /*  public  void getCategotyByQuery(){
+    public  void getCategotyByQuery(){
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Hospital");
         if(rbValue.equals("غير ذلك")){rbValue="عام";}
@@ -102,41 +105,332 @@ public class Filtering extends AppCompatActivity {
             public  void onCancelled(DatabaseError databaseError) {
             }
         });
-    }*/
-/*
-    public  void get_database(){
-        FirebaseDatabase.getInstance().getReference().child("Hospital").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Hospital module = snapshot.getValue(Hospital.class);
-                    hospitals.add(module) ;
+    }
+
+   public void filter(){
+
+       FirebaseDatabase.getInstance().getReference().child("Hospital").addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               hospitals.clear();
+               for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                   Hospital module = snapshot.getValue(Hospital.class);
+                   hospitals.add(module) ;
+               }
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });
+        int size = hospitals.size();
+
+        if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+            for(int i = 0;i<size;i++){
+                hospital=hospitals.get(i);
+                if(hospital.other==true
+                        &&hospital.birth==true
+                        &&hospital.bones==true
+                        &&hospital.accidents==true
+                        &&hospital.brainAndNerves==true)
+                {
+                    can_go_to_map=true;
+                    Ways_find_hospital.hospitalList.add(hospital);
                 }
             }
+        }
+        else if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked() &&ch4.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.birth==true
+                       &&hospital.bones==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch2.isChecked()&&ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.birth==true
+                       &&hospital.bones==true
+                       &&hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked() &&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.bones==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.birth==true
+                       &&hospital.bones==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+      else if(ch1.isChecked()&&ch2.isChecked()&&ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.birth==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.bones==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.birth==true
+                       &&hospital.bones==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch2.isChecked()&&ch4.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.birth==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch2.isChecked()&&ch5.isChecked()){
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+       for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
 
-            }
-        });
+           }
 
-    }*/
-  /*  public String filter(){
-        if(ch1.isChecked()){ hospital.brainAndNerves=true;}
-        if(ch2.isChecked()){hospital.accidents=true;}
-        if(ch3.isChecked()){hospital.bones=true;}
-        if(ch4.isChecked()){hospital.birth=true;}
-        if(ch5.isChecked()){hospital.other=true;}
+        }
+       else if(ch1.isChecked()&&ch2.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.accidents==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch3.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.bones==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch4.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.birth==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       if(ch1.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch2.isChecked()&&ch3.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.bones==true
+                       &&hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch2.isChecked()&&ch4.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.birth==true
+                       &&hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch2.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch3.isChecked() &&ch4.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.bones==true
+                       &&hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       if(ch3.isChecked() &&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.bones==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       if(ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true
+                       &&hospital.birth==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+        else if(ch1.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.brainAndNerves==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch2.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.accidents==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch3.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.bones==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.birth==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+           }
+       }
+       else if(ch5.isChecked()){
+           for(int i = 0;i<size;i++){
+               hospital=hospitals.get(i);
+               if(hospital.other==true)
+               {
+                   can_go_to_map=true;
+                   Ways_find_hospital.hospitalList.add(hospital);
+               }
+
+           }
+
+       }
+
+       else{}
 
 
-
-        String s= "";
-        int size = hospitals.size();
-        for(int i=0;i<size;i++){
-            if()
+        if(can_go_to_map){
+            Toast.makeText(Filtering.this," !تم العتور", Toast.LENGTH_SHORT).show();
+        }
+        //Intent i = new Intent(Filtering.this,MapsActivity.class);
+       // startActivity(i);
+            // }
+        else{
+            Toast.makeText(Filtering.this,"لاتوجد مستشفى تجمع كل التخصصات المختارة !", Toast.LENGTH_SHORT).show();
         }
 
-        return s;
-
-    }*/
+    }
 }
