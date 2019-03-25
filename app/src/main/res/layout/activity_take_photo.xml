@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".take_photo">
+
+
+    <include
+        android:id="@+id/mCustomToolbar"
+        layout="@layout/toolbarwithicon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="322dp"
+        android:layout_height="273dp"
+
+        android:layout_below="@+id/btnImage"
+        android:layout_alignTop="@+id/mCustomToolbar"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="39dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/sendImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnImage"
+
+
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button_shape_color"
+        android:fontFamily="sans-serif"
+        android:onClick="buttonSend"
+        android:text="إرسال"
+        android:textColor="#ffffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnImage"
+        tools:layout_editor_absoluteX="145dp" />
+
+    <Button
+        android:id="@+id/btnImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView2"
+        android:layout_below="@+id/sendImage"
+        android:background="@drawable/button_shape_color"
+        android:fontFamily="sans-serif"
+        android:text="إلتقاط صورة"
+        android:textColor="#ffffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</android.support.constraint.ConstraintLayout>
