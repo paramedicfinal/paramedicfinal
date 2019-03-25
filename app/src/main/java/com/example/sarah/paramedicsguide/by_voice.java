@@ -29,15 +29,14 @@ public class by_voice extends AppCompatActivity {
     VitalSigns VitalSigns;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Patient");
+    DatabaseReference myRef = database.getReference("VitalSigns");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_by_voice);
         txvResult = (TextView) findViewById(R.id.txvResult);
-        Bundle b = getIntent().getExtras();
-        key=b.getString("PatientID");
+
     }
 
     public void getSpeechInput(View view) {
@@ -45,8 +44,8 @@ public class by_voice extends AppCompatActivity {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-SA");
-        //intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.ENGLISH);
+
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.ENGLISH);
 
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -98,26 +97,8 @@ public class by_voice extends AppCompatActivity {
     public void buttonSend(View view) {
         createDialog();
 
-        Bundle b= getIntent().getExtras();
-        key=b.getString("PatientID");
-        NID=b.getString("PatientNatioalID");
-        Pname=b.getString("PatientName");
-        PSex=b.getString("PatientSex");
-        PBedType=b.getString("PatientBedType");
-        PMedicalState=b.getString("PatientMedicalState");
-        VitalSigns = new VitalSigns(text);
-        Patient = new Patient(NID, Pname, PSex,  PMedicalState,PBedType ,VitalSigns);
-/*
-        Patient = new Patient(new_case.newCase.getPatient().nationalId
-                             , new_case.newCase.getPatient().name
-                             , new_case.newCase.getPatient().sex
-                             ,  new_case.newCase.getPatient().medicalState
-                             , new_case.newCase.getPatient().bedType
-                             ,VitalSigns);
-
-
-*/
-        myRef.child(key).setValue(Patient);
+  VitalSigns signs = new VitalSigns(text,new_case.patient.key);
+        myRef.push().setValue(signs);
 
     }
 }

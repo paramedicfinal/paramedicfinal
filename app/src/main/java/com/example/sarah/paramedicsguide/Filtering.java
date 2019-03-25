@@ -424,9 +424,10 @@ public class Filtering extends AppCompatActivity {
 
         if(can_go_to_map){
             Toast.makeText(Filtering.this," !تم العتور", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(Filtering.this,MapsActivity.class);
+            startActivity(i);
         }
-        //Intent i = new Intent(Filtering.this,MapsActivity.class);
-       // startActivity(i);
+
             // }
         else{
             Toast.makeText(Filtering.this,"لاتوجد مستشفى تجمع كل التخصصات المختارة !", Toast.LENGTH_SHORT).show();

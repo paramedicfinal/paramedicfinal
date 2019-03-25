@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class VitalSigns {
     String patient_key;
+    String vitalByVoice;
     int pluseRate;
     int bloodPressure;
     int respRate;
@@ -15,7 +16,13 @@ public class VitalSigns {
 
 
 
-    public VitalSigns(String text){ }
+    public VitalSigns(String vitalByVoice, String patient_key)
+    {
+       this.vitalByVoice=vitalByVoice;
+       this.patient_key=patient_key;
+
+
+    }
 
     public VitalSigns() {
     }
