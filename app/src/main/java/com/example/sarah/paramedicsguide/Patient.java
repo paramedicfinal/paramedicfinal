@@ -1,5 +1,7 @@
 package com.example.sarah.paramedicsguide;
 
+import com.google.firebase.storage.StorageReference;
+
 public class Patient {
 
 
@@ -9,22 +11,30 @@ public class Patient {
     String sex;
     String medicalState;
     String key ;
-    VitalSigns vitalSigns;
+    StorageReference imageUri;
 
 
     public Patient( ) {
     }
 
-    public Patient(String nationalId, String name, String sex, String medicalState, String bedType, VitalSigns vitalSigns ) {
+    public Patient(String nationalId, String name, String sex, String medicalState, String bedType ) {
         this.nationalId = nationalId;
         this.name = name;
         this.bedType = bedType;
         this.sex = sex;
         this.medicalState = medicalState;
-        this.vitalSigns=vitalSigns;
+
     }
 
-    public Patient(String nationalId, String name, String bedType, String sex, String medicalState,String key) {
+    public StorageReference getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(StorageReference imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public Patient(String nationalId, String name, String bedType, String sex, String medicalState, String key) {
         this.nationalId = nationalId;
         this.name = name;
         this.bedType = bedType;
@@ -54,9 +64,7 @@ public class Patient {
         return medicalState;
     }
 
-    public VitalSigns getVitalSigns() {
-        return vitalSigns;
-    }
+
 
     public void setNationalId(String nationalId) {
         this.nationalId = nationalId;
@@ -66,9 +74,7 @@ public class Patient {
         this.name = name;
     }
 
-    public void setVitalSigns(VitalSigns vitalSigns) {
-        this.vitalSigns = vitalSigns;
-    }
+
 
     public void setSex(String sex) {
         this.sex = sex;

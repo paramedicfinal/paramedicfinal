@@ -23,7 +23,7 @@ public class sendVs extends AppCompatActivity {
 
         }
         if(wayV.isChecked()){
-            Intent in= new Intent(this,by_voice.class);
+            Intent in= new Intent(this,select_voice_language.class);
             startActivity(in);
 
         }

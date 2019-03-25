@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class new_case extends AppCompatActivity {
-    static NewCase newCase;
+   static NewCase newCase;
     FirebaseDatabase database = FirebaseDatabase.getInstance() ;
     DatabaseReference myRef = database.getReference("Patient");
 
@@ -30,7 +30,7 @@ public class new_case extends AppCompatActivity {
     RadioButton rb_danger_or_not;
     Spinner spinner;
     String bed_type;
-    static Patient patient;
+     static Patient patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +104,7 @@ public class new_case extends AppCompatActivity {
                 String key =myRef.push().getKey();
                 patient = new Patient(id, name, bed_type,  sex,  medicalState,key);
                 myRef.push().setValue(patient);
+
                 //add patient to NewCase class
                 newCase=new NewCase();
                 newCase.setKey_patient(key);
