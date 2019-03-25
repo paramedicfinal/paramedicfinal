@@ -112,7 +112,7 @@ public class Filtering extends AppCompatActivity {
        FirebaseDatabase.getInstance().getReference().child("Hospital").addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
-               hospitals.clear();
+               //hospitals.clear();
                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                    Hospital module = snapshot.getValue(Hospital.class);
                    hospitals.add(module) ;
@@ -424,10 +424,10 @@ public class Filtering extends AppCompatActivity {
 
         if(can_go_to_map){
             Toast.makeText(Filtering.this," !تم العتور", Toast.LENGTH_SHORT).show();
-        }
-        //Intent i = new Intent(Filtering.this,MapsActivity.class);
-       // startActivity(i);
-            // }
+
+        Intent i = new Intent(Filtering.this,MapsActivity.class);
+        startActivity(i);
+             }
         else{
             Toast.makeText(Filtering.this,"لاتوجد مستشفى تجمع كل التخصصات المختارة !", Toast.LENGTH_SHORT).show();
         }

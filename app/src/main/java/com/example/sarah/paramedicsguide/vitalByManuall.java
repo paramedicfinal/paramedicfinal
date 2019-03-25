@@ -1,6 +1,8 @@
 package com.example.sarah.paramedicsguide;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +41,7 @@ public class vitalByManuall extends AppCompatActivity {
     String  BloodOxygen2;
     String tempreture2;
     Date date ;
+    VitalSigns signs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,6 @@ public class vitalByManuall extends AppCompatActivity {
     }
 
     public void buttonSend(View view) {
-        vitalAndDrugs.count_v+=1;
 
         pluseRate=(EditText)findViewById(R.id.idpluseRate);
         pluseRate2=pluseRate.getText().toString();
@@ -77,10 +79,30 @@ public class vitalByManuall extends AppCompatActivity {
         tempreture2=tempreture.getText().toString();
         numtempreture=Integer.parseInt(tempreture2);
 
-        VitalSigns signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture,new_case.patient.key);
-        myRef.push().setValue(signs);
-        Intent in = new Intent(this, vitalAndDrugs.class);
-        startActivity(in);
+         signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture,new_case.patient.key);
+
+        createDialog();
 
     }
+    private void createDialog() {
+        AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
+        alertDlg.setMessage("لإرسال العلامات الحيوية اختر تأكيد ");
+        alertDlg.setCancelable(false);
+        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                vitalAndDrugs.count_v+=1;
+                myRef.push().setValue(signs);
+                Intent in = new Intent(vitalByManuall.this, vitalAndDrugs.class);
+                startActivity(in);
+            }
+        });
+
+        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDlg.create().show();   }
 }

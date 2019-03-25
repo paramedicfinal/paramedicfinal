@@ -78,15 +78,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                 query1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Log.v("3333","did1");
-
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-
                             remove_case =  snapshot.getValue(NewCase.class);
-
-                            Log.v("3333","did");
-
-
                         }
                         if(remove_case==null){
                             Toast.makeText(MapsActivity2.this," لم يتم العثور على الحالة ",Toast.LENGTH_SHORT).show();
@@ -151,24 +144,37 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Query query = FirebaseDatabase.getInstance().getReference().child("GPS")
+                .orderByKey()
+                .equalTo(Hospital_the_cases.selected_patient.key);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    // Add a marker in Sydney and move the camera
+                    Double d1 = snapshot.child("l").child("0").getValue(Double.class);
+                    Double d2 = snapshot.child("l").child("1").getValue(Double.class);
+                    LatLng latLng = new LatLng(d1, d2);
+                    if(d1!=null) {
+                        mMap.addMarker(new MarkerOptions().position(latLng).title("المسعف"));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                    }
+                }
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
     }
 
 
-
-    public  void query1(){
-
-
-
-    }
-
-    public  void query2(){
-
-}
 
 public void send_report(){
     Report report=new Report(Hospital_the_cases.selected_patient.name,
@@ -204,23 +210,13 @@ public void remove_from_list (){
     query3.addListenerForSingleValueEvent(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            Log.v("3333","did1");
-
             for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                 reference3.child(snapshot.getKey()).removeValue();
-              Log.v("3333","deleted");
  }
-
-                Toast.makeText(MapsActivity2.this," تم انهاء الحالة ",Toast.LENGTH_SHORT).show();
-
-
-
-
         }
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-
         }
     });
     Intent i = new Intent(MapsActivity2.this,Hospital_home_page.class);
@@ -229,7 +225,7 @@ public void remove_from_list (){
 }
 
     @Override
-    public void onBackPressed() {
+ public void onBackPressed() {
 
         Dsplay_V1.vitalSigns=null;
         Intent i= new Intent(MapsActivity2.this,Hospital_home_page.class);

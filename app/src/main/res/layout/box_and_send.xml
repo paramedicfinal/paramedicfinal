@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Observation_and_details">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,19 +17,32 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView_done"
+            android:id="@+id/imageView_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:src="@mipmap/ic_done" />
+            android:layout_alignStart="@+id/imageView_arrow"
+            android:layout_alignTop="@+id/imageView_arrow"
+            android:src="@mipmap/ic_send" />
+
+        <ImageView
+            android:id="@+id/imageView_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_arrow"
+            app:srcCompat="@mipmap/ic_arrow" />
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout_box_name_email_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/text_border"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,20 +65,24 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
-                android:text="اسم المريض" />
+                android:text="اسم المستشفى" />
 
             <TextView
                 android:id="@+id/textView_name_dsplay2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/textView_name_dsplay"
+                android:gravity="right"
                 android:text="TextView" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/textView_email_dsplay"
@@ -74,46 +91,46 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
-                android:text="وقت الوصول" />
+                android:text="البريد" />
 
             <TextView
-                android:id="@+id/textView_tima_dsplay2"
+                android:id="@+id/textView_email_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/textView_email_dsplay"
+                android:gravity="right"
                 android:text="TextView" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp">
-
-            <Button
-                android:id="@+id/button_vitalsigns_dsplay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="العلامات الحيوية" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="5dp">
 
-            <Button
-                android:id="@+id/button_picture_dsplay"
+            <TextView
+                android:id="@+id/textView_email"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:text="مدة الوصول" />
+
+            <TextView
+                android:id="@+id/textView_tima_dsplay2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="الصور المرفقة" />
+                android:layout_toLeftOf="@+id/textView_email"
+                android:gravity="right"
+                android:text="TextView" />
+
         </RelativeLayout>
 
     </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
