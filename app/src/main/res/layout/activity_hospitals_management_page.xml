@@ -57,20 +57,21 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:gravity="center"
+                    android:layout_toLeftOf="@+id/add_hospital_ic"
+                    android:gravity="right|center_vertical"
                     android:text="إضافة مستشفى"
                     android:textSize="15sp" />
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
+                    android:id="@+id/add_hospital_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
-                    android:paddingLeft="13dp"
+                    android:layout_margin="7dp"
                     android:src="@drawable/ic_add" />
             </RelativeLayout>
 
@@ -87,8 +88,6 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/cv1"
             android:layout_margin="20dp"
-            android:layout_marginEnd="137dp"
-            android:layout_marginStart="130dp"
             android:onClick="toDisplayHospitals"
             android:padding="10dp">
 
@@ -99,20 +98,21 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:gravity="center"
+                    android:layout_toLeftOf="@+id/dsplay_hospital_ic"
+                    android:gravity="right|center_vertical"
                     android:text="عرض المستشفيات"
                     android:textSize="15sp" />
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
+                    android:id="@+id/dsplay_hospital_ic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
-                    android:paddingLeft="13dp"
+                    android:layout_margin="7dp"
                     android:src="@drawable/ic_show" />
             </RelativeLayout>
 

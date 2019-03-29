@@ -71,11 +71,11 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
                         android:layout_margin="7dp"
                         app:srcCompat="@drawable/ic_mic" />
 
@@ -102,11 +102,11 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
                         android:layout_margin="7dp"
                         app:srcCompat="@drawable/ic_manual" />
 

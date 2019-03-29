@@ -69,11 +69,11 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
                         android:layout_margin="7dp"
                         app:srcCompat="@mipmap/ic_arbi" />
 
@@ -108,11 +108,11 @@
 
                     <ImageView
                         android:id="@+id/imageView5"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
                         android:layout_margin="7dp"
                         app:srcCompat="@mipmap/ic_en" />
                 </RelativeLayout>

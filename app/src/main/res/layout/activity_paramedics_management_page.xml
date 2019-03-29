@@ -64,9 +64,9 @@
 
                 <ImageView
                     android:id="@+id/add_ic_paramedic"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
                     android:layout_margin="7dp"
@@ -106,9 +106,9 @@
 
                 <ImageView
                     android:id="@+id/dsplay_ic_paramedics"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
                     android:layout_margin="7dp"
