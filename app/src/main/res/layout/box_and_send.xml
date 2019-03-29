@@ -20,17 +20,18 @@
             android:id="@+id/imageView_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/imageView_arrow"
-            android:layout_alignTop="@+id/imageView_arrow"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="2dp"
             android:src="@mipmap/ic_send" />
 
         <ImageView
             android:id="@+id/imageView_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="2dp"
             android:src="@mipmap/ic_arrow"
             app:srcCompat="@mipmap/ic_arrow" />
     </RelativeLayout>
@@ -40,11 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/text_border"
         android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,7 +64,6 @@
                 android:id="@+id/textView_name_dsplay"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
                 android:text="اسم المستشفى" />
@@ -71,6 +72,7 @@
                 android:id="@+id/textView_name_dsplay2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@+id/textView_name_dsplay"
                 android:gravity="right"
                 android:text="TextView" />
@@ -88,7 +90,6 @@
                 android:id="@+id/textView_email_dsplay"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
                 android:text="البريد" />
@@ -97,6 +98,7 @@
                 android:id="@+id/textView_email_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@+id/textView_email_dsplay"
                 android:gravity="right"
                 android:text="TextView" />
@@ -105,17 +107,16 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp">
 
             <TextView
-                android:id="@+id/textView_email"
+                android:id="@+id/textView_time"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
                 android:text="مدة الوصول" />
@@ -124,7 +125,8 @@
                 android:id="@+id/textView_tima_dsplay2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/textView_email"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/textView_time"
                 android:gravity="right"
                 android:text="TextView" />
 

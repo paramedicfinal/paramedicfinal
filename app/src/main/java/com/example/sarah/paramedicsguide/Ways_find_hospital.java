@@ -8,6 +8,7 @@ import android.text.Layout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class Ways_find_hospital extends AppCompatActivity {
         setContentView(R.layout.activity_ways_find_hospital);
         hospitalList= new ArrayList<Hospital>();
 //CAER 1 DISPLAY
-        LinearLayout l1 = (LinearLayout)findViewById(R.id.layout_desplay);
+        RelativeLayout l1 = (RelativeLayout )findViewById(R.id.layout_desplay);
         l1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,27 +32,10 @@ public class Ways_find_hospital extends AppCompatActivity {
                 startActivity(i);
             }
         });
-/*
-        ImageView m1 = (ImageView) findViewById(R.id.imageView_dsplay_ic);
-        m1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Ways_find_hospital.this,Filtering.class);
-                startActivity(i);
-            }
-        });
 
-        TextView t1 = (TextView) findViewById(R.id.textView_desplay);
-        t1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Ways_find_hospital.this,Filtering.class);
-                startActivity(i);
-            }
-        });*/
 
 //CARD 2 SEARCH
-        LinearLayout l2 = (LinearLayout)findViewById(R.id.layout_search);
+        RelativeLayout l2 = (RelativeLayout)findViewById(R.id.layout_search);
         l2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,23 +44,7 @@ public class Ways_find_hospital extends AppCompatActivity {
             }
         });
 
-  /*      ImageView m2 = (ImageView) findViewById(R.id.imageView_search_ic);
-        m2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Ways_find_hospital.this,Search.class);
-                startActivity(i);
-            }
-        });
 
-        TextView t2 = (TextView) findViewById(R.id.textView_search);
-        t2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Ways_find_hospital.this,Search.class);
-                startActivity(i);
-            }
-        });*/
     }
     //***********
     @Override

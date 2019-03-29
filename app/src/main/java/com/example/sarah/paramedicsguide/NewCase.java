@@ -6,6 +6,7 @@ public class NewCase {
 
    private String name_paramedic, id_paramedic,paramedic_center, name_hospital  , key_patient ;
    boolean send=false, recive=false, done=false;
+
 //////////////////////////////////////////////////////
     public NewCase() {
     }
@@ -22,6 +23,8 @@ public class NewCase {
     }
 
     //////////////////////////////////////////////////////
+
+
 
     public String getParamedic_center() {
         return paramedic_center;
@@ -63,6 +66,8 @@ public class NewCase {
     public void setKey_patient(String key_patient) {
         this.key_patient = key_patient;
     }
+
+
 
     ///////////////////////////////////////////////////
 }

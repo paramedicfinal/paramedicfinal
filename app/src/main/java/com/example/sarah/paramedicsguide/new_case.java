@@ -69,7 +69,7 @@ public class new_case extends AppCompatActivity {
 
                 String name = editText_name.getText().toString();
                 if(!name.isEmpty()){
-                    if (!name.matches("[ا-ي]+")) {
+                    if (!name.matches("[ا-ي]+")&& name.matches(" ")) {
                         editText_name.setError("يجب أن يكون الإسم باللغة العربية بلا رموز او أرقام ");
                         editText_name.requestFocus();
                         return;

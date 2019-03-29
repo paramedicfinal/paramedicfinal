@@ -1,17 +1,12 @@
 package com.example.sarah.paramedicsguide;
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.Settings;
 import android.speech.RecognizerIntent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +19,9 @@ import java.util.Locale;
 public class by_voice extends AppCompatActivity {
 
     private TextView txvResult;
+    private ImageView send;
+    private ImageView voice;
+    private ImageView deleat;
     String text="",key,NID,Pname,PSex,PBedType,PMedicalState;
     Patient Patient;
     VitalSigns VitalSigns;
@@ -31,11 +29,16 @@ public class by_voice extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("VitalSigns");
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_by_voice);
         txvResult = (TextView) findViewById(R.id.txvResult);
+        send=(ImageView)findViewById(R.id.imageView_send_v);
+        deleat=(ImageView)findViewById(R.id.imageView_deleat);
+        voice=(ImageView)findViewById(R.id.imageView_voice);
 
     }
 
@@ -51,7 +54,7 @@ public class by_voice extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 10);
         } else {
-            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "هذا الجهاز لا يدعم التسجيل الصوتي", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -71,22 +74,27 @@ public class by_voice extends AppCompatActivity {
         }
     }
 
+    public void buttonSend(View view) {
+        createDialogSend();
+    }
 
-    private void createDialog() {
+
+    private void createDialogSend() {
         AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
-        alertDlg.setMessage("Are you sure you want to send the voice");
+        alertDlg.setMessage("لإرسال النص اختر تأكيد");
         alertDlg.setCancelable(false);
-        alertDlg.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("Patient").child(key);
-
                 by_voice.super.onBackPressed();
+                VitalSigns signs = new VitalSigns(text,new_case.patient.key);
+                myRef.push().setValue(signs);
 
             }
         });
 
-        alertDlg.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -94,11 +102,32 @@ public class by_voice extends AppCompatActivity {
         });
         alertDlg.create().show();   }
 
-    public void buttonSend(View view) {
-        createDialog();
+    private void createDialogDeleat() {
 
-  VitalSigns signs = new VitalSigns(text,new_case.patient.key);
-        myRef.push().setValue(signs);
+        if (txvResult != null) {
+            AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+            alertDlg.setMessage("لحذف النص اختر تأكيد ");
+            alertDlg.setCancelable(false);
+            alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    txvResult.setText("");
+                    text="";
+                }
+            });
 
+            alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alertDlg.create().show();
+        }
+        else{}
+    }
+
+    public void buttonDeleat(View view) {
+        createDialogDeleat();
     }
 }

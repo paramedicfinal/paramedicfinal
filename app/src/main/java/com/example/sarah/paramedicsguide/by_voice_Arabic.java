@@ -67,9 +67,9 @@ public class by_voice_Arabic extends AppCompatActivity {
 
     private void createDialog() {
         AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
-        alertDlg.setMessage("Are you sure you want to send the voice");
+        alertDlg.setMessage("لإرسال النص اختر تأكيد");
         alertDlg.setCancelable(false);
-        alertDlg.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -79,7 +79,7 @@ public class by_voice_Arabic extends AppCompatActivity {
             }
         });
 
-        alertDlg.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -95,5 +95,32 @@ public class by_voice_Arabic extends AppCompatActivity {
 
 
 
+    }
+    public void buttonDeleat(View view) {
+        createDialogDeleat();
+    }
+    private void createDialogDeleat() {
+
+        if (txvResult != null) {
+            AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+            alertDlg.setMessage("لحذف النص اختر تأكيد ");
+            alertDlg.setCancelable(false);
+            alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    txvResult.setText("");
+                    text="";
+                }
+            });
+
+            alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alertDlg.create().show();
+        }
+        else{}
     }
 }

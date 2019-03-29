@@ -18,21 +18,8 @@ Button done;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vital_and_drugs);
-        String convert_to_string="";
-         textView_count_v=(TextView)findViewById(R.id.textView_count_v) ;
-         convert_to_string+=count_v;
-         textView_count_v.setText(convert_to_string);
-         textView_count_m=(TextView)findViewById(R.id.textView_count_m) ;
-        convert_to_string="";
-        convert_to_string+=count_m;
-        textView_count_m.setText(convert_to_string);
          done = (Button)findViewById(R.id.button_done);
-         done.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 finish();
-             }
-         });
+
 
     }
 
@@ -48,7 +35,11 @@ Button done;
 
     }
 
-    public void buttonDone(View view) {
+    public void buttonDone(View view) {finish(); }
+
+    public void cameClicked(View view) {
+        Intent i = new Intent(vitalAndDrugs.this,take_photo.class);
+        startActivity(i);
     }
 
 

@@ -27,8 +27,8 @@ public class Hospital_home_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_hospital_home_page);
-        Log.v("lll22",hospital_login_page.user.hospitalName);
         getNewCaseByQuery();
         CardView c1= (CardView)findViewById(R.id.cv_bell);
         c1.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,6 @@ public class Hospital_home_page extends AppCompatActivity {
 
         reference1 = FirebaseDatabase.getInstance().getReference().child("NewCase");
         Query query1 = reference1.orderByChild("name_hospital").equalTo(hospital_login_page.user.hospitalName);
-        Log.v("lll22",hospital_login_page.user.hospitalName);
         query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

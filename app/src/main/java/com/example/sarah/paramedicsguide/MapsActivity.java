@@ -1,4 +1,5 @@
-package com.example.sarah.paramedicsguide;
+
+        package com.example.sarah.paramedicsguide;
 
 import android.Manifest;
 import android.app.Activity;
@@ -73,7 +74,7 @@ import java.util.HashMap;
 import android.content.DialogInterface;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, com.google.android.gms.location.LocationListener, LocationListener, GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, com.google.android.gms.location.LocationListener, GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 
     private GoogleMap mMap;
     Bundle b;
@@ -97,6 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     GoogleApiClient googleApiClient;
     Location mLastlocation;
     LocationRequest locationRequest;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,74 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleApiClient.connect();
     }
 
-    //****************************
-  /*  private void enableMyLocationIfPermitted() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
 
-        } else if (mMap != null) {
-            mMap.setMyLocationEnabled(true);
-        }
-    }
-
-    private void showDefaultLocation() {
-        Toast.makeText(this, "Location permission not granted, " +
-                        "showing default location",
-                Toast.LENGTH_SHORT).show();
-        LatLng redmond = new LatLng(47.6739881, -122.121512);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(redmond));
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case LOCATION_PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    enableMyLocationIfPermitted();
-                } else {
-                    showDefaultLocation();
-                }
-                return;
-            }
-
-        }
-    }
-
-    private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =
-            new GoogleMap.OnMyLocationButtonClickListener() {
-                @Override
-                public boolean onMyLocationButtonClick() {
-                    mMap.setMinZoomPreference(15);
-                    return false;
-                }
-            };
-
-    private GoogleMap.OnMyLocationClickListener onMyLocationClickListener =
-            new GoogleMap.OnMyLocationClickListener() {
-                @Override
-                public void onMyLocationClick(@NonNull Location location) {
-
-                    mMap.setMinZoomPreference(12);
-
-                    CircleOptions circleOptions = new CircleOptions();
-                    circleOptions.center(new LatLng(location.getLatitude(),
-                            location.getLongitude()));
-
-                    circleOptions.radius(200);
-                    circleOptions.fillColor(Color.BLUE);
-                    circleOptions.strokeWidth(6);
-
-                    mMap.addCircle(circleOptions);
-                }
-            };*/
     //*******
     public boolean onMarkerClick(Marker marker) {
 
@@ -332,26 +267,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void createDialog() {
+        if(mLastlocation==null){
+            openLocationGpsDaialog();
+        }
+        else {
+            AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+            alertDlg.setMessage("لإرسال الطلب اختر تاكيد ");
+            alertDlg.setCancelable(false);
+            alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    send();
+
+                }
+            });
+
+            alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alertDlg.create().show();
+        }
+    }
+    ////////////////////////////////////////////////////////////////
+    public void openLocationGpsDaialog(){
         AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
-        alertDlg.setMessage("لإرسال الطلب اختر تاكيد ");
-        alertDlg.setCancelable(false);
-        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                send();
-
-            }
-        });
-
-        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
+        alertDlg.setMessage("قم بتشغيل نظام تحديد المواقع من الاعدادات ");
         alertDlg.create().show();
     }
-
     //***********
     public void next_int() {
         Intent i = new Intent(MapsActivity.this, vitalAndDrugs.class);
@@ -375,9 +320,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onLocationChanged(Location location) {
 
         mLastlocation=location;
-        LatLng latLng = new LatLng(location.getAltitude(),location.getLongitude());
+        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
         DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS");
         GeoFire geoFire = new GeoFire(ref);
@@ -385,20 +330,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
 
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -427,6 +359,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-//////////////////////////////////////////////////
+
 
 }

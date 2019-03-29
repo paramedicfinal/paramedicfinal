@@ -6,21 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".paramedics_management_page">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:id="@+id/pg2_r_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#2E3191">
+            android:layout_height="wrap_content">
 
             <include
                 android:id="@+id/mCustomToolbar"
@@ -33,99 +31,88 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="صفحة اضافة و تعديل المسعف "
+            android:textSize="24sp" />
+
         <android.support.v7.widget.CardView
             android:id="@+id/addParamedic"
-            android:layout_width="124dp"
-            android:layout_height="124dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="131dp"
-            android:layout_marginLeft="131dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="129dp"
-            android:layout_marginRight="129dp"
+            android:layout_margin="20dp"
             android:onClick="toAddParamedic"
-            app:cardBackgroundColor="#FFFFFF">
+            android:padding="10dp">
 
-            <LinearLayout
-                android:id="@+id/select_hospitals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_below="@+id/cv1"
-                android:layout_alignTop="@+id/cv1"
-
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
-                    android:paddingLeft="13dp"
-                    android:src="@drawable/adddoc" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="إضافة مسعف"
                     android:textSize="15sp" />
-            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="7dp"
+                    android:src="@drawable/ic_add" />
+            </RelativeLayout>
+
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:id="@+id/displayParamedic"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_below="@+id/cv1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="130dp"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="47dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cv1"
+            android:layout_margin="20dp"
             android:layout_marginEnd="137dp"
-            android:layout_marginRight="137dp"
-            android:layout_marginBottom="176dp"
+            android:layout_marginStart="130dp"
             android:onClick="toDispalyParamedics"
-            app:cardBackgroundColor="#FFFFFF">
+            android:padding="10dp">
 
-            <LinearLayout
-                android:id="@+id/select_paramedics"
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-
-                android:layout_alignTop="@+id/cv_report"
-
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
-                    android:paddingLeft="13dp"
-                    android:src="@drawable/editdoc" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="عرض المسعفين"
                     android:textSize="15sp" />
-            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="7dp"
+                    android:src="@drawable/ic_show" />
+            </RelativeLayout>
+
         </android.support.v7.widget.CardView>
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

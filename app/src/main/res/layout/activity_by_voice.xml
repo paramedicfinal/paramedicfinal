@@ -6,95 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".by_voice">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="28dp">
+        android:orientation="vertical">
 
-        <include
-            android:id="@+id/mCustomToolbar"
-            layout="@layout/toolbarwithicon"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/txvResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:textColor="#000"
-            android:textSize="26sp"
-            android:textStyle="normal" />
+            <include
+                android:id="@+id/mCustomToolbar"
+                layout="@layout/toolbarwithicon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/btnSpeak"
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/body_style">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txvResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:textColor="#000"
+                    android:textSize="26sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/mCustomToolbar"
+            android:orientation="horizontal">
 
-            android:layout_marginBottom="28dp"
-            android:layout_marginEnd="146dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="146dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="420dp"
-            android:background="@drawable/button_shape_color"
-            android:fontFamily="sans-serif"
-            android:onClick="getSpeechInput"
-            android:text="تسجيل"
-            android:textColor="#ffffffff"
+            <ImageView
+                android:id="@+id/imageView_deleat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView_voice"
+                android:layout_weight="1"
+                android:onClick="buttonDeleat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@mipmap/ic_deleat"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="480dp" />
 
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            <ImageView
+                android:id="@+id/imageView_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView_send_v"
+                android:layout_weight="1"
+                android:onClick="getSpeechInput"
+                app:srcCompat="@mipmap/ic_mic"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="168dp"
+                tools:layout_editor_absoluteY="480dp" />
 
-        <Button
-            android:id="@+id/pg4_1_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
+            <ImageView
+                android:id="@+id/imageView_send_v"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:onClick="buttonSend"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintStart_toEndOf="@+id/imageView_voice"
+                app:srcCompat="@mipmap/ic_sendv"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="480dp" />
+        </LinearLayout>
 
-            android:layout_below="@+id/btnSpeak"
-            android:layout_marginBottom="28dp"
-            android:layout_marginEnd="146dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="146dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/button_shape_color"
-            android:fontFamily="sans-serif"
-            android:onClick="buttonSend"
-            android:text="إرسال"
+    </LinearLayout>
 
-            android:textColor="#ffffffff"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

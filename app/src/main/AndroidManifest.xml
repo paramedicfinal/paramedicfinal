@@ -30,13 +30,7 @@
         <activity android:name=".add_paramedic_page" />
         <activity android:name=".forgot_password_page" />
         <activity android:name=".by_voice" />
-        <activity android:name=".new_case" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".new_case" />
         <activity android:name=".home_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -72,20 +66,15 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".Hospital_home_page" />
         <activity android:name=".Hospital_the_cases" />
+        <activity android:name=".Dsplay_V1" />
+        <activity android:name=".Dsplay_V2" />
+        <activity android:name=".take_photo" />
+        <activity android:name=".select_voice_language" />
+        <activity android:name=".by_voice_Arabic" />
         <activity
             android:name=".MapsActivity2"
             android:label="@string/title_activity_maps2" />
-        <activity android:name=".Dsplay_V1" />
-        <activity android:name=".Dsplay_V2" />
-        <activity android:name=".take_photo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".select_voice_language" />
-        <activity android:name=".by_voice_Arabic"></activity>
     </application>
 
 </manifest>
