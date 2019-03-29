@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="اسم المستشفى"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -30,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="البريد الالكتروني"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
 
     </LinearLayout>
 
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:hint="كلمة المرور"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
     </LinearLayout>
 
@@ -62,7 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:hint="إعادة كلمة المرور"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,6 +81,7 @@
             android:gravity="right"
             android:hint="الموقع X"
             android:inputType="numberDecimal" />
+
         <EditText
             android:id="@+id/editTextLocationY"
             android:layout_width="wrap_content"
@@ -127,7 +129,7 @@
             android:text="حوادث"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/checkboxBones"
@@ -151,7 +153,7 @@
             android:text="ولادة"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <CheckBox
             android:id="@+id/checkboxOther"
@@ -163,7 +165,7 @@
             android:text="غير ذلك"
             android:textColor="#000000"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -187,7 +189,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="حذف المسعف" />
-
 
 
     </LinearLayout>

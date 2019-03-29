@@ -51,7 +51,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <TextView
                     android:id="@+id/textView"
@@ -62,8 +62,8 @@
                     android:textSize="15sp" />
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"
@@ -91,7 +91,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <TextView
                     android:id="@+id/textView3"
@@ -102,8 +102,8 @@
                     android:textSize="15sp" />
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_gravity="center"

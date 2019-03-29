@@ -56,14 +56,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <TextView
                     android:id="@+id/text_bell"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/imge_bell"
                     android:gravity="center"
-                    android:text="الحالات"
+                    android:text="عرض قائمة الحالات"
                     android:textSize="15sp" />
 
                 <ImageView
@@ -95,14 +96,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <TextView
                     android:id="@+id/text_report"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/imge_report"
                     android:gravity="center"
-                    android:text="التقارير"
+                    android:text="عرض قائمة التقارير"
                     android:textSize="15sp" />
 
                 <ImageView

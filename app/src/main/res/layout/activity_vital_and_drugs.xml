@@ -61,7 +61,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <TextView
                     android:id="@+id/pg2_modifyP_text"
@@ -101,7 +101,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
+                android:layout_height="50dp">
 
                 <ImageView
                     android:id="@+id/pg2_addP_img"
@@ -140,7 +140,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:onClick="cameClicked">
 
                 <ImageView

@@ -6,225 +6,252 @@
     android:layout_height="match_parent"
     tools:context=".add_paramedic_page">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="46dp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/pg2_r_layout"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2E3191">
+            android:orientation="vertical" >
 
-            <include
-                android:id="@+id/mCustomToolbar"
-                layout="@layout/toolbarwithicon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+            <RelativeLayout
+                android:id="@+id/pg2_r_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#2E3191">
+
+                <include
+                    android:id="@+id/mCustomToolbar"
+                    layout="@layout/toolbarwithicon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="16dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="16dp" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/body_style"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="اسم المسعف"
-                    android:inputType="textPersonName" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextNationalID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="رقم الهوية"
-                    android:inputType="number"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="الرقم التعريفي"
-                    android:inputType="number" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="البريد اللإلكتروني"
-                    android:inputType="textEmailAddress" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:hint="كلمة المرور"
-                    android:inputType="textPassword" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextRepeatedPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:hint="تأكيد كلمة المرور"
-                    android:inputType="textPassword" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="14dp"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/spinnerJobLevel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="الرتبة الوظيفية"
-                    android:entries="@array/jobLevel"
-                    android:inputType="textPersonName" />
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="46dp">
 
                 <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="اسم المسعف"
+                            android:inputType="textPersonName" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextNationalID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="رقم الهوية"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="الرقم التعريفي"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="البريد اللإلكتروني"
+                            android:inputType="textEmailAddress" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextPassword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="كلمة المرور"
+                            android:inputType="textPassword" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextRepeatedPassword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:gravity="right"
+                            android:hint="تأكيد كلمة المرور"
+                            android:inputType="textPassword" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerJobLevel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:entries="@array/jobLevel"
+                            android:hint="الرتبة الوظيفية"
+                            android:inputType="textPersonName" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/spinnerJobLevel"
+                            android:gravity="center"
+                            android:text="الرتبة الوظيفية" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerCenter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:entries="@array/center"
+                            android:hint="المركز"
+                            android:inputType="textPersonName" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/spinnerCenter"
+                            android:gravity="center"
+                            android:paddingLeft="43dp"
+                            android:text="المركز" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_shape_color"
+                        android:text="إنشاء حساب"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/spinnerJobLevel"
-                    android:gravity="center"
-                    android:text="الرتبة الوظيفية" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="14dp"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/spinnerCenter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="المركز"
-                    android:entries="@array/center"
-                    android:inputType="textPersonName" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/spinnerCenter"
-                    android:gravity="center"
-                    android:paddingLeft="43dp"
-                    android:text="المركز" />
-            </LinearLayout>
-
-
         </LinearLayout>
+    </ScrollView>
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/button_shape_color"
-                android:text="إنشاء حساب"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:visibility="gone"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:id="@+id/progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
