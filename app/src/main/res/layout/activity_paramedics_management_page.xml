@@ -55,13 +55,15 @@
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/add_ic_paramedic"
                     android:gravity="center"
                     android:text="إضافة مسعف"
                     android:textSize="15sp" />
 
                 <ImageView
+                    android:id="@+id/add_ic_paramedic"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
@@ -95,13 +97,15 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/dsplay_ic_paramedics"
                     android:gravity="center"
                     android:text="عرض المسعفين"
                     android:textSize="15sp" />
 
                 <ImageView
+                    android:id="@+id/dsplay_ic_paramedics"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"

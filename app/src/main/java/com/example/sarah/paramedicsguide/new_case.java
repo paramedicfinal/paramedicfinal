@@ -106,6 +106,7 @@ public class new_case extends AppCompatActivity {
                 myRef.push().setValue(patient);
 
                 //add patient to NewCase class
+                //important to communcate
                 newCase=new NewCase();
                 newCase.setKey_patient(key);
 

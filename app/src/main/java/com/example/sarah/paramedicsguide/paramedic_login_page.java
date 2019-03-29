@@ -106,7 +106,6 @@ public class paramedic_login_page extends AppCompatActivity implements View.OnCl
     public  void getParamedicByQuery(String email){
         Query query = FirebaseDatabase.getInstance().getReference("Paramedic")
                 .orderByChild("paramedicEmail").equalTo(email);
-        Log.v("lll22",email);
         query.addListenerForSingleValueEvent(valueEventListener);
         Toast.makeText(getApplicationContext(),"تم تسجيل الدخول بنجاح",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(paramedic_login_page.this,paramedic_home_page.class);
@@ -119,7 +118,6 @@ public class paramedic_login_page extends AppCompatActivity implements View.OnCl
             if(dataSnapshot.exists()){
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     user = snapshot.getValue(Paramedic.class);
-                    Log.v("lll22",user.paramedicName);
                 }
             }
         }

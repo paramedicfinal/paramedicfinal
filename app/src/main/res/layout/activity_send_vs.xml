@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".sendVs">
+
     <LinearLayout
         android:id="@+id/pg4_2"
         android:layout_width="match_parent"
@@ -12,7 +13,9 @@
         android:orientation="vertical"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp">
 
         <RelativeLayout
             android:id="@+id/pg2_r_layout"
@@ -34,76 +37,91 @@
             android:id="@+id/pg4_2_send_vs_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
             android:layout_marginBottom="-5dp"
+            android:layout_marginTop="1dp"
             android:ems="10"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:inputType="textPersonName"
+
+
             android:padding="10dp"
-
-
-            android:paddingTop="20dp"
             android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:text="إرسال العلامات الحيوية"
-            android:textSize="25sp"
 
-            android:fontFamily="sans-serif"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="25sp" />
 
-        <RadioGroup
-            android:id="@+id/pg4_2_register_rg"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
-            android:gravity="right">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-
-            <RadioButton
-                android:id="@+id/voice"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_voice"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:text="تسجيل صوتي"
-                android:textSize="16sp" />
+                android:layout_margin="20dp"
+                android:padding="10dp">
 
-            <RadioButton
-                android:id="@+id/manule"
-                android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="7dp"
+                        app:srcCompat="@drawable/ic_mic" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/imageView"
+                        android:gravity="center_vertical"
+                        android:text="تسجيل صوتي" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_manual"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:text="تسجيل يدوي"
-                android:textSize="16sp" />
-        </RadioGroup>
+                android:layout_margin="20dp"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="7dp"
+                        app:srcCompat="@drawable/ic_manual" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/imageView3"
+                        android:gravity="center_vertical"
+                        android:text="تسجيل يدوي" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/pg4_1_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/button_shape_color"
-
-        android:fontFamily="sans-serif"
-        android:text="التالي"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:onClick="ways"
-
-        />
 </android.support.constraint.ConstraintLayout>
