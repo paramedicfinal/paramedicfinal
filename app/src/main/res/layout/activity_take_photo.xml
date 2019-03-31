@@ -28,43 +28,6 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/sendImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnImage"
-
-
-        android:background="@drawable/button_shape_color"
-        android:fontFamily="sans-serif"
-        android:onClick="buttonSend"
-        android:text="إرسال"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnImage"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="71dp" />
-
-    <Button
-        android:id="@+id/btnImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView2"
-        android:layout_below="@+id/sendImage"
-        android:background="@drawable/button_shape_color"
-        android:fontFamily="sans-serif"
-        android:text="إلتقاط صورة"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

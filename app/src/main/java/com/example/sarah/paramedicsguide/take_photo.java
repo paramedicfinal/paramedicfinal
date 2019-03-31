@@ -25,8 +25,8 @@ public class take_photo extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance() ;
     DatabaseReference myRef = database.getReference("Patient");
     private StorageReference mStorageRef;
-    Button mUploadBtn;
-    Button bsend;
+    ImageView imageView_came;
+    ImageView imageView_send_photo;
     ImageView mImageView;
     private static final int CAMERA_REQUEST_CODE = 1;
     private ProgressDialog progressDialog;
@@ -40,12 +40,13 @@ public class take_photo extends AppCompatActivity {
         setContentView(R.layout.activity_take_photo);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        mUploadBtn = (Button)findViewById(R.id.btnImage);
-        bsend=(Button)findViewById(R.id.sendImage);
+        imageView_came = (ImageView) findViewById(R.id.imageView_came);
+       // bsend=(Button)findViewById(R.id.sendImage);
         mImageView = (ImageView)findViewById(R.id.imageView2);
+        imageView_send_photo=(ImageView)findViewById(R.id.imageView_send_photo) ;
         progressDialog=new ProgressDialog(this);
 
-        mUploadBtn.setOnClickListener(new View.OnClickListener() {
+        imageView_came.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -59,29 +60,27 @@ public class take_photo extends AppCompatActivity {
         if (requestCode==CAMERA_REQUEST_CODE && resultCode==RESULT_OK)
         {
             uri =data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                mImageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            bsend.setOnClickListener(new View.OnClickListener() {
+           // try {
+            //    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+            //    mImageView.setImageBitmap(bitmap);
+            //} catch (IOException e) {
+            //    e.printStackTrace();
+           // }
+            imageView_send_photo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     progressDialog.setMessage("يتم ارسال الصورة");
                     progressDialog.show();
 
-
-
-                    final StorageReference filepath = mStorageRef.child("Photos").child(uri.getLastPathSegment());
+                     StorageReference filepath = mStorageRef.child("Photos").child(uri.getLastPathSegment());
                     filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Toast.makeText(take_photo.this,"تم ارسال الصورة بنجاح ",Toast.LENGTH_LONG).show();
 
-                            new_case.patient.setImageUri(filepath);
+                           // new_case.patient.setImageUri(filepath);
 
                         }
                     });
@@ -95,4 +94,5 @@ public class take_photo extends AppCompatActivity {
 
     }
 }
+
 
