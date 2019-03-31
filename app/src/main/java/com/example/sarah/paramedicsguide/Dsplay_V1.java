@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class Dsplay_V1 extends AppCompatActivity {
     TextView r6_1,r6_2,r6_3;
     TextView r7_1,r7_2,r7_3;
     TextView r8_1,r8_2,r8_3;
-    Button button ;
+    ImageView imageView11,imageView12,imageView13,imageView14;
     int count_v;
 
 
@@ -73,6 +74,46 @@ public class Dsplay_V1 extends AppCompatActivity {
          r8_2=(TextView)findViewById(R.id.textView_temperature_2);
          r8_3=(TextView)findViewById(R.id.textView_temperature_3);
 
+        imageView11=(ImageView)findViewById(R.id.imageView11);
+        imageView12=(ImageView)findViewById(R.id.imageView12);
+        imageView13=(ImageView)findViewById(R.id.imageView13);
+        imageView14=(ImageView)findViewById(R.id.imageView14);
+
+        imageView11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        imageView12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V1.this,Dsplay_V2.class);
+                startActivity(i);
+                list_vitalSigns.clear();
+
+
+            }
+        });
+        imageView13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V1.this,Dsplay_V3.class);
+                startActivity(i);
+                list_vitalSigns.clear();
+
+            }
+        });
+        imageView14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V1.this,Dsplay_V4.class);
+                startActivity(i);
+                list_vitalSigns.clear();
+            }
+        });
+
+
 
 
         Query query2 = FirebaseDatabase.getInstance().getReference().child("VitalSigns")
@@ -102,20 +143,12 @@ public class Dsplay_V1 extends AppCompatActivity {
         });
 
 
-        button=(Button)findViewById(R.id.button_next_dsplay_v1);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Dsplay_V1.this, Dsplay_V2.class);
-                startActivity(i);
 
-            }
-        });
     }
     @Override
     public void onBackPressed() {
-
         vitalSigns=null;
+        list_vitalSigns.clear();
         Intent i= new Intent(Dsplay_V1.this,MapsActivity2.class);
         startActivity(i);
     }

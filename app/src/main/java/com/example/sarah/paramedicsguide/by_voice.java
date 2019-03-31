@@ -5,6 +5,7 @@ import android.speech.RecognizerIntent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class by_voice extends AppCompatActivity {
     VitalSigns VitalSigns;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("VitalSigns");
+    //DatabaseReference myRef = database.getReference("VitalSigns");
 
 
 
@@ -48,7 +49,7 @@ public class by_voice extends AppCompatActivity {
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
 
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.ENGLISH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-US");
 
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -75,21 +76,29 @@ public class by_voice extends AppCompatActivity {
     }
 
     public void buttonSend(View view) {
-        createDialogSend();
+        if(text!=null){ createDialogSend();}
     }
 
 
     private void createDialogSend() {
-        AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
+        AlertDialog.Builder alertDlg =new AlertDialog.Builder(this);
         alertDlg.setMessage("لإرسال النص اختر تأكيد");
         alertDlg.setCancelable(false);
         alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                DatabaseReference database = FirebaseDatabase.getInstance().getReference("Patient").child(key);
-                by_voice.super.onBackPressed();
-                VitalSigns signs = new VitalSigns(text,new_case.patient.key);
-                myRef.push().setValue(signs);
+                Toast.makeText(by_voice.this,"تم الارسال ", Toast.LENGTH_SHORT).show();
+
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference("VoiceToText");
+                //by_voice.super.onBackPressed();
+                //VitalSigns signs = new VitalSigns(text,new_case.patient.key);
+                vitalAndDrugs.count_v++;
+                VoiceToText voiceToText=new VoiceToText(text,new_case.newCase.getKey_patient(),vitalAndDrugs.count_v);
+                // Log.v("xxx",Hospital_the_cases.selected_patient.key);
+                database.push().setValue(voiceToText);
+                Toast.makeText(by_voice.this,"في حال الانتهاء، قم بضفط على زر العودة", Toast.LENGTH_SHORT).show();
+
+
 
             }
         });
@@ -104,7 +113,7 @@ public class by_voice extends AppCompatActivity {
 
     private void createDialogDeleat() {
 
-        if (txvResult != null) {
+        if (txvResult != null || text.equals("")) {
             AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
             alertDlg.setMessage("لحذف النص اختر تأكيد ");
             alertDlg.setCancelable(false);
@@ -129,5 +138,12 @@ public class by_voice extends AppCompatActivity {
 
     public void buttonDeleat(View view) {
         createDialogDeleat();
+    }
+    @Override
+    public void onBackPressed() {
+
+        Ways_find_hospital.hospitalList.clear();
+        Intent i = new Intent(by_voice.this,vitalAndDrugs.class);
+        startActivity(i);
     }
 }

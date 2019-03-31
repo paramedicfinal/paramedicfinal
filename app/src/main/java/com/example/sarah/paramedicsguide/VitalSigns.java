@@ -13,6 +13,7 @@ public class VitalSigns {
     int BloodOxygen;
     int tempreture;
     Date timeOfMeasurement;
+    int num;
 
 
 
@@ -27,7 +28,7 @@ public class VitalSigns {
     public VitalSigns() {
     }
 
-    public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture, String patient_key){
+    public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture, String patient_key,int num){
         this.pluseRate=pluseRate;
         this.bloodPressure=bloodPressure;
         this.respRate=respRate;
@@ -36,6 +37,7 @@ public class VitalSigns {
         this.BloodOxygen=BloodOxygen;
         this.tempreture=tempreture;
         this.patient_key=patient_key;
+        this.num=num;
 
 
 

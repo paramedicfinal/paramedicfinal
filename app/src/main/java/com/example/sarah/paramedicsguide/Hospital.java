@@ -4,6 +4,7 @@ public class Hospital {
     String hospitalID;
     String hospitalEmail;
     String hospitalPassword;
+    String GPS_key;
     boolean brainAndNerves;
     boolean accidents;
     boolean bones;
@@ -19,7 +20,7 @@ public class Hospital {
     }
 
 
-    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,double locationX, double locationY) {
+    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,double locationX, double locationY,String gps) {
         this.idChild = idChild;
         this.hospitalName = hospitalName;
         this.hospitalID = hospitalID;
@@ -32,6 +33,7 @@ public class Hospital {
         this.other = other;
         this.locationX = locationX;
         this.locationY = locationY;
+        this.GPS_key=gps;
     }
 
 

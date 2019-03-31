@@ -1,6 +1,7 @@
 package com.example.sarah.paramedicsguide;
 
 import android.location.Location;
+import android.os.ParcelUuid;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -32,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.PublicKey;
 import java.util.List;
 
 public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback {
@@ -48,6 +50,10 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     Location mLastLocation;
     NewCase getNewCase;
     String newCase_key;
+    DatabaseReference reference;
+    DatabaseReference refRemoveNewCase;
+    NewCase remove_case;
+    Medications m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,21 +72,17 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         button_vitalsigns_dsplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { vitalSignClicked();}});
+        imageView_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         //PARAMEDIC LOCATION
 
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -93,17 +95,20 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         //IMAGE VIEW
         imageView_done.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {  }});
+            public void onClick(View view) {  inClickDoneMark();}});
 
         //LOCATION
+        double lx=hospital_login_page.user.locationX;
+        double ly=hospital_login_page.user.locationY;
+        LatLng posetion = new LatLng(lx, ly);
+        mMap.addMarker(new MarkerOptions().position(posetion).title("المشفى"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(posetion));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 
         getAssignedCustomerPickupLocation();
 
-
-
-
-
 }
+
 
 
 
@@ -113,12 +118,77 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         startActivity(i);
     }
 
-    public void paramedicLocation(DataSnapshot snapshot){
-        // Add a marker in Sydney and move the camera
+    public void inClickDoneMark(){
 
+        reference = FirebaseDatabase.getInstance().getReference().child("NewCase");
+        Query query1 = reference.orderByChild("key_patient").equalTo(Hospital_the_cases.selected_patient.key);//find the payient by key
+        query1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    remove_case =  snapshot.getValue(NewCase.class); }
+                    if(remove_case==null){ Toast.makeText(MapsActivity2.this," لم يتم العثور على الحالة ",Toast.LENGTH_SHORT).show(); }
+                    else{
+                    Query queryMedications = FirebaseDatabase.getInstance().getReference().child("Medications")
+                                    .orderByChild("patient_key")
+                                    .equalTo(Hospital_the_cases.selected_patient.key);
+                    queryMedications.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                m = new Medications();
+                                m=snapshot.getValue(Medications.class); }
 
+                                String medications_string=Dsplay_V2.dsplay_medications(m);
+                            if(medications_string.equals("")||medications_string==null){
+                                Toast.makeText(MapsActivity2.this,"لا توجد ادوية ",Toast.LENGTH_SHORT).show();
+                                medications_string="لا توجد ادوية مستخدمة"; }
+                                send_report(medications_string); }
 
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }}); }}
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }}); }
+
+    public void send_report(String medications_string){
+        Report report=new Report(Hospital_the_cases.selected_patient.name,
+                Hospital_the_cases.selected_patient.medicalState,
+                "2.36 ",
+                remove_case.getName_paramedic(),
+                remove_case.getParamedic_center(),
+                medications_string);
+        Toast.makeText(MapsActivity2.this,"تم انشاء التقرير ",Toast.LENGTH_SHORT).show();
+        DatabaseReference refReport = FirebaseDatabase.getInstance().getReference().child("Report");
+        refReport.push().setValue(report);
+        remove_from_list();
     }
+
+    public void remove_from_list (){
+        int size =Hospital_home_page.list_newCase.size();
+        for(int i = 0 ; i<size ;i++){
+            if(Hospital_home_page.list_newCase.get(i).equals(remove_case)){
+                Hospital_home_page.list_newCase.remove(i); } }
+                refRemoveNewCase = FirebaseDatabase.getInstance().getReference().child("NewCase");
+                Query queryRemoveNewCase = refRemoveNewCase.orderByChild("key_patient").equalTo(Hospital_the_cases.selected_patient.key);//find the payient by key
+                queryRemoveNewCase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    refRemoveNewCase.child(snapshot.getKey()).removeValue(); } }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        Intent i = new Intent(MapsActivity2.this,Hospital_home_page.class);
+        startActivity(i);
+        }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -158,7 +228,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                 LatLng posetion = new LatLng(lx, ly);
                 mMap.addMarker(new MarkerOptions().position(posetion).title("المشفى"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(posetion));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+
                 //
                 pickupLatLng = new LatLng(locationLat,locationLng);
                 pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pickup)));

@@ -25,6 +25,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="16dp" />
+
         </RelativeLayout>
 
         <TextView
@@ -375,11 +376,14 @@
             </ScrollView>
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/button_next_dsplay_v1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="التالي" />
+        <include
+            android:id="@+id/mCustomToolbar"
+            layout="@layout/photo_vital_medication"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="16dp" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

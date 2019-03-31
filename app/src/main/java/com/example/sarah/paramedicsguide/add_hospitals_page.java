@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,7 +50,7 @@ public class add_hospitals_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hospitals_page);
-/*
+
         databasehospital = FirebaseDatabase.getInstance().getReference("Hospital");
 
         editTextName = (EditText) findViewById(R.id.editTextName);
@@ -67,7 +70,7 @@ public class add_hospitals_page extends AppCompatActivity {
         databasehospital = FirebaseDatabase.getInstance().getReference("Hospital");
         mAuth = FirebaseAuth.getInstance();
 
-        buttonAdd = (Button) findViewById(R.id.buttonAdd);
+        buttonAdd = (Button) findViewById(R.id.button_add_hospital_admin);
 
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
@@ -79,14 +82,6 @@ public class add_hospitals_page extends AppCompatActivity {
         });
 
 
-
-        buttonDisplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(add_hospitals_page.this,display_modify_delete_hospital.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     public boolean brainAndNerves;
@@ -95,7 +90,7 @@ public class add_hospitals_page extends AppCompatActivity {
     public boolean birth;
     public boolean other;
 
-/*
+
     public void addHospital() {
 
         final String name = editTextName.getText().toString().trim();
@@ -203,9 +198,20 @@ public class add_hospitals_page extends AppCompatActivity {
                     idChild = databasehospital.push().getKey();
                     Double d_locationX=new Double(locationX);
                     Double d_locationY=new Double(locationY);
-                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,d_locationX,d_locationY);
+                    //GPS
+                    LatLng location = new LatLng(d_locationX,d_locationY) ;
+                    DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS_Hospitals");
+                    GeoFire geoFire = new GeoFire(ref);
+                    String key =ref.push().getKey();
+                    geoFire.setLocation(key,new GeoLocation(location.latitude,location.longitude));
+                    //
+                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,d_locationX,d_locationY,key);
                     databasehospital.child(idChild).setValue(hospital);
                     Toast.makeText(getApplicationContext(), "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
+
+                    //
+                    Intent i = new Intent(add_hospitals_page.this,selection_paramedic_hospital_page.class);
+                    startActivity(i);
 
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
@@ -216,7 +222,7 @@ public class add_hospitals_page extends AppCompatActivity {
         });
 
 
-    }*/
+    }
 }
 
 

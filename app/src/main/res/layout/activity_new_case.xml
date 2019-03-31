@@ -38,8 +38,7 @@
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:text="حالة جديدة"
-            android:textColor="#000000"
-            android:textSize="25sp"
+            android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@+id/mCustomToolbar"
             app:layout_constraintVertical_bias="0.06" />
 
@@ -68,7 +67,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="إسم المستخدم :"
-                        android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
                     <EditText
@@ -105,7 +103,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="رقم الهوية :"
-                        android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
                     <EditText
@@ -142,7 +139,6 @@
                         android:layout_alignParentRight="true"
                         android:layout_weight="1"
                         android:text="الجنس:"
-                        android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
                     <RadioGroup
@@ -194,7 +190,6 @@
                         android:layout_alignParentRight="true"
                         android:layout_weight="1"
                         android:text="تقيم الحالة :"
-                        android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
                     <RadioGroup
@@ -246,7 +241,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="نوع السرير:"
-                        android:textColor="@color/colorBlack"
                         android:textSize="14sp" />
 
                     <Spinner

@@ -79,7 +79,6 @@ public class vitalByManuall extends AppCompatActivity {
         tempreture2=tempreture.getText().toString();
         numtempreture=Integer.parseInt(tempreture2);
 
-         signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture,new_case.patient.key);
 
         createDialog();
 
@@ -92,6 +91,7 @@ public class vitalByManuall extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 vitalAndDrugs.count_v+=1;
+                signs = new VitalSigns(numpluseRate, numbloodPressure, numrespRate, numGCS, numbloodGlucose, numBloodOxygen, numtempreture,new_case.patient.key,vitalAndDrugs.count_v);
                 myRef.push().setValue(signs);
                 Intent in = new Intent(vitalByManuall.this, vitalAndDrugs.class);
                 startActivity(in);

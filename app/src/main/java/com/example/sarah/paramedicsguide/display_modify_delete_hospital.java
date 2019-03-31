@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -229,9 +232,15 @@ public class display_modify_delete_hospital extends AppCompatActivity {
 
 
     private boolean updateHospital(String idChild,String name,String id,String email,String password,boolean brainAndNerves,boolean accidents,boolean bones,boolean birth,boolean other,double locationX,double locationY) {
+        ////
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Hospital").child(idChild);
-
-        Hospital hospital = new Hospital(idChild, name, id, email, password, brainAndNerves, accidents, bones, birth, other, locationX,locationY);
+        LatLng location = new LatLng(locationX,locationY) ;
+        DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS_Hospitals");
+        GeoFire geoFire = new GeoFire(ref);
+        String key =ref.push().getKey();
+        geoFire.setLocation(key,new GeoLocation(location.latitude,location.longitude));
+        /////
+        Hospital hospital = new Hospital(idChild, name, id, email, password, brainAndNerves, accidents, bones, birth, other, locationX,locationY,key);
         dR.setValue(hospital);
         Toast.makeText(this, "تم حفظ التغييرات بنجاح", Toast.LENGTH_LONG).show();
         return true;

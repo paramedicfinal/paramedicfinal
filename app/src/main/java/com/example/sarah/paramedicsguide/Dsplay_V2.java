@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,17 +19,40 @@ import com.google.firebase.database.ValueEventListener;
 public class Dsplay_V2 extends AppCompatActivity {
     Medications medications ;
     TextView t;
-    Button button_montor;
+    ImageView imageView11,imageView12,imageView13,imageView14;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dsplay__v2);
+        imageView11=(ImageView)findViewById(R.id.imageView11);
+        imageView12=(ImageView)findViewById(R.id.imageView12);
+        imageView13=(ImageView)findViewById(R.id.imageView13);
+        imageView14=(ImageView)findViewById(R.id.imageView14);
 
-        button_montor = (Button) findViewById(R.id.button_montor);
-        button_montor.setOnClickListener(new View.OnClickListener() {
+        imageView11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_montor();
+                Intent i= new Intent(Dsplay_V2.this,Dsplay_V1.class);
+                startActivity(i);
+            }
+        });
+        imageView12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        imageView13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V2.this,Dsplay_V3.class);
+                startActivity(i);
+            }
+        });
+        imageView14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V2.this,Dsplay_V4.class);
+                startActivity(i);
             }
         });
 
@@ -75,6 +99,11 @@ public class Dsplay_V2 extends AppCompatActivity {
     }
 
     public void go_montor(){
+        Intent i = new Intent(Dsplay_V2.this,MapsActivity2.class);
+        startActivity(i);
+    }
+    @Override
+    public void onBackPressed() {
         Intent i = new Intent(Dsplay_V2.this,MapsActivity2.class);
         startActivity(i);
     }

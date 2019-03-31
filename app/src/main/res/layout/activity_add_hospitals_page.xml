@@ -10,9 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="29dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints">
 
         <RelativeLayout
             android:id="@+id/pg2_r_layout"
@@ -43,7 +47,10 @@
                     android:id="@+id/textView13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="انشاء حساب مستشفى"
+                    android:textSize="24sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,82 +70,74 @@
                         android:orientation="horizontal"
                         android:padding="2dp">
 
-                        <EditText
-                            android:id="@+id/editTextName"
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_margin="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/text_border"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="textPersonName"
-                            android:padding="5dp" />
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
 
-                        <TextView
-                            android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="3dp"
-                            android:layout_weight="1"
-                            android:text="اسم المستشفى" />
+                            <TextView
+                                android:id="@+id/textView15"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_weight="1"
+                                android:text="اسم المستشفى" />
+
+                            <EditText
+                                android:id="@+id/editTextName"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_margin="10dp"
+                                android:layout_toLeftOf="@+id/textView15"
+                                android:layout_weight="1"
+                                android:background="@drawable/text_border"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textPersonName"
+                                android:padding="5dp"
+                                android:textSize="14sp"
+                                tools:layout_editor_absoluteX="8dp"
+                                tools:layout_editor_absoluteY="542dp" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/body_style"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/editTextID"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="الرقم التعريفي"
-                            android:inputType="number" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView20"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="الرقم التعريفي" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/body_style"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/editTextEmail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="البريد اللإلكتروني"
-                            android:inputType="textEmailAddress" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/body_style"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/editTextPassword"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:gravity="right"
-                            android:hint="كلمة المرور"
-                            android:inputType="textPassword" />
+                            <EditText
+                                android:id="@+id/editTextID"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_margin="10dp"
+                                android:layout_toLeftOf="@+id/textView20"
+                                android:layout_weight="1"
+                                android:background="@drawable/text_border"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 
@@ -149,44 +148,149 @@
                         android:background="@drawable/body_style"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/editTextRepeatedPassword"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:gravity="right"
-                            android:hint="تأكيد كلمة المرور"
-                            android:inputType="textPassword" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/textView21"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="البريد الالكتروني" />
+
+                            <EditText
+                                android:id="@+id/editTextEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="10dp"
+                                android:layout_toLeftOf="@+id/textView21"
+                                android:layout_weight="1"
+                                android:background="@drawable/text_border"
+                                android:ems="10"
+                                android:inputType="textEmailAddress"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/textView22"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="كلمة المرور" />
+
+                            <EditText
+                                android:id="@+id/editTextPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="10dp"
+                                android:layout_toLeftOf="@+id/textView22"
+                                android:layout_weight="1"
+                                android:background="@drawable/text_border"
+                                android:ems="10"
+                                android:gravity="right"
+                                android:inputType="textPassword"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/body_style"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/textView23"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="تأكيد كلمة المرور" />
+
+                            <EditText
+                                android:id="@+id/editTextRepeatedPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="10dp"
+                                android:layout_toLeftOf="@+id/textView23"
+                                android:layout_weight="1"
+                                android:background="@drawable/text_border"
+                                android:ems="10"
+                                android:gravity="right"
+                                android:inputType="textPassword"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/body_style"
                         android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/editTextLocationX"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="150dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="10dp"
+                            android:layout_toLeftOf="@+id/editTextLocationY"
                             android:layout_weight="1"
+                            android:background="@drawable/text_border"
                             android:ems="10"
                             android:gravity="right"
                             android:hint="الموقع X"
-                            android:inputType="numberDecimal" />
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp" />
 
                         <EditText
                             android:id="@+id/editTextLocationY"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="150dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="10dp"
                             android:layout_weight="1"
+                            android:background="@drawable/text_border"
                             android:ems="10"
                             android:gravity="right"
                             android:hint="الموقع Y"
-                            android:inputType="numberDecimal" />
+                            android:inputType="numberDecimal"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -202,8 +306,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
                             android:gravity="right"
-                            android:text="الأقسام" />
+                            android:text="الأقسام"
+                            android:textSize="18sp" />
 
                         <CheckBox
                             android:id="@+id/checkboxBrainAndNerves"
@@ -213,9 +319,7 @@
                             android:checked="false"
                             android:paddingRight="15dp"
                             android:text="مخ واعصاب"
-                            android:textColor="#000000"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
+                            android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintVertical_chainStyle="spread_inside" />
@@ -228,9 +332,7 @@
                             android:checked="false"
                             android:paddingRight="15dp"
                             android:text="حوادث"
-                            android:textColor="#000000"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
 
@@ -242,9 +344,7 @@
                             android:checked="false"
                             android:paddingRight="15dp"
                             android:text="عظام"
-                            android:textColor="#000000"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -258,9 +358,7 @@
                             android:checked="false"
                             android:paddingRight="15dp"
                             android:text="ولادة"
-                            android:textColor="#000000"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -273,9 +371,7 @@
                             android:checked="false"
                             android:paddingRight="15dp"
                             android:text="غير ذلك"
-                            android:textColor="#000000"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -295,14 +391,14 @@
                     tools:layout_editor_absoluteY="544dp">
 
                     <Button
-                        android:id="@+id/buttonSignUp"
+                        android:id="@+id/button_add_hospital_admin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/button_shape_color"
                         android:text="إنشاء حساب"
-                        android:textColor="#ffffff"
+                        android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>

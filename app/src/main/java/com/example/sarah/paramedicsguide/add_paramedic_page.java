@@ -182,6 +182,8 @@ public class add_paramedic_page extends AppCompatActivity {
                     Paramedic paramedic = new Paramedic(idChild,name, nationalID, email, id, password, jobLevel, center);
                     databaseparamedic.child(idChild).setValue(paramedic);
                     Toast.makeText(getApplicationContext(), "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(add_paramedic_page.this,selection_paramedic_hospital_page.class);
+                    startActivity(i);
 
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {

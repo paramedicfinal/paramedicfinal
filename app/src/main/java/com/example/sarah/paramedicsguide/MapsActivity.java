@@ -81,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     List<LatLng> position;
     String medicalState;
     Hospital hospital;
-
+    boolean isCanAccess = true;
     ImageView imageView_send;
     ImageView imageView_arrow;
     TextView textView_name_box;
@@ -89,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     TextView textView_time_box;
     LinearLayout layout_box_name_email_time;
 
-    boolean isCanAccess = true;
+
     DatabaseReference reference;
 
 
@@ -302,19 +302,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent i = new Intent(MapsActivity.this, vitalAndDrugs.class);
         startActivity(i);
     }
-    //***********
 
-    @Override
-    public void onBackPressed() {
-
-        if (medicalState.equals(" حرجة")) {
-            Toast.makeText(getApplicationContext(), "لا يمكن العوده ، يجب انهاء الحالة", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent i = new Intent(MapsActivity.this, Ways_find_hospital.class);
-            startActivity(i);
-        }
-
-    }
 
     @Override
     public void onLocationChanged(Location location) {
@@ -358,7 +346,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionSuspended(int i) {
 
     }
+    //***********
 
+    @Override
+    public void onBackPressed() {
+
+        if (medicalState.equals(" حرجة")) {
+            Toast.makeText(getApplicationContext(), "لا يمكن العوده ، يجب انهاء الحالة", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent i = new Intent(MapsActivity.this, Ways_find_hospital.class);
+            startActivity(i);
+        }
+
+    }
 
 
 }

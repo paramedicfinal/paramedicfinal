@@ -43,7 +43,6 @@ public class new_case extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 bed_type= adapterView.getItemAtPosition(i).toString();
-                Log.v("newcase",bed_type );
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -55,11 +54,8 @@ public class new_case extends AppCompatActivity {
 
     public void addnewcase( ) {
          editText_name= (EditText) findViewById(R.id.pg2_2_name);
-        Log.v("newcase", editText_name.getText().toString());
-
 
          editText_id= (EditText) findViewById(R.id.pg2_2_id);
-
 
         Button button = (Button) findViewById(R.id.pg2_2button);
 
@@ -94,12 +90,10 @@ public class new_case extends AppCompatActivity {
                 rg_gender = (RadioGroup) findViewById(R.id.pg2_2_gender_rg);
                 rb_gender = (RadioButton) findViewById (rg_gender.getCheckedRadioButtonId());
                 String sex=rb_gender.getText().toString();
-                Log.v("newcase", sex);
 
                 rg_danger_or_not = (RadioGroup) findViewById(R.id.pg2_2_case_rg);
                 rb_danger_or_not = (RadioButton) findViewById (rg_danger_or_not.getCheckedRadioButtonId());
                 String medicalState = rb_danger_or_not.getText().toString();
-                Log.v("newcase", medicalState);
 
                 String key =myRef.push().getKey();
                 patient = new Patient(id, name, bed_type,  sex,  medicalState,key);

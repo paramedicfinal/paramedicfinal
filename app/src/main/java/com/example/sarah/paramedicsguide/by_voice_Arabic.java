@@ -72,9 +72,16 @@ public class by_voice_Arabic extends AppCompatActivity {
         alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(by_voice_Arabic.this,"تم الارسال ", Toast.LENGTH_SHORT).show();
 
-
-                by_voice_Arabic.super.onBackPressed();
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference("VoiceToText");
+                //by_voice.super.onBackPressed();
+                //VitalSigns signs = new VitalSigns(text,new_case.patient.key);
+                vitalAndDrugs.count_v++;
+                VoiceToText voiceToText=new VoiceToText(text,new_case.newCase.getKey_patient(),vitalAndDrugs.count_v);
+                // Log.v("xxx",Hospital_the_cases.selected_patient.key);
+                database.push().setValue(voiceToText);
+                Toast.makeText(by_voice_Arabic.this,"في حال الانتهاء، قم بضفط على زر العودة", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -101,7 +108,7 @@ public class by_voice_Arabic extends AppCompatActivity {
     }
     private void createDialogDeleat() {
 
-        if (txvResult != null) {
+        if (txvResult != null || txvResult.equals("")) {
             AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
             alertDlg.setMessage("لحذف النص اختر تأكيد ");
             alertDlg.setCancelable(false);
@@ -122,5 +129,12 @@ public class by_voice_Arabic extends AppCompatActivity {
             alertDlg.create().show();
         }
         else{}
+    }
+    @Override
+    public void onBackPressed() {
+
+        Ways_find_hospital.hospitalList.clear();
+        Intent i = new Intent(by_voice_Arabic.this,vitalAndDrugs.class);
+        startActivity(i);
     }
 }

@@ -77,7 +77,9 @@
         <activity
             android:name=".MapsActivity3"
             android:label="@string/title_activity_maps3" />
-        <activity android:name=".Report_pg"></activity>
+        <activity android:name=".Report_pg" />
+        <activity android:name=".Dsplay_V3" />
+        <activity android:name=".Dsplay_V4"></activity>
     </application>
 
 </manifest>
