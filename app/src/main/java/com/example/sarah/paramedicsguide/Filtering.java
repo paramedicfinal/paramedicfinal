@@ -335,7 +335,7 @@ public class Filtering extends AppCompatActivity {
                { can_go_to_map=true;
                    Ways_find_hospital.hospitalList.add(hospital);
                } } }
-       else if(ch1.isChecked()&&ch2.isChecked()&&ch3.isChecked() &&ch4.isChecked()&&ch5.isChecked()){
+       else if(ch4.isChecked()){
            for(int i = 0;i<size;i++){
                hospital=hospitals.get(i);
                if(hospital.birth==true)

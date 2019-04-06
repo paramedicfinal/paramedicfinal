@@ -19,7 +19,7 @@ public class paramedics_management_page extends AppCompatActivity {
     }
 
     public void toDispalyParamedics(View view) {
-        Intent intent = new Intent(paramedics_management_page.this,dispaly_modify_delete_paramedic.class);
+        Intent intent = new Intent(paramedics_management_page.this,activity_dispaly_modify_delete_paramedic2.class);
         startActivity(intent);
     }
 

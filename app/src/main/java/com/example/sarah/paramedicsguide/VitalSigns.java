@@ -5,15 +5,15 @@ import java.util.Date;
 public class VitalSigns {
     String patient_key;
     String vitalByVoice;
-    int pluseRate;
-    int bloodPressure;
-    int respRate;
-    int GCS;
-    int bloodGlucose;
-    int BloodOxygen;
-    int tempreture;
-    Date timeOfMeasurement;
-    int num;
+    double pluseRate;
+    double bloodPressure;
+    double respRate;
+    double GCS;
+    double bloodGlucose;
+    double BloodOxygen;
+    double tempreture;
+    String timeOfMeasurement;
+    double num;
 
 
 
@@ -28,7 +28,7 @@ public class VitalSigns {
     public VitalSigns() {
     }
 
-    public VitalSigns(int pluseRate, int bloodPressure, int respRate, int GCS, int bloodGlucose, int BloodOxygen, int tempreture, String patient_key,int num){
+    public VitalSigns(double pluseRate, double bloodPressure, double respRate, double GCS, double bloodGlucose, double BloodOxygen, double tempreture, String patient_key,double num,String time){
         this.pluseRate=pluseRate;
         this.bloodPressure=bloodPressure;
         this.respRate=respRate;
@@ -38,32 +38,33 @@ public class VitalSigns {
         this.tempreture=tempreture;
         this.patient_key=patient_key;
         this.num=num;
+        this.timeOfMeasurement=time;
 
 
 
     }
-    public int pluseRate() {
+    public double pluseRate() {
         return pluseRate;
     }
-    public int bloodPressure() {
+    public double bloodPressure() {
         return bloodPressure;
     }
-    public int respRate() {
+    public double respRate() {
         return respRate;
     }
-    public int GCS() {
+    public double GCS() {
         return GCS;
     }
-    public int bloodGlucose() {
+    public double bloodGlucose() {
         return bloodGlucose;
     }
-    public int BloodOxygen() {
+    public double BloodOxygen() {
         return BloodOxygen;
     }
-    public int tempreture() {
+    public double tempreture() {
         return tempreture;
     }
-    public  Date timeOfMeasurement() {
+    public  String timeOfMeasurement() {
         return timeOfMeasurement;
     }
 

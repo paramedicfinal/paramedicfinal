@@ -49,7 +49,9 @@ public class by_voice extends AppCompatActivity {
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
 
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-US");
+       // intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+
 
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -96,7 +98,8 @@ public class by_voice extends AppCompatActivity {
                 VoiceToText voiceToText=new VoiceToText(text,new_case.newCase.getKey_patient(),vitalAndDrugs.count_v);
                 // Log.v("xxx",Hospital_the_cases.selected_patient.key);
                 database.push().setValue(voiceToText);
-                Toast.makeText(by_voice.this,"في حال الانتهاء، قم بضفط على زر العودة", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(by_voice.this,vitalAndDrugs.class);
+                startActivity(i);
 
 
 
@@ -141,8 +144,6 @@ public class by_voice extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-
-        Ways_find_hospital.hospitalList.clear();
         Intent i = new Intent(by_voice.this,vitalAndDrugs.class);
         startActivity(i);
     }

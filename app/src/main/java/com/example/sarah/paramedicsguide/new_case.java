@@ -31,11 +31,13 @@ public class new_case extends AppCompatActivity {
     Spinner spinner;
     String bed_type;
      static Patient patient;
+     static boolean map1=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_case);
+
 
 
         spinner = (Spinner) findViewById(R.id.pg2_2_bed_spinner);
@@ -110,7 +112,9 @@ public class new_case extends AppCompatActivity {
                 if(medicalState.equals(" حرجة")){
                     i =new Intent(new_case.this,MapsActivity3.class);}
                 else{ i =new Intent(new_case.this,Ways_find_hospital.class);}
+
                 startActivity(i);
+
 
             }
         });

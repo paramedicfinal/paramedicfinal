@@ -52,6 +52,7 @@
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
+
                 <RelativeLayout
                     android:id="@+id/pg2_2_r_layout1"
                     android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="إسم المستخدم :"
+                        android:text="إسم المريض :"
                         android:textSize="14sp" />
 
                     <EditText
@@ -262,33 +263,27 @@
                         android:visibility="visible" />
 
                 </RelativeLayout>
+
+                <Button
+                    android:id="@+id/pg2_2button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_shape_color"
+                    android:clickable="true"
+                    android:cursorVisible="true"
+                    android:focusable="auto"
+                    android:text="إضافة الحاله"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
             </LinearLayout>
         </ScrollView>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="left">
-
-            <Button
-                android:id="@+id/pg2_2button"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/button_shape_color"
-                android:clickable="true"
-                android:cursorVisible="true"
-                android:focusable="auto"
-                android:text="إضافة الحاله"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.538" />
-        </RelativeLayout>
 
     </LinearLayout>
 

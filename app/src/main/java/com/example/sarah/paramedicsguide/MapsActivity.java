@@ -84,16 +84,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     boolean isCanAccess = true;
     ImageView imageView_send;
     ImageView imageView_arrow;
+    ImageView imageView_refrish;
     TextView textView_name_box;
     TextView textView_email_box;
     TextView textView_time_box;
     LinearLayout layout_box_name_email_time;
+    static boolean stopGPS=false;
+    static boolean canseleMyLocation=true;
 
 
     DatabaseReference reference;
 
 
     static Location location;
+     static GeoFire geoFire;
     LocationManager locationManager;
     GoogleApiClient googleApiClient;
     Location mLastlocation;
@@ -108,7 +112,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        new_case.map1=true;
 
         imageView_send = (ImageView) findViewById(R.id.imageView_send);
         imageView_arrow = (ImageView) findViewById(R.id.imageView_arrow);
@@ -116,10 +120,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         textView_email_box = (TextView) findViewById(R.id.textView_email_box);
         textView_time_box = (TextView) findViewById(R.id.textView_tima_dsplay2);
         layout_box_name_email_time = (LinearLayout) findViewById(R.id.layout_box_name_email_time);
+        imageView_refrish=(ImageView)findViewById(R.id.imageView_refrish);
 
         imageView_send.setVisibility(View.INVISIBLE);
         imageView_arrow.setVisibility(View.INVISIBLE);
         layout_box_name_email_time.setVisibility(View.INVISIBLE);
+        imageView_refrish.setVisibility(View.INVISIBLE);
 
         imageView_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,25 +139,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 next_int();
             }
         });
+        stopGPS=false;
 
 
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        LatLng jeddah=new LatLng(21.482911, 39.222083);
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(jeddah,9));
+        mMap.addMarker(new MarkerOptions().position(jeddah).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jeddah_star)));
+
+
         medicalState = new_case.patient.getMedicalState();
-        if (medicalState.equals(" حرجة")) {
-        } else {
+
             position = new ArrayList<LatLng>();
 
             Integer size = Ways_find_hospital.hospitalList.size();
@@ -183,10 +186,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return;
             }
             buldGooglApiClient();
-            mMap.setMyLocationEnabled(true);
+            if(canseleMyLocation) {
+                mMap.setMyLocationEnabled(true);
+            }
+            else{
+                mMap.setMyLocationEnabled(false);
+            }
 
 
-        }
 
     }
     private synchronized void buldGooglApiClient(){
@@ -310,11 +317,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLastlocation=location;
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
+        if(stopGPS==false){
         DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS");
-        GeoFire geoFire = new GeoFire(ref);
+        geoFire = new GeoFire(ref);
         geoFire.setLocation(new_case.newCase.getKey_patient(),new GeoLocation(location.getLatitude(),location.getLongitude()));
+        }
 
     }
 
@@ -344,6 +353,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnectionSuspended(int i) {
+
+    }
+    //********************stop*****************
+    static public void stopTrack(){
+          stopGPS=true;
+          geoFire.removeLocation( new_case.newCase.getKey_patient());
 
     }
     //***********

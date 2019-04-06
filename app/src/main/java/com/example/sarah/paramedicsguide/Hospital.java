@@ -20,7 +20,7 @@ public class Hospital {
     }
 
 
-    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,double locationX, double locationY,String gps) {
+    public Hospital(String idChild, String hospitalName, String hospitalID, String hospitalEmail, String hospitalPassword, boolean brainAndNerves, boolean accidents, boolean bones, boolean birth, boolean other,double locationX, double locationY,String GPS_key) {
         this.idChild = idChild;
         this.hospitalName = hospitalName;
         this.hospitalID = hospitalID;
@@ -33,7 +33,7 @@ public class Hospital {
         this.other = other;
         this.locationX = locationX;
         this.locationY = locationY;
-        this.GPS_key=gps;
+        this.GPS_key=GPS_key;
     }
 
 
@@ -116,6 +116,7 @@ public class Hospital {
     public void setOther(boolean other) {
         this.other = other;
     }
+
 
 }
 

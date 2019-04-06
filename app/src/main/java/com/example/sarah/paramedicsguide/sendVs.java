@@ -21,6 +21,7 @@ public class sendVs extends AppCompatActivity {
         cv_vice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vitalAndDrugs.valueOfInterfaceToShow=2;
                 Intent in= new Intent(sendVs.this,select_voice_language.class);
                 startActivity(in);
             }
@@ -29,6 +30,7 @@ public class sendVs extends AppCompatActivity {
         cv_manual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vitalAndDrugs.valueOfInterfaceToShow=1;
                 Intent in= new Intent(sendVs.this,vitalByManuall.class);
                 startActivity(in);
             }

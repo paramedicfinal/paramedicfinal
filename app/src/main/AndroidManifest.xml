@@ -20,6 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.sarah.paramedicsguide.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity android:name=".vitalAndDrugs" />
         <activity android:name=".admin_login_page" />
         <activity android:name=".admin_signup_page" />
@@ -79,7 +89,10 @@
             android:label="@string/title_activity_maps3" />
         <activity android:name=".Report_pg" />
         <activity android:name=".Dsplay_V3" />
-        <activity android:name=".Dsplay_V4"></activity>
+        <activity android:name=".Dsplay_V4" />
+        <activity android:name=".Report_list_pg" />
+        <activity android:name=".activity_display_modify_delete_hospital2" />
+        <activity android:name=".activity_dispaly_modify_delete_paramedic2"></activity>
     </application>
 
 </manifest>

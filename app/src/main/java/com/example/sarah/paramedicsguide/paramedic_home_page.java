@@ -12,6 +12,7 @@ public class paramedic_home_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paramedic_home_page);
+
     }
 
     public void startNewCase(View view) {

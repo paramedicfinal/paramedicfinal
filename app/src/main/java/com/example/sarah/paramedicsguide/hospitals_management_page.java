@@ -19,7 +19,9 @@ public class hospitals_management_page extends AppCompatActivity {
     }
 
     public void toDisplayHospitals(View view) {
-        Intent intent = new Intent(hospitals_management_page.this,display_modify_delete_hospital.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(hospitals_management_page.this,display_modify_delete_hospital.class);
+       // startActivity(intent);
+        Intent i =new Intent(hospitals_management_page.this, activity_display_modify_delete_hospital2.class);
+        startActivity(i);
     }
 }

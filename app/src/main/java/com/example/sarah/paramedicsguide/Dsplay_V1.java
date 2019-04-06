@@ -31,7 +31,7 @@ public class Dsplay_V1 extends AppCompatActivity {
     TextView r6_1,r6_2,r6_3;
     TextView r7_1,r7_2,r7_3;
     TextView r8_1,r8_2,r8_3;
-    ImageView imageView11,imageView12,imageView13,imageView14;
+    ImageView imageView11,imageView12,imageView13,imageView14 ,imageView_track;
     int count_v;
 
 
@@ -39,6 +39,9 @@ public class Dsplay_V1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dsplay__v1);
+
+        Hospital_home_page.getNewCaseByQuery(Dsplay_V1.this);
+
 //time
          r1_1=(TextView)findViewById(R.id.textView_time_1);
          r1_2=(TextView)findViewById(R.id.textView_time_2);
@@ -78,6 +81,7 @@ public class Dsplay_V1 extends AppCompatActivity {
         imageView12=(ImageView)findViewById(R.id.imageView12);
         imageView13=(ImageView)findViewById(R.id.imageView13);
         imageView14=(ImageView)findViewById(R.id.imageView14);
+        imageView_track=(ImageView)findViewById(R.id.imageView_track);
 
         imageView11.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +112,14 @@ public class Dsplay_V1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(Dsplay_V1.this,Dsplay_V4.class);
+                startActivity(i);
+                list_vitalSigns.clear();
+            }
+        });
+        imageView_track.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(Dsplay_V1.this,MapsActivity2.class);
                 startActivity(i);
                 list_vitalSigns.clear();
             }
@@ -166,7 +178,7 @@ public class Dsplay_V1 extends AppCompatActivity {
     }
     public void column_1 (VitalSigns vitalSigns){
         String convertto_string;
-        //r1_1.setText(vitalSigns.);
+        r1_1.setText(vitalSigns.timeOfMeasurement);
 
         convertto_string=vitalSigns.pluseRate+"";
         r2_1.setText(convertto_string);
@@ -193,7 +205,7 @@ public class Dsplay_V1 extends AppCompatActivity {
     }
     public void column_2 (VitalSigns vitalSigns){
         String convertto_string;
-        //r1_2.setText(vitalSigns.);
+        r1_2.setText(vitalSigns.timeOfMeasurement);
 
         convertto_string=vitalSigns.pluseRate+"";
         r2_2.setText(convertto_string);
@@ -219,7 +231,7 @@ public class Dsplay_V1 extends AppCompatActivity {
     }
     public void column_3 (VitalSigns vitalSigns){
         String convertto_string;
-        //r1_3.setText(vitalSigns.);
+        r1_3.setText(vitalSigns.timeOfMeasurement  );
 
         convertto_string=vitalSigns.pluseRate+"";
         r2_3.setText(convertto_string);

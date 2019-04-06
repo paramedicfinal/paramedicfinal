@@ -109,10 +109,10 @@
                     android:layout_marginRight="35dp"
                     android:layout_toLeftOf="@+id/pg5_name_text"
                     android:layout_toStartOf="@+id/pg5_name_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
             </RelativeLayout>
 
@@ -149,10 +149,10 @@
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg4_id_text"
                     android:layout_toStartOf="@+id/pg4_id_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
@@ -192,10 +192,10 @@
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg_add_text4"
                     android:layout_toStartOf="@+id/pg_add_text4"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
@@ -233,10 +233,10 @@
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg4_numID_text"
                     android:layout_toStartOf="@+id/pg4_numID_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
@@ -274,10 +274,10 @@
                     android:layout_marginTop="-2dp"
                     android:layout_toLeftOf="@+id/pg4_pass_text"
                     android:layout_toStartOf="@+id/pg4_pass_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
@@ -317,10 +317,10 @@
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg4_repass_text"
                     android:layout_toStartOf="@+id/pg4_repass_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
@@ -358,52 +358,39 @@
                     android:layout_marginTop="0dp"
                     android:layout_toLeftOf="@+id/pg4_level_text"
                     android:layout_toStartOf="@+id/pg4_level_text"
-                    android:background="@android:color/white"
+                    android:background="#FFFFFF"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="number|numberDecimal"
                     android:textSize="24sp" />
 
             </RelativeLayout>
 
         </LinearLayout>
 
-
-        <RelativeLayout
-            android:id="@+id/pg4_r_layout8"
+        <Button
+            android:id="@+id/pg4_1_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="-4dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="-10dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="30dp"
+            android:background="@drawable/button_shape_color"
+            android:fontFamily="sans-serif"
+            android:onClick="buttonSend"
+            android:text="ارسال"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"
+
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
 
-            <Button
-                android:id="@+id/pg4_1_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="28dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/button_shape_color"
-
-                android:fontFamily="sans-serif"
-                android:onClick="buttonSend"
-                android:text="ارسال"
-                android:textColor="#ffffffff"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                app:layout_constraintVertical_bias="1.0" />
-        </RelativeLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

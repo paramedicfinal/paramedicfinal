@@ -2,6 +2,7 @@ package com.example.sarah.paramedicsguide;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
@@ -28,6 +28,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -41,8 +42,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,20 +54,24 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     static Location location;
     LocationManager locationManager;
-    GoogleApiClient googleApiClient;
+    static GoogleApiClient googleApiClient;
     Location mLastlocation;
-    LocationRequest locationRequest;
+    static LocationRequest locationRequest;
 
     ImageView imageView_send;
     ImageView imageView_arrow;
+    ImageView imageView_refrish;
     TextView textView_name_box;
     TextView textView_email_box;
     TextView textView_time_box;
     LinearLayout layout_box_name_email_time;
-    Hospital hospital;
-    boolean isCanAccess = true;
+    static boolean isCanAccess = true;
+    static boolean stopGPS=false;
+    static GeoFire geoFire;
     LatLng latLng;
+    Hospital targetHospital;
 
+    //********************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,16 +81,18 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
         imageView_send = (ImageView) findViewById(R.id.imageView_send);
         imageView_arrow = (ImageView) findViewById(R.id.imageView_arrow);
         textView_name_box = (TextView) findViewById(R.id.textView_name_dsplay2);
         textView_email_box = (TextView) findViewById(R.id.textView_email_box);
         textView_time_box = (TextView) findViewById(R.id.textView_tima_dsplay2);
         layout_box_name_email_time = (LinearLayout) findViewById(R.id.layout_box_name_email_time);
-
+        imageView_refrish = (ImageView)findViewById(R.id.imageView_refrish);
         imageView_send.setVisibility(View.INVISIBLE);
         imageView_arrow.setVisibility(View.INVISIBLE);
         layout_box_name_email_time.setVisibility(View.INVISIBLE);
+        imageView_refrish.setVisibility(View.VISIBLE);
 
         imageView_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +106,40 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
                 next_int();
             }
         });
+        imageView_refrish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(MapsActivity3.this,MapsActivity3.class);
+                startActivity(i);
+            }
+        });
+        stopGPS=false;
+        MapsActivity3.isCanAccess=true;
+        MapsActivity3.firstTime=true;
+        hospitalsFound=false;
 
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.clear();
+
+        LatLng jeddah=new LatLng(21.482911, 39.222083);
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(jeddah,9));
+        mMap.addMarker(new MarkerOptions().position(jeddah).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jeddah_star)));
+
+        new_case.map1=false;
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        buldGooglApiClient();
+        mMap.setMyLocationEnabled(true);
+
+
+    }
+    //************************************************************************************
     private void createDialog() {
         if(mLastlocation==null){
             openLocationGpsDaialog();
@@ -131,81 +170,50 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
         alertDlg.setMessage("قم بتشغيل نظام تحديد المواقع من الاعدادات ");
         alertDlg.create().show();
     }
-
+//*********************************************************************************** TO VITAL SIGN
     public void next_int() {
+
+        Hospital targetHospital=null;
+
         Intent i = new Intent(MapsActivity3.this, vitalAndDrugs.class);
         startActivity(i);
     }
-    public void send() {
 
-        //name and id of paramedic
-        new_case.newCase.setName_paramedic(paramedic_login_page.user.paramedicName);
-        new_case.newCase.setId_paramedic(paramedic_login_page.user.paramedicID);
-        new_case.newCase.setParamedic_center(paramedic_login_page.user.paramedicCenter);
-        //name of hospital
-        new_case.newCase.setName_hospital(hospital.hospitalName);
-        FirebaseDatabase fb = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = fb.getReference("NewCase");
-        myRef.push().setValue(new_case.newCase);
-
-        Toast.makeText(getApplicationContext(), "تم ارسال الطلب", Toast.LENGTH_SHORT).show();
-
-        imageView_send.setVisibility(View.INVISIBLE);
-        layout_box_name_email_time.setVisibility(View.INVISIBLE);
-        imageView_arrow.setVisibility(View.VISIBLE);
-        isCanAccess = false;
-
-
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        buldGooglApiClient();
-        mMap.setMyLocationEnabled(true);
-
-    }
-
-    private synchronized void buldGooglApiClient(){
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(MapsActivity3.this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        googleApiClient.connect();
-    }
-
+//******************************************************************************** CURRENT LOCATION
+private synchronized void buldGooglApiClient(){
+    googleApiClient = new GoogleApiClient.Builder(this)
+            .addConnectionCallbacks(MapsActivity3.this)
+            .addOnConnectionFailedListener(this)
+            .addApi(LocationServices.API)
+            .build();
+    googleApiClient.connect();
+}
+static boolean firstTime=true;
     @Override
     public void onLocationChanged(Location location) {
-
         mLastlocation=location;
         latLng = new LatLng(location.getLatitude(),location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("GPS");
-        GeoFire geoFire = new GeoFire(ref);
-        geoFire.setLocation(new_case.newCase.getKey_patient(),new GeoLocation(location.getLatitude(),location.getLongitude()));
-
-        getClosestHospitals();
+        if(stopGPS==false){
+            DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS");
+            geoFire = new GeoFire(ref);
+            geoFire.setLocation(new_case.newCase.getKey_patient(),new GeoLocation(location.getLatitude(),location.getLongitude()));
+            if(firstTime){
+                firstTime=false;
+                getClosestHospitals();
+            }
+        }
 
     }
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         locationRequest = new LocationRequest();
@@ -217,68 +225,35 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
     }
-
     @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    public boolean onMarkerClick(Marker marker) {
-        if (isCanAccess) {
-            hospital = getHospital(marker);
-
-            imageView_send.setVisibility(View.VISIBLE);
-            layout_box_name_email_time.setVisibility(View.VISIBLE);
-
-            textView_name_box.setText(hospital.hospitalName);
-            textView_email_box.setText(hospital.hospitalEmail);
-            Date date = new Date();
-            String convert = "" + date.getTime();
-            textView_time_box.setText(convert);
-        }
-        return true;
-    }
-
-    //********
-    public Hospital getHospital(Marker marker) {
-        int size = Ways_find_hospital.hospitalList.size();
-        Hospital hospital = null;
-        for (int i = 0; i < size; i++) {
-            //hospital list
-            double x = Ways_find_hospital.hospitalList.get(i).locationX;
-            double y = Ways_find_hospital.hospitalList.get(i).locationY;
-            //marker
-            double x2 = marker.getPosition().latitude;
-            double y2 = marker.getPosition().longitude;
-
-            if (x == x2 && y == y2) {
-                hospital = Ways_find_hospital.hospitalList.get(i);
-            }
-
-        }
-
-        return hospital;
-    }
-
-    private int radius = 1000;
-    private Boolean hospitalsFound = false;
-    private String hospitalFoundID;
-    GeoQuery geoQuery;
+    public void onConnectionSuspended(int i) { }
+    String hospitalKeyLocation;
+    //LatLng pickupLatLng;
+    Marker pickupMarker;
+    private int radius = 1;
+    static Boolean hospitalsFound = false;
+    LatLng pickupLatLng;;
+    //private String hospitalFoundID;
     private void getClosestHospitals(){
         DatabaseReference ref_GpsHospital = FirebaseDatabase.getInstance().getReference().child("GPS_Hospitals");
         GeoFire geoFire = new GeoFire(ref_GpsHospital);
-        geoQuery = geoFire.queryAtLocation(new GeoLocation(latLng.latitude, latLng.longitude), radius);
-
+        GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(latLng.latitude, latLng.longitude), radius);
+        mMap.setOnMarkerClickListener(MapsActivity3.this);
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
 
+
                 if (!hospitalsFound)
                 {
+                    Toast.makeText(MapsActivity3.this,"يتم عملية ايجاد المشفى ",Toast.LENGTH_SHORT).show();
+
+                    hospitalKeyLocation=key;
+                   // hospitalFoundID=key;
+                    pickupLatLng = new LatLng(location.latitude,location.longitude);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(pickupLatLng));
+                    pickupMarker= mMap.addMarker(new MarkerOptions().position(pickupLatLng).visible(true));
                     hospitalsFound=true;
-                    hospitalFoundID=key;
-                  //  pickupLatLng = new LatLng(locationLat,locationLng);
-                 //   pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pickup)));
 
                 } }
             @Override
@@ -303,7 +278,7 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
             }
         });
     }
-
+    //******************************************************************************* BACK (No return)
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "لا يمكن العوده ، يجب انهاء الحالة", Toast.LENGTH_SHORT).show();
@@ -311,4 +286,73 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
         Intent i = new Intent();
         // startActivity(i);
     }
+    //*******************************************************************************MARKER - FIND NEAREST HOSPITAL - DSPLAY BOX
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        imageView_refrish.setVisibility(View.INVISIBLE);
+        if (isCanAccess) {
+            searchHospital(marker);
+            }
+            return true;}
+    private void searchHospital(final Marker marker) {
+
+        DatabaseReference refFindHospital = FirebaseDatabase.getInstance().getReference("Hospital");
+        Query query = refFindHospital.orderByChild("GPS_key").equalTo(hospitalKeyLocation);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Hospital hospital = null;
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                     hospital=new Hospital();
+                    hospital=snapshot.getValue(Hospital.class);
+                }
+                dsplayBoxInformation(marker,hospital);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void dsplayBoxInformation(Marker marker,Hospital hospital) {
+        imageView_send.setVisibility(View.VISIBLE);
+        layout_box_name_email_time.setVisibility(View.VISIBLE);
+        textView_name_box.setText(hospital.hospitalName);
+        textView_email_box.setText(hospital.hospitalEmail);
+        Date date = new Date();
+        String convert = "" + date.getTime();
+        textView_time_box.setText(convert);
+        targetHospital=hospital;
+
+    }
+    public void send() {
+
+        //name and id of paramedic
+        new_case.newCase.setName_paramedic(paramedic_login_page.user.paramedicName);
+        new_case.newCase.setId_paramedic(paramedic_login_page.user.paramedicID);
+        new_case.newCase.setParamedic_center(paramedic_login_page.user.paramedicCenter);
+        //name of hospital
+        new_case.newCase.setName_hospital(targetHospital.hospitalName);
+        FirebaseDatabase fb = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = fb.getReference("NewCase");
+        myRef.push().setValue(new_case.newCase);
+
+        Toast.makeText(getApplicationContext(), "تم ارسال الطلب", Toast.LENGTH_SHORT).show();
+
+        imageView_send.setVisibility(View.INVISIBLE);
+        layout_box_name_email_time.setVisibility(View.INVISIBLE);
+        imageView_arrow.setVisibility(View.VISIBLE);
+        isCanAccess = false;
+
+
+    }
+    /////////////////////////////////////////////////////////////////
+    static public void stopTrack(){
+
+       stopGPS=true;
+       geoFire.removeLocation(new_case.newCase.getKey_patient());
+
+
+    }
+
 }

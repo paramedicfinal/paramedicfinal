@@ -72,14 +72,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="false"
-                android:text="وقت الوصول" />
+                android:text="وقت الوصول"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/textView_tima_dsplay2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/textView_email_dsplay"
-                android:text="TextView" />
+                android:text="TextView"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 
@@ -94,8 +96,12 @@
             <Button
                 android:id="@+id/button_vitalsigns_dsplay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="مرفقات" />
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_shape_color"
+                android:text="عرض المرفقات"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <RelativeLayout

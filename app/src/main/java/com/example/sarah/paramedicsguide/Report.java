@@ -6,9 +6,13 @@ import java.util.Date;
 
 public class Report {
 
+    String hospital_name;
+
     String patient_name;
     String patient_medical_case;
     String arival_time;
+
+    String key_patient;
 
     String paramedic_name;
     String paramedic_center;

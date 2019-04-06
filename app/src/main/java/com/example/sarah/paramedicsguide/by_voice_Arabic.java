@@ -81,8 +81,8 @@ public class by_voice_Arabic extends AppCompatActivity {
                 VoiceToText voiceToText=new VoiceToText(text,new_case.newCase.getKey_patient(),vitalAndDrugs.count_v);
                 // Log.v("xxx",Hospital_the_cases.selected_patient.key);
                 database.push().setValue(voiceToText);
-                Toast.makeText(by_voice_Arabic.this,"في حال الانتهاء، قم بضفط على زر العودة", Toast.LENGTH_SHORT).show();
-
+                Intent i = new Intent(by_voice_Arabic.this,vitalAndDrugs.class);
+                startActivity(i);
             }
         });
 

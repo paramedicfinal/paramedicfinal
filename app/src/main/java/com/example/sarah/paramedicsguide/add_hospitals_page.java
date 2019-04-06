@@ -202,10 +202,9 @@ public class add_hospitals_page extends AppCompatActivity {
                     LatLng location = new LatLng(d_locationX,d_locationY) ;
                     DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS_Hospitals");
                     GeoFire geoFire = new GeoFire(ref);
-                    String key =ref.push().getKey();
-                    geoFire.setLocation(key,new GeoLocation(location.latitude,location.longitude));
+                    geoFire.setLocation(idChild,new GeoLocation(location.latitude,location.longitude));
                     //
-                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,d_locationX,d_locationY,key);
+                    Hospital hospital = new Hospital(idChild, name, id, email,  password,  brainAndNerves, accidents, bones, birth, other,d_locationX,d_locationY,idChild);
                     databasehospital.child(idChild).setValue(hospital);
                     Toast.makeText(getApplicationContext(), "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
 

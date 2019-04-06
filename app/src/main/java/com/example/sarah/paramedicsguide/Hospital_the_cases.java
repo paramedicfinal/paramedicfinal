@@ -34,10 +34,15 @@ public class Hospital_the_cases extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_the_cases);
+        Hospital_home_page.getNewCaseByQuery(Hospital_the_cases.this);
         recyclerView = (RecyclerView) findViewById(R.id.rv_the_cases);
 
 
-
+        if( Hospital_home_page.list_newCase.size()==0){
+            Toast.makeText(Hospital_the_cases.this,"لا توجد حالة  ", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(Hospital_the_cases.this,Hospital_home_page.class);
+            startActivity(i);
+        }
        int size = Hospital_home_page.list_newCase.size();
         for(int i  =0 ;i<size;i++) {
             NewCase newCase= Hospital_home_page.list_newCase.get(i);
@@ -52,10 +57,12 @@ public class Hospital_the_cases extends AppCompatActivity {
 
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        if( Hospital_home_page.list_newCase==null ||  Hospital_home_page.list_newCase.equals(null)){
+                            Toast.makeText(Hospital_the_cases.this,"لا توجد حالةmm  ", Toast.LENGTH_SHORT).show();
+                        }
                         Patient p = new Patient();
                         p = snapshot.getValue(Patient.class);
                         Hospital_home_page.list_patient.add(p);
-                        Log.v("nnnn",p.name);
 
                     }
                     display();
@@ -67,7 +74,9 @@ public class Hospital_the_cases extends AppCompatActivity {
                 }
 
             });
+
         }
+
     }
 
 public void display(){
