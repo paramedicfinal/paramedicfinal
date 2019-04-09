@@ -19,7 +19,7 @@
 
         <include
             android:id="@+id/mCustomToolbar"
-            layout="@layout/toolbarwithicon"
+            layout="@layout/toolbarwithouticon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,6 +159,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:checked="true"
                             android:gravity="right|fill_vertical"
                             android:text="أنثى"
                             android:textSize="14sp" />
@@ -209,6 +210,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:checked="true"
                             android:gravity="right|center_vertical"
                             android:text=" حرجة"
                             android:textSize="14sp" />
@@ -246,7 +248,6 @@
 
                     <Spinner
                         android:id="@+id/pg2_2_bed_spinner"
-                        style="@android:style/Widget.DeviceDefault.Spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/pg2_2_bed_text"

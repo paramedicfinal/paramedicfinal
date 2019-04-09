@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,14 +27,26 @@ public class Hospital_home_page extends AppCompatActivity {
     static List<NewCase> list_newCase = new ArrayList<NewCase>();
     static List<Patient> list_patient = new ArrayList<Patient>();
     static List<Report> reportList = new ArrayList<Report>();
+    ImageView imageView_home_ic,imageView_logout_ic;
+
 
     static DatabaseReference reference1;
     Context context=Hospital_home_page.this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_hospital_home_page);
+
+        imageView_home_ic=(ImageView)findViewById(R.id.imageView_home_ic);
+        imageView_home_ic.setVisibility(View.INVISIBLE);
+
+        imageView_logout_ic=(ImageView)findViewById(R.id.imageView_logout_ic);
+        imageView_logout_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createDialog();
+            }
+        });
         getNewCaseByQuery(context);
         CardView c2=(CardView)findViewById(R.id.cv_report);
         c2.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +148,26 @@ public class Hospital_home_page extends AppCompatActivity {
 
     }
 
+    private void createDialog() {
+        AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
+        alertDlg.setMessage("لتأكيد تسجيل الخروج اختر تأكيد ");
+        alertDlg.setCancelable(false);
+        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(Hospital_home_page.this,"تم تسجيل الخروج بنجاح ", Toast.LENGTH_SHORT).show();
+                Intent i= new Intent(Hospital_home_page.this,home_page.class);
+                startActivity(i);
+            }
+        });
 
+        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDlg.create().show();   }
 
 
 }

@@ -22,6 +22,8 @@ import java.util.List;
 public class Dsplay_V1 extends AppCompatActivity {
     static VitalSigns vitalSigns;
     static List<VitalSigns> list_vitalSigns = new ArrayList<VitalSigns>();
+    ImageView imageView_home_ic,imageView_logout_ic;
+
 
     TextView r1_1,r1_2,r1_3;
     TextView r2_1,r2_2,r2_3;
@@ -39,6 +41,18 @@ public class Dsplay_V1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dsplay__v1);
+
+        imageView_home_ic=(ImageView)findViewById(R.id.imageView_home_ic);
+        imageView_home_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Dsplay_V1.this, Hospital_home_page.class);
+                startActivity(i);
+            }
+        });
+        imageView_logout_ic=(ImageView)findViewById(R.id.imageView_logout_ic);
+        imageView_logout_ic.setVisibility(View.INVISIBLE);
+
 
         Hospital_home_page.getNewCaseByQuery(Dsplay_V1.this);
 

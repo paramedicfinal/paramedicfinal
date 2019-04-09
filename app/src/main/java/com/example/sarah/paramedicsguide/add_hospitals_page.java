@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class add_hospitals_page extends AppCompatActivity {
     EditText editTextLocationX;
     EditText editTextLocationY;
 
+    ImageView imageView_home_ic,imageView_logout_ic;
+
     ProgressBar progressbar;
 
     Button buttonAdd;
@@ -50,6 +53,21 @@ public class add_hospitals_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_hospitals_page);
+
+        imageView_home_ic=(ImageView)findViewById(R.id.imageView_home_ic);
+        imageView_home_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(add_hospitals_page.this, selection_paramedic_hospital_page.class);
+                startActivity(i);
+            }
+        });
+        imageView_logout_ic=(ImageView)findViewById(R.id.imageView_logout_ic);
+        imageView_logout_ic.setVisibility(View.INVISIBLE);
+
+
+
+
 
         databasehospital = FirebaseDatabase.getInstance().getReference("Hospital");
 

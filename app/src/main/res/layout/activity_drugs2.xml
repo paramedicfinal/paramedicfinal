@@ -26,7 +26,7 @@
 
             <include
                 android:id="@+id/mCustomToolbar"
-                layout="@layout/toolbarwithicon"
+                layout="@layout/toolbarwithouticon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -170,23 +170,24 @@
 
             <Button
                 android:id="@+id/pg4_1_buttonsend"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button_shape_color"
                 android:fontFamily="sans-serif"
                 android:onClick="sendDrugs"
                 android:text="ارسال"
                 android:textColor="#ffffffff"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.961"
 
+                app:layout_constraintHorizontal_bias="0.961"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.575" />
         </RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.sarah.paramedicsguide;
 import android.content.Context;
 import android.location.Location;
 import android.os.ParcelUuid;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -35,14 +36,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.PublicKey;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback {
 
-    TextView textView_name_dsplay2;
+    TextView textView_hospital_id_patient,textView_hospital_bed,textView_name_dsplay2,textView_medical_case_dsplay2;
     Button button_vitalsigns_dsplay;
-    ImageView imageView_done;
+    Button imageView_done;
     private GoogleMap mMap;
     boolean contnueLookForLocation=true;
     private LatLng destinationLatLng, pickupLatLng;
@@ -55,6 +58,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     DatabaseReference refRemoveNewCase;
     NewCase remove_case;
     Medications m;
+
+
     DatabaseReference reference_check_befor_delete;
 
     @Override
@@ -67,8 +72,13 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         textView_name_dsplay2=(TextView)findViewById(R.id.textView_name_dsplay2);
+        textView_hospital_id_patient=(TextView)findViewById(R.id.textView_hospital_id_patient);
+        textView_hospital_bed=(TextView)findViewById(R.id.textView_hospital_bed);
+        textView_medical_case_dsplay2=(TextView)findViewById(R.id.textView_medical_case_dsplay2);
+
+
         button_vitalsigns_dsplay=(Button)findViewById(R.id.button_vitalsigns_dsplay);
-        imageView_done=(ImageView)findViewById(R.id.imageView_done);
+        imageView_done=(Button)findViewById(R.id.imageView_done);
 
         //BOTTON
         button_vitalsigns_dsplay.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +102,9 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         //TEXT VIEW
         String name =Hospital_the_cases.selected_patient.name;
         textView_name_dsplay2.setText(name);
+        textView_hospital_id_patient.setText(Hospital_the_cases.selected_patient.getNationalId());
+        textView_hospital_bed.setText(Hospital_the_cases.selected_patient.bedType);
+        textView_medical_case_dsplay2.setText(Hospital_the_cases.selected_patient.medicalState);
 
         //IMAGE VIEW
         imageView_done.setOnClickListener(new View.OnClickListener() {
@@ -119,8 +132,10 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         startActivity(i);
     }
     private void getAssignedCustomerPickupLocation(){
-        assignedCustomerPickupLocationRef = FirebaseDatabase.getInstance().getReference().child("GPS").child(Hospital_the_cases.selected_patient.key).child("l");
-        assignedCustomerPickupLocationRefListener = assignedCustomerPickupLocationRef.addValueEventListener(new ValueEventListener() {
+        assignedCustomerPickupLocationRef = FirebaseDatabase.getInstance().getReference().child("GPS")
+                .child(Hospital_the_cases.selected_patient.key).child("l");
+        assignedCustomerPickupLocationRefListener = assignedCustomerPickupLocationRef
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists() && !Hospital_the_cases.selected_patient.key.equals("")){
@@ -135,9 +150,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                     }
                     addMarkerLocationOfParamedic(locationLat,locationLng);
 
-
-                   // getRouteToMarker(pickupLatLng);
-                }
+                    }
             }
 
             public void addMarkerLocationOfParamedic(double locationLat, double locationLng){
@@ -153,7 +166,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 
                 //
                 pickupLatLng = new LatLng(locationLat,locationLng);
-                pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pickup)));
+                pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_pickup)));
 
             }
 
@@ -173,6 +187,26 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
                     r.patient_name=Hospital_the_cases.selected_patient.name;
                     r.patient_medical_case=Hospital_the_cases.selected_patient.medicalState;
                     r.hospital_name=hospital_login_page.user.hospitalName;
+
+                    Calendar calendar= Calendar.getInstance();
+                    String date="";
+                    date+=calendar.get(Calendar.YEAR);
+                    date+=" / "+(calendar.get(Calendar.MONTH)+1);
+                    date+=" / "+calendar.get(Calendar.DAY_OF_MONTH);
+                    r.date=date;
+
+                    String day="";
+                    switch(calendar.get(Calendar.DAY_OF_WEEK)){
+                        case 1:day="الاحد";break;
+                        case 2:day="الاتنين";break;
+                        case 3:day="الثلاثاء";break;
+                        case 4:day="الاربعاء";break;
+                        case 5:day="الخميس";break;
+                        case 6:day="الجمعة";break;
+                        case 7:day="السبت";break;
+                    }
+                    r.day=day;
+
                     Hospital_home_page.reportList.set(i,r);
                     break;
                     }
@@ -205,10 +239,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     }
     private void case_done_send_repor_firebase() {
         for(int i=0;i<Hospital_home_page.reportList.size();i++){
-            Toast.makeText(MapsActivity2.this,"x3x  ", Toast.LENGTH_SHORT).show();
 
             if(Hospital_the_cases.selected_patient.key.equals(Hospital_home_page.reportList.get(i).key_patient)){
-                Toast.makeText(MapsActivity2.this,"555  ", Toast.LENGTH_SHORT).show();
 
                 Report r =Hospital_home_page.reportList.get(i);
                 FirebaseDatabase database = FirebaseDatabase.getInstance() ;

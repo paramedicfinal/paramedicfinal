@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -27,7 +27,16 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="4"
+            android:visibility="invisible"
+            app:srcCompat="@mipmap/ic_four" />
 
         <ImageView
             android:id="@+id/imageView11"
@@ -49,13 +58,6 @@
             android:layout_height="30dp"
             android:layout_weight="4"
             app:srcCompat="@mipmap/ic_three" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_weight="4"
-            app:srcCompat="@mipmap/ic_four" />
 
         <ImageView
             android:id="@+id/imageView_track"

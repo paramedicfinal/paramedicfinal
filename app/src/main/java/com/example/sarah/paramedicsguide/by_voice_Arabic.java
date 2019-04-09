@@ -21,7 +21,7 @@ public class by_voice_Arabic extends AppCompatActivity {
     VitalSigns VitalSigns;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Patient");
+    DatabaseReference myRef = database.getReference("VoiceToText");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +97,8 @@ public class by_voice_Arabic extends AppCompatActivity {
     public void buttonSend(View view) {
         createDialog();
 ;
-       VitalSigns signs = new VitalSigns(text,new_case.patient.key);
-        myRef.push().setValue(signs);
+      // VitalSigns signs = new VitalSigns(text,new_case.patient.key);
+       // myRef.push().setValue(signs);
 
 
 

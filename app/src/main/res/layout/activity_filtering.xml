@@ -14,7 +14,7 @@
 
         <include
             android:id="@+id/mCustomToolbar"
-            layout="@layout/toolbarwithicon"
+            layout="@layout/toolbarwithouticon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,13 +99,14 @@
 
             <Button
                 android:id="@+id/next"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button_shape_color"
                 android:fontFamily="sans-serif"
                 android:text="التالي"
@@ -116,7 +117,8 @@
                 app:layout_constraintHorizontal_bias="0.935"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                app:layout_constraintVertical_bias="0.536" />
+                app:layout_constraintVertical_bias="0.536"
+                tools:ignore="NotSibling" />
         </RelativeLayout>
 
 

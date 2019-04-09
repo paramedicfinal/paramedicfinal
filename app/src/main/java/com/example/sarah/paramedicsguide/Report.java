@@ -19,6 +19,9 @@ public class Report {
 
     String medicine;
 
+    String day;
+    String date;
+
     public Report() {
     }
 

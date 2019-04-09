@@ -46,6 +46,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -91,6 +92,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LinearLayout layout_box_name_email_time;
     static boolean stopGPS=false;
     static boolean canseleMyLocation=true;
+    LatLng destnation;
+    Polyline polyline;
 
 
     DatabaseReference reference;
@@ -212,6 +215,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         if (isCanAccess) {
+            destnation=new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
+          //  destnation = marker.getPosition();
             hospital = getHospital(marker);
 
             imageView_send.setVisibility(View.VISIBLE);
@@ -319,13 +324,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
+
         if(stopGPS==false){
         DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS");
         geoFire = new GeoFire(ref);
         geoFire.setLocation(new_case.newCase.getKey_patient(),new GeoLocation(location.getLatitude(),location.getLongitude()));
+
         }
 
     }
+
 
 
 
@@ -366,14 +374,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
 
-        if (medicalState.equals(" حرجة")) {
-            Toast.makeText(getApplicationContext(), "لا يمكن العوده ، يجب انهاء الحالة", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent i = new Intent(MapsActivity.this, Ways_find_hospital.class);
-            startActivity(i);
-        }
+         //   Intent i = new Intent(MapsActivity.this, Ways_find_hospital.class);
+          //  startActivity(i);
 
     }
+
 
 
 }

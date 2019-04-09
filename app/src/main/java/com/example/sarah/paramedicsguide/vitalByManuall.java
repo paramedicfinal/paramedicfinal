@@ -55,6 +55,7 @@ public class vitalByManuall extends AppCompatActivity {
          calendar= Calendar.getInstance();
          format =new SimpleDateFormat("HH.mm");
          time=format.format(calendar.getTime());
+
     }
 
     public void buttonSend(View view) {

@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,9 @@ ProgressBar progressBar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login_page);
+
+        TextView t = (TextView)findViewById(R.id.textView999);
+        t.setVisibility(View.INVISIBLE);
 
         findViewById(R.id.textViewSignup).setOnClickListener(this);
         findViewById(R.id.textViewForgotPassword).setOnClickListener(this);

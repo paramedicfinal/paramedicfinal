@@ -28,7 +28,7 @@
 
             <include
                 android:id="@+id/mCustomToolbar"
-                layout="@layout/toolbarwithicon"
+                layout="@layout/toolbarwithouticon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +88,7 @@
                 android:layout_alignTop="@+id/imageView_voice"
                 android:layout_weight="1"
                 android:onClick="buttonDeleat"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@mipmap/ic_deleat"
                 tools:ignore="MissingConstraints"
@@ -112,6 +113,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_weight="1"
                 android:onClick="buttonSend"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.526"
                 app:layout_constraintStart_toEndOf="@+id/imageView_voice"

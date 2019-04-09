@@ -1,7 +1,9 @@
 package com.example.sarah.paramedicsguide;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,7 +60,9 @@ static int valueOfInterfaceToShow=0;
         }
     }
 
-    public void buttonDone(View view) {finish(); }
+    public void buttonDone(View view) {
+        createDialog();
+         }
 
     public void cameClicked(View view) {
         Intent i = new Intent(vitalAndDrugs.this,take_photo.class);
@@ -129,6 +133,27 @@ static int valueOfInterfaceToShow=0;
             }
         });
     }
+
+
+    private void createDialog() {
+        AlertDialog.Builder alertDlg =new   AlertDialog.Builder(this);
+        alertDlg.setMessage("يتم انهاء الحاله عند الوصول الى المشفى ! لتأكيد انهاء الحالة اختر تأكيد");
+        alertDlg.setCancelable(false);
+        alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(vitalAndDrugs.this,"تم انهاء الحالة ", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        alertDlg.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alertDlg.create().show();   }
 
     //***********
     @Override

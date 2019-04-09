@@ -7,80 +7,74 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class take_photo extends AppCompatActivity {
+    private  static  final int CAMERA_REQUST=1;
+    private StorageReference mStorageReference;
+    Uri imgUri;
 
-
-    @Override
+   ImageView button , imageView;
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_photo);
 
-        btnpic = (ImageView) findViewById(R.id.button);
-        imgTakenPic = (ImageView)findViewById(R.id.imageView);
-        btnpic.setOnClickListener(new btnTakePhotoClicker());
-        mstorage= FirebaseStorage.getInstance().getReference();
-        imageView_send_photo=(ImageView)findViewById(R.id.imageView_send_photo);
+
+       mStorageReference=FirebaseStorage.getInstance().getReference();
+        button=(ImageView)findViewById(R.id.button);
+       imageView=(ImageView)findViewById(R.id.imageView);
+
+       button.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               ContentValues contentValues = new ContentValues();
+               contentValues.put(MediaStore.Images.Media.TITLE,"صورة جديدة");
+               contentValues.put(MediaStore.Images.Media.DESCRIPTION,"بواسطة الكاميرا");
+               imgUri=getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+               Intent i= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+               i.putExtra(MediaStore.EXTRA_OUTPUT,imgUri);
+               startActivityForResult(i,CAMERA_REQUST);
+
+           }
+       });
     }
-    ImageView btnpic;
-    ImageView imageView_send_photo;
-    ImageView imgTakenPic;
-    private static final int CAM_REQUEST=1313;
-    StorageReference mstorage;
-    Uri uri;
-
-
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-       // super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode,  Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Uri uri=data.getData();
+            imageView.setImageURI(imgUri);
+            StorageReference filepath=mStorageReference.child("Photos").child(imgUri.getLastPathSegment());
+            filepath.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(take_photo.this,"تم ارسال الصورة ", Toast.LENGTH_SHORT).show();
 
-        if(requestCode == CAM_REQUEST){
-            uri= data.getData();
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            imgTakenPic.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+               @Override
+                public void onFailure(@NonNull Exception e) {
 
+                    e.fillInStackTrace();
 
-            uploadePhoto();
+                }
+           });
         }
     }
-
-    class btnTakePhotoClicker implements  Button.OnClickListener{
-
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent,CAM_REQUEST);
-        }
-    }
-
-    public void uploadePhoto(){
-        imageView_send_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StorageReference filepath = mstorage.child("Photos").child(uri.getLastPathSegment());
-                filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(take_photo.this,"uploading finsh ",Toast.LENGTH_LONG).show();
-                        }
-                });
-            }
-        });
-
-
-
-    }
-
 }

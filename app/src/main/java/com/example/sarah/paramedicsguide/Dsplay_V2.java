@@ -17,6 +17,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class Dsplay_V2 extends AppCompatActivity {
+    ImageView imageView_home_ic,imageView_logout_ic;
     Medications medications ;
     TextView t;
     String s;
@@ -25,6 +26,19 @@ public class Dsplay_V2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dsplay__v2);
+
+        imageView_home_ic=(ImageView)findViewById(R.id.imageView_home_ic);
+        imageView_home_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Dsplay_V2.this, Hospital_home_page.class);
+                startActivity(i);
+            }
+        });
+
+        imageView_logout_ic=(ImageView)findViewById(R.id.imageView_logout_ic);
+        imageView_logout_ic.setVisibility(View.INVISIBLE);
+
 
         Hospital_home_page.getNewCaseByQuery(Dsplay_V2.this);
 
@@ -97,7 +111,7 @@ public class Dsplay_V2 extends AppCompatActivity {
 
     }
 
-     public String dsplay_medications(Medications medications){
+    static public String dsplay_medications(Medications medications){
         String s= "";
         if(medications.Atropine==true){s+="\n\n"+"الأتروبين";}
         if(medications.Aspirin==true){s+="\n\n"+"الأسبرين";}
@@ -106,7 +120,6 @@ public class Dsplay_V2 extends AppCompatActivity {
         if(medications.Nitroglycerin==true){s+="\n\n"+"النتروغليسيرين";}
         if(medications.Dextrose==true){s+="\n\n"+"الدكستروز 50%";}
         if(medications.Gelatin==true){s+="\n\n"+"جيلاتين سكر تحت اللسان";}
-        reportList_fillup_patient_info();
         return s;
 
 
@@ -122,29 +135,4 @@ public class Dsplay_V2 extends AppCompatActivity {
         startActivity(i);
     }
 
-    private  void reportList_fillup_patient_info() {
-        Toast.makeText(Dsplay_V2.this,"هنا  ", Toast.LENGTH_SHORT).show();
-
-
-        for(int i=0;i<Hospital_home_page.reportList.size();i++){
-            Toast.makeText(Dsplay_V2.this,Hospital_the_cases.selected_patient.key+" "+Hospital_home_page.reportList.get(i).key_patient, Toast.LENGTH_SHORT).show();
-
-            if(Hospital_the_cases.selected_patient.key==Hospital_home_page.reportList.get(i).key_patient){
-                Report r = new Report();
-                r.paramedic_center=Hospital_home_page.reportList.get(i).paramedic_center;
-                r.paramedic_name=Hospital_home_page.reportList.get(i).paramedic_name;
-                r.key_patient=Hospital_home_page.reportList.get(i).key_patient;
-
-                r.patient_name=Hospital_home_page.reportList.get(i).patient_name;
-                r.patient_medical_case=Hospital_home_page.reportList.get(i).patient_medical_case;
-
-                r.medicine=s;
-                Hospital_home_page.reportList.set(i,r);
-                Toast.makeText(Dsplay_V2.this,"تم تعديل التقرير  ", Toast.LENGTH_SHORT).show();
-                break;
-            }
-
-        }
-
-    }
 }

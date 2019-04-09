@@ -27,8 +27,8 @@ public class by_voice extends AppCompatActivity {
     Patient Patient;
     VitalSigns VitalSigns;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference myRef = database.getReference("VitalSigns");
+   // FirebaseDatabase database = FirebaseDatabase.getInstance();
+   // DatabaseReference myRef = database.getReference("VitalSigns");
 
 
 
@@ -78,7 +78,7 @@ public class by_voice extends AppCompatActivity {
     }
 
     public void buttonSend(View view) {
-        if(text!=null){ createDialogSend();}
+        if(text!=null||text!=""){ createDialogSend();}
     }
 
 

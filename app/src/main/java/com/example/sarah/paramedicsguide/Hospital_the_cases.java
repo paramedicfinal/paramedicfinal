@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.List;
 
 public class Hospital_the_cases extends AppCompatActivity {
+    ImageView imageView_home_ic,imageView_logout_ic;
     RecyclerView recyclerView;
     Adapor_the_cases adapor_the_cases;
     DatabaseReference database;
@@ -34,6 +36,18 @@ public class Hospital_the_cases extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_the_cases);
+
+        imageView_logout_ic=(ImageView)findViewById(R.id.imageView_logout_ic);
+        imageView_logout_ic.setVisibility(View.INVISIBLE);
+
+        imageView_home_ic=(ImageView)findViewById(R.id.imageView_home_ic);
+        imageView_home_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Hospital_the_cases.this, Hospital_home_page.class);
+                startActivity(i);
+            }
+        });
         Hospital_home_page.getNewCaseByQuery(Hospital_the_cases.this);
         recyclerView = (RecyclerView) findViewById(R.id.rv_the_cases);
 
@@ -57,9 +71,6 @@ public class Hospital_the_cases extends AppCompatActivity {
 
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        if( Hospital_home_page.list_newCase==null ||  Hospital_home_page.list_newCase.equals(null)){
-                            Toast.makeText(Hospital_the_cases.this,"لا توجد حالةmm  ", Toast.LENGTH_SHORT).show();
-                        }
                         Patient p = new Patient();
                         p = snapshot.getValue(Patient.class);
                         Hospital_home_page.list_patient.add(p);

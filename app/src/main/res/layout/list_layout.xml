@@ -30,29 +30,31 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/textViewEmail"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:gravity="right" />
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/textViewID"
+                android:gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000"
-                android:gravity="center" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textViewEmail"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
+                android:gravity="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000"
-                android:gravity="center" />
+                android:textColor="#000000" />
 
         </RelativeLayout>
 
