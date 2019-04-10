@@ -58,5 +58,9 @@ public class selection_paramedic_hospital_page extends AppCompatActivity {
             }
         });
         alertDlg.create().show();   }
+    @Override
+    public void onBackPressed() {
+        createDialog();
+    }
 
 }

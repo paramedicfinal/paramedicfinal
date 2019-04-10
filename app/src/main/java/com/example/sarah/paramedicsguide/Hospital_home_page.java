@@ -155,6 +155,7 @@ public class Hospital_home_page extends AppCompatActivity {
         alertDlg.setPositiveButton("تأكيد", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                hospital_login_page.user=null;
                 Toast.makeText(Hospital_home_page.this,"تم تسجيل الخروج بنجاح ", Toast.LENGTH_SHORT).show();
                 Intent i= new Intent(Hospital_home_page.this,home_page.class);
                 startActivity(i);
@@ -168,6 +169,10 @@ public class Hospital_home_page extends AppCompatActivity {
             }
         });
         alertDlg.create().show();   }
+    @Override
+    public void onBackPressed() {
+        createDialog();
+    }
 
 
 }
