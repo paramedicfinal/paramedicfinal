@@ -52,12 +52,9 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
 
 
     private GoogleMap mMap;
-    static Location location;
-    LocationManager locationManager;
-    static GoogleApiClient googleApiClient;
-    Location mLastlocation;
-    static LocationRequest locationRequest;
 
+    //LocationManager locationManager;
+    Location mLastlocation;
     ImageView imageView_send;
     ImageView imageView_arrow;
     ImageView imageView_refrish;
@@ -65,6 +62,9 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
     TextView textView_email_box;
     TextView textView_time_box;
     LinearLayout layout_box_name_email_time;
+    static GoogleApiClient googleApiClient;
+    static LocationRequest locationRequest;
+    static Location location;
     static boolean isCanAccess = true;
     static boolean stopGPS=false;
     static GeoFire geoFire;
@@ -168,7 +168,9 @@ public class MapsActivity3 extends FragmentActivity implements OnMapReadyCallbac
     public void openLocationGpsDaialog(){
         android.support.v7.app.AlertDialog.Builder alertDlg = new android.support.v7.app.AlertDialog.Builder(this);
         alertDlg.setMessage("قم بتشغيل نظام تحديد المواقع من الاعدادات ");
-        alertDlg.create().show();
+        alertDlg.setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) { }});
     }
 //*********************************************************************************** TO VITAL SIGN
     public void next_int() {
@@ -193,8 +195,8 @@ static boolean firstTime=true;
     public void onLocationChanged(Location location) {
         mLastlocation=location;
         latLng = new LatLng(location.getLatitude(),location.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+       // mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
         if(stopGPS==false){
             DatabaseReference ref =FirebaseDatabase.getInstance().getReference("GPS");
@@ -282,9 +284,6 @@ static boolean firstTime=true;
     @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "لا يمكن العوده ، يجب انهاء الحالة", Toast.LENGTH_SHORT).show();
-
-        Intent i = new Intent();
-        // startActivity(i);
     }
     //*******************************************************************************MARKER - FIND NEAREST HOSPITAL - DSPLAY BOX
     @Override
@@ -348,11 +347,8 @@ static boolean firstTime=true;
     }
     /////////////////////////////////////////////////////////////////
     static public void stopTrack(){
-
        stopGPS=true;
        geoFire.removeLocation(new_case.newCase.getKey_patient());
-
-
     }
 
 }

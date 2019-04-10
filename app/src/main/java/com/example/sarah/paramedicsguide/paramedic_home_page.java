@@ -56,9 +56,7 @@ public class paramedic_home_page extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        paramedic_login_page.user = null;
-        Intent i = new Intent(paramedic_home_page.this, paramedic_login_page.class);
-        startActivity(i);
+        createDialog();
     }
 
     private static final int REQUEST_LOCATION = 1503;
@@ -103,6 +101,8 @@ public class paramedic_home_page extends AppCompatActivity {
                 Toast.makeText(paramedic_home_page.this,"تم تسجيل الخروج بنجاح ", Toast.LENGTH_SHORT).show();
                 Intent i= new Intent(paramedic_home_page.this,home_page.class);
                 startActivity(i);
+                paramedic_login_page.user = null;
+
             }
         });
 

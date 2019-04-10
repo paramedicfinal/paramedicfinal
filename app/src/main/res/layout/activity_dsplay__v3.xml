@@ -55,7 +55,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:layout_margin="10dp"
             android:background="@drawable/body_style">
 
@@ -87,7 +87,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="right|center"/>
+                        android:gravity="right|center" />
 
                     <TextView
                         android:id="@+id/textView_sened_vital_voice3"
@@ -97,7 +97,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
-                        android:gravity="right|center"/>
+                        android:gravity="right|center" />
                 </LinearLayout>
             </ScrollView>
 

@@ -86,7 +86,6 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             public void onClick(View view) { vitalSignClicked();}});
 
 
-        //PARAMEDIC LOCATION
 
     }
 
@@ -161,8 +160,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 
                 LatLng posetion = new LatLng(lx, ly);
                 mMap.addMarker(new MarkerOptions().position(posetion).title("المشفى"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(posetion));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+               // mMap.moveCamera(CameraUpdateFactory.newLatLng(posetion));
+               // mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
 
                 //
                 pickupLatLng = new LatLng(locationLat,locationLng);

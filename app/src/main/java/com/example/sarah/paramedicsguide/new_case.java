@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class new_case extends AppCompatActivity {
    static NewCase newCase;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance() ;
     DatabaseReference myRef = database.getReference("Patient");
 

@@ -6,6 +6,7 @@ import android.speech.RecognizerIntent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,6 @@ public class by_voice_Arabic extends AppCompatActivity {
         setContentView(R.layout.activity_by_voice);
         txvResult = (TextView) findViewById(R.id.txvResult);
         Bundle b = getIntent().getExtras();
-       // key=b.getString("PatientID");
     }
 
     public void getSpeechInput(View view) {
@@ -44,7 +44,7 @@ public class by_voice_Arabic extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, 10);
         } else {
-            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "هذا الجهاز لا يدعم التسجيل الصوتي", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -75,11 +75,8 @@ public class by_voice_Arabic extends AppCompatActivity {
                 Toast.makeText(by_voice_Arabic.this,"تم الارسال ", Toast.LENGTH_SHORT).show();
 
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("VoiceToText");
-                //by_voice.super.onBackPressed();
-                //VitalSigns signs = new VitalSigns(text,new_case.patient.key);
                 vitalAndDrugs.count_v++;
                 VoiceToText voiceToText=new VoiceToText(text,new_case.newCase.getKey_patient(),vitalAndDrugs.count_v);
-                // Log.v("xxx",Hospital_the_cases.selected_patient.key);
                 database.push().setValue(voiceToText);
                 Intent i = new Intent(by_voice_Arabic.this,vitalAndDrugs.class);
                 startActivity(i);
@@ -95,16 +92,11 @@ public class by_voice_Arabic extends AppCompatActivity {
         alertDlg.create().show();   }
 
     public void buttonSend(View view) {
-        createDialog();
-;
-      // VitalSigns signs = new VitalSigns(text,new_case.patient.key);
-       // myRef.push().setValue(signs);
-
-
+        if(!text.isEmpty()){ createDialog();}
 
     }
     public void buttonDeleat(View view) {
-        createDialogDeleat();
+        if(!text.isEmpty()){ createDialogDeleat();}
     }
     private void createDialogDeleat() {
 
@@ -132,8 +124,6 @@ public class by_voice_Arabic extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-
-        Ways_find_hospital.hospitalList.clear();
         Intent i = new Intent(by_voice_Arabic.this,vitalAndDrugs.class);
         startActivity(i);
     }

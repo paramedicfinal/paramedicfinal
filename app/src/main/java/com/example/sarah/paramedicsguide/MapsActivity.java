@@ -3,6 +3,7 @@
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -153,7 +154,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng jeddah=new LatLng(21.482911, 39.222083);
         mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(jeddah,9));
-        mMap.addMarker(new MarkerOptions().position(jeddah).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jeddah_star)));
+        mMap.addMarker(new MarkerOptions().position(jeddah).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_jeddah_star)));
 
 
         medicalState = new_case.patient.getMedicalState();
@@ -307,7 +308,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void openLocationGpsDaialog(){
         AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
         alertDlg.setMessage("قم بتشغيل نظام تحديد المواقع من الاعدادات ");
-        alertDlg.create().show();
+        alertDlg.setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) { }});
     }
     //***********
     public void next_int() {
@@ -321,8 +324,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mLastlocation=location;
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+       // mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
 
         if(stopGPS==false){

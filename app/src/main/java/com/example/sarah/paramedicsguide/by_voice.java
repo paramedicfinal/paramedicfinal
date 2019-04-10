@@ -78,7 +78,7 @@ public class by_voice extends AppCompatActivity {
     }
 
     public void buttonSend(View view) {
-        if(text!=null||text!=""){ createDialogSend();}
+        if(!text.isEmpty()){ createDialogSend();}
     }
 
 
@@ -140,7 +140,8 @@ public class by_voice extends AppCompatActivity {
     }
 
     public void buttonDeleat(View view) {
-        createDialogDeleat();
+        if(!text.isEmpty()){ createDialogDeleat();}
+
     }
     @Override
     public void onBackPressed() {
